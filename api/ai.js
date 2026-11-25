@@ -25,13 +25,14 @@ async function groq(key, system, msgs) {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function gemini(key, system, msgs) {
   // Lite modellar tezroq va kvotasi kattaroq; band/sekin bo'lsa keyingisiga o'tamiz
-  const models = [process.env.AI_MODEL, "gemini-2.5-flash-lite", "gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-flash-latest"].filter(Boolean);
+  const models = [...new Set([process.env.AI_MODEL, "gemini-2.5-flash-lite", "gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-flash-latest"].filter(Boolean))];
   const contents = msgs.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
   let last = { status: 502, message: "no model answered" };
   const started = Date.now();
-  for (let round = 0; round < 2; round++) {
-    for (const model of models) {
-      if (Date.now() - started > 45000) throw last;
+  const log = [];
+  for (let round = 0; Date.now() - started < 38000; round++) {
+    for (const model of [...models]) {
+      if (Date.now() - started > 45000) break;
       const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 15000);
       try {
         const call = gc => fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
@@ -45,12 +46,16 @@ async function gemini(key, system, msgs) {
         const text = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || "").join("").trim();
         if (r.ok && text) return text;
         last = { status: r.status, message: j?.error?.message || "empty answer" };
+        log.push(model + ":" + r.status);
+        if (r.status === 404) models.splice(models.indexOf(model), 1);   // bunday model yo'q
       } catch (e) {
         last = e?.name === "AbortError" ? { status: 504, message: model + " timeout" } : (e?.status ? e : { status: 502, message: String(e?.message || e) });
       } finally { clearTimeout(timer); }
     }
-    await sleep(1200);
+    if (!models.length) break;
+    await sleep(Math.min(1500 * (round + 1), 5000));
   }
+  last.message = (last.message || "") + " [" + log.slice(-8).join(" ") + "]";
   throw last;
 }
 
