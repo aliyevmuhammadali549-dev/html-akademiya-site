@@ -34,19 +34,18 @@ async function gemini(key, system, msgs) {
       if (Date.now() - started > 45000) throw last;
       const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 15000);
       try {
-        const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        const call = gc => fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
           method: "POST", signal: ctl.signal,
           headers: { "x-goog-api-key": key, "content-type": "application/json" },
-          body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents,
-            generationConfig: { maxOutputTokens: 800, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 } } }),
+          body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents, generationConfig: gc }),
         });
+        let r = await call({ maxOutputTokens: 800, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 } });
+        if (r.status === 400) r = await call({ maxOutputTokens: 800, temperature: 0.6 });   // eski modellar thinkingConfig'ni bilmaydi
         const j = await r.json().catch(() => ({}));
         const text = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || "").join("").trim();
         if (r.ok && text) return text;
         last = { status: r.status, message: j?.error?.message || "empty answer" };
-        if (r.status === 400 && !/thinking/i.test(last.message)) throw last;   // so'rovning o'zi xato
       } catch (e) {
-        if (e && e.status === 400) throw e;
         last = e?.name === "AbortError" ? { status: 504, message: model + " timeout" } : (e?.status ? e : { status: 502, message: String(e?.message || e) });
       } finally { clearTimeout(timer); }
     }
