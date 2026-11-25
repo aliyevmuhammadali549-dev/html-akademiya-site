@@ -1006,11 +1006,12 @@ function bindAi(){drawChat();const inp=$("#aiIn");if(S.aiPrefill){inp.value=S.ai
   inp.value="";S.aiMsgs.push({role:"user",content:q});const ans={role:"assistant",content:"…"};S.aiMsgs.push(ans);drawChat();bump("ai");
   const langName={uz:"Uzbek (Latin script)",ru:"Russian",en:"English"}[S.lang];
   const sys=`You are the AI tutor of "HTML Akademiya", a course that teaches HTML and CSS to beginners (mostly teenagers in Uzbekistan) on their phones. Always reply in ${langName}. Be friendly and short (under 150 words), explain in plain words, give a tiny code example when it helps, and never write the full solution of a course task unless the student asks for it twice — guide them with hints first. If the question is not about web development, gently bring the student back to HTML/CSS.`;
-  const hist=S.aiMsgs.slice(1,-1).slice(-10);hist[0]={role:"user",content:sys+"\n\nStudent: "+hist[0].content};
+  const hist=S.aiMsgs.slice(1,-1).filter(m=>!m.err&&m.content!=="…").slice(-10);hist[0]={role:"user",content:sys+"\n\nStudent: "+hist[0].content};
   try{if(sample){const r=await sample(hist,{cache:false,modelTier:"quick",onText:({text})=>{ans.content=text;drawChat()}});ans.content=r.text}
-   else{const r=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({lang:S.lang,messages:S.aiMsgs.slice(1,-1).slice(-10)})});
-    const j=await r.json().catch(()=>({}));ans.content=r.ok&&j.text?j.text:(r.status===404?t("aiOff"):t("aiErr"))}}
-  catch(err){ans.content=err&&err.code==="not_granted"?t("aiOff"):t("aiErr")}
+   else{const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),55000);
+    const r=await fetch("/api/ai",{method:"POST",signal:ctl.signal,headers:{"Content-Type":"application/json"},body:JSON.stringify({lang:S.lang,messages:S.aiMsgs.slice(1,-1).filter(m=>!m.err&&m.content!=="…").slice(-10)})}).finally(()=>clearTimeout(tm));
+    const j=await r.json().catch(()=>({}));if(r.ok&&j.text)ans.content=j.text;else{ans.err=true;ans.content=r.status===404?t("aiOff"):t("aiErr")}}}
+  catch(err){ans.err=true;ans.content=err&&err.code==="not_granted"?t("aiOff"):t("aiErr")}
   drawChat();const l=$("#aiLeft");if(l&&lim<1e6)l.textContent=t("left",{n:Math.max(0,lim-dayCount("ai"))})})}
 
 /* ---------- pricing ---------- */
