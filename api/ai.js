@@ -22,27 +22,40 @@ async function groq(key, system, msgs) {
   return j.choices?.[0]?.message?.content || "";
 }
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function gemini(key, system, msgs) {
-  // band bo'lsa yoki topilmasa — keyingi modelga o'tamiz
-  const models = [process.env.AI_MODEL, "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"].filter(Boolean);
-  let last;
-  for (const model of models) {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: "POST",
-      headers: { "x-goog-api-key": key, "content-type": "application/json" },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: system }] },
-        contents: msgs.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })),
-        generationConfig: { maxOutputTokens: 700, temperature: 0.6 },
-      }),
-    });
-    const j = await r.json();
-    if (r.ok) return (j.candidates?.[0]?.content?.parts || []).map(p => p.text || "").join("");
-    last = { status: r.status, message: j?.error?.message };
-    if (![404, 429, 500, 503].includes(r.status)) break;
+  // Lite modellar tezroq va kvotasi kattaroq; band/sekin bo'lsa keyingisiga o'tamiz
+  const models = [process.env.AI_MODEL, "gemini-2.5-flash-lite", "gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-flash-latest"].filter(Boolean);
+  const contents = msgs.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
+  let last = { status: 502, message: "no model answered" };
+  const started = Date.now();
+  for (let round = 0; round < 2; round++) {
+    for (const model of models) {
+      if (Date.now() - started > 45000) throw last;
+      const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 15000);
+      try {
+        const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+          method: "POST", signal: ctl.signal,
+          headers: { "x-goog-api-key": key, "content-type": "application/json" },
+          body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents,
+            generationConfig: { maxOutputTokens: 800, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 } } }),
+        });
+        const j = await r.json().catch(() => ({}));
+        const text = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || "").join("").trim();
+        if (r.ok && text) return text;
+        last = { status: r.status, message: j?.error?.message || "empty answer" };
+        if (r.status === 400 && !/thinking/i.test(last.message)) throw last;   // so'rovning o'zi xato
+      } catch (e) {
+        if (e && e.status === 400) throw e;
+        last = e?.name === "AbortError" ? { status: 504, message: model + " timeout" } : (e?.status ? e : { status: 502, message: String(e?.message || e) });
+      } finally { clearTimeout(timer); }
+    }
+    await sleep(1200);
   }
   throw last;
 }
+
+export const config = { maxDuration: 60 };
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
@@ -55,10 +68,15 @@ export default async function handler(req, res) {
   hits.set(ip, [...h, now]);
 
   const { lang = "uz", messages = [] } = req.body || {};
-  const msgs = messages
-    .filter(m => (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
-    .slice(-10)
-    .map(m => ({ role: m.role, content: m.content.slice(0, 4000) }));
+  const msgs = [];
+  for (const m of messages) {
+    if (!m || (m.role !== "user" && m.role !== "assistant") || typeof m.content !== "string") continue;
+    const c = m.content.trim().slice(0, 4000);
+    if (!c || (m.role === "assistant" && (c.length < 3 || m.err))) continue;      // "…" va xato javoblarni tashlaymiz
+    const prev = msgs[msgs.length - 1];
+    if (prev && prev.role === m.role) prev.content += "\n\n" + c; else msgs.push({ role: m.role, content: c });
+  }
+  msgs.splice(0, Math.max(0, msgs.length - 10));
   while (msgs.length && msgs[0].role !== "user") msgs.shift();
   if (!msgs.length || msgs[msgs.length - 1].role !== "user") return res.status(400).json({ error: "bad messages" });
 
