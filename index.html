@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HTML Akademiya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE: friendly, energetic school for teens learning to code on a phone
    IDEA: a code editor that is also a classroom — every screen looks like a working IDE pane
@@ -24,7 +24,8 @@ code,pre,.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 code{background:var(--panel2);padding:1px 6px;border-radius:6px;font-size:.9em;overflow-wrap:anywhere}
 .wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,16px)}
 .band{padding:clamp(28px,4vw,56px) 0}
-h1,h2,h3{line-height:1.06;text-wrap:balance;margin:0 0 .4em;font-family:Manrope,Inter,sans-serif}
+h1,h2,h3{line-height:1.04;text-wrap:balance;margin:0 0 .4em;font-family:Montserrat,Manrope,Inter,sans-serif;letter-spacing:-.025em}
+h1 .dim,h2 .dim{color:var(--mute);opacity:.75}
 .pill{display:inline-block;background:#38F2A1;color:#06140d;border-radius:999px;padding:0 .32em .06em;line-height:1.1}
 h1{font-size:clamp(34px,5vw,52px);font-weight:900;letter-spacing:-.02em}
 h2{font-size:clamp(26px,3.4vw,36px);font-weight:800}
@@ -98,6 +99,117 @@ select.lang{min-height:40px;border-radius:10px;border:1px solid var(--line);back
 @keyframes blink{50%{opacity:0}}
 .ide .live{background:#fff;color:#111;padding:14px;overflow:auto}
 @media(max-width:600px){.ide .split{grid-template-columns:1fr}.ide .live{min-height:180px}}
+
+/* ===== v3 layout: hero with phone, row-style plans, calculator, FAQ, auth page ===== */
+.hero3{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:clamp(40px,6vw,80px) 0 30px;position:relative}
+.hero3:before{content:"";position:absolute;inset:-60px -20vw auto;height:640px;background:radial-gradient(40% 55% at 75% 40%,var(--glow),transparent 70%),radial-gradient(35% 45% at 10% 70%,rgba(56,242,161,.08),transparent 70%);pointer-events:none;z-index:-1}
+.hero3 h1{font-size:clamp(40px,6.4vw,84px);font-weight:900;line-height:.98;margin:.25em 0 .35em}
+.hero3 .lead{font-size:18px;color:var(--mute);max-width:52ch;margin:0 0 28px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--brand)}
+.badge i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--panel2);font-style:normal;box-shadow:0 0 0 1px var(--line),0 10px 30px -10px var(--glow)}
+.cta3{display:flex;gap:14px;flex-wrap:wrap}
+.btn.big{min-height:56px;padding:0 28px;font-size:17px;font-weight:800;border-radius:16px}
+.btn.pri.big{box-shadow:0 14px 34px -12px rgba(56,242,161,.6)}
+.phone-wrap{position:relative;display:grid;place-items:center;min-height:560px}
+.phone{width:290px;height:580px;border-radius:46px;background:#050a08;border:10px solid #1a2420;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06),inset 0 0 0 1px rgba(255,255,255,.04);padding:16px 14px;color:#E8F2EC;position:relative;overflow:hidden;transform:rotate(-2deg)}
+.phone:before{content:"";position:absolute;top:10px;left:50%;width:90px;height:24px;border-radius:14px;background:#000;transform:translateX(-50%)}
+.phone .sb{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:2px 10px 18px}
+.phone small{color:#8FA89A;font-size:11px}
+.phone h4{margin:2px 0 12px;font:800 18px Montserrat,sans-serif}
+.phone .pc{background:#0f1c16;border:1px solid rgba(166,247,207,.1);border-radius:16px;padding:12px;margin-bottom:10px}
+.phone .chips2{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.phone .chips2 span{font-size:11px;padding:4px 9px;border-radius:9px;background:#1F3128;color:#cfe3da}
+.phone .chips2 span.on{background:transparent;border:1px solid #38F2A1;color:#38F2A1}
+.phone .bar2{height:8px;border-radius:9px;background:#1F3128;overflow:hidden;margin-top:8px}.phone .bar2 i{display:block;height:100%;background:#38F2A1}
+.phone pre{margin:6px 0 0;font-size:11px;color:#a8e6c9;white-space:pre-wrap}
+.phone .go{display:block;text-align:center;background:#38F2A1;color:#06140d;font-weight:800;font-size:13px;border-radius:12px;padding:11px;margin-top:6px;box-shadow:0 10px 24px -10px rgba(56,242,161,.7)}
+.phone .nav2{position:absolute;left:14px;right:14px;bottom:16px;display:flex;justify-content:space-around;background:#0f1c16;border-radius:16px;padding:10px;font-size:15px;opacity:.85}
+.fl{position:absolute;display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:18px;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);backdrop-filter:blur(8px);max-width:270px;animation:bob 6s ease-in-out infinite}
+.fl b{display:block;font:800 15px Montserrat,sans-serif}.fl span{font-size:13px;color:var(--mute)}
+.fl .ico2{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#38F2A1;color:#06140d;font-weight:900}
+.fl.a{left:-40px;top:300px;transform:rotate(-5deg)}.fl.b{right:-70px;top:150px;transform:rotate(4deg);animation-delay:-3s}
+.scrollhint{display:grid;place-items:center;margin:10px auto 0;width:26px;height:42px;border:2px solid var(--line);border-radius:14px}
+.scrollhint:after{content:"";width:4px;height:9px;border-radius:3px;background:var(--mute);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{transform:translateY(-6px);opacity:1}100%{transform:translateY(8px);opacity:0}}
+@media(max-width:900px){.hero3{grid-template-columns:1fr}.phone-wrap{min-height:520px}.fl{display:none}}
+.eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:10px}
+.h2big{font-size:clamp(32px,4.6vw,58px);font-weight:900;line-height:1}
+.plans2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:30px}
+.plan2{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px}
+.plan2.pop{background:linear-gradient(160deg,color-mix(in srgb,#38F2A1 10%,var(--panel)),var(--panel) 55%);border-color:color-mix(in srgb,#38F2A1 45%,transparent)}
+.plan2 .pi{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--panel2);font-size:22px;margin-bottom:14px}
+.plan2.pop .pi{background:#38F2A1;color:#06140d}
+.plan2 h3{font:800 20px Montserrat,sans-serif;margin:0}
+.plan2 .pr{font:900 clamp(30px,3.4vw,38px)/1.1 Montserrat,sans-serif;margin:8px 0 2px;white-space:nowrap}.plan2 .pr small{font:700 14px Inter,sans-serif;color:var(--mute)}
+.plan2 .ribbon2{position:absolute;top:20px;right:20px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#38F2A1;color:#06140d;padding:6px 10px;border-radius:99px}
+.plan2 .row{padding:14px 0;border-top:1px solid var(--line)}
+.plan2 .row:first-of-type{margin-top:14px}
+.plan2 .row small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.plan2 .row b{font-weight:700}.plan2 .row b.no{color:var(--mute);font-weight:500}
+.plan2 .btn{margin-top:auto;width:100%;min-height:52px;border-radius:16px;font-weight:800}
+.plan2 .sp{flex:1;min-height:18px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+.perk{display:flex;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:10px}
+.perk i{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;font-style:normal;font-size:20px;background:var(--panel2)}
+.perk b{display:block}.perk span{font-size:14px;color:var(--mute)}
+.calcbox{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 40px 80px -50px var(--glow)}
+.calcbox .big2{font:900 clamp(40px,5vw,56px)/1 Montserrat,sans-serif;margin:6px 0 2px}
+.calcbox input[type=range]{width:100%;accent-color:#38F2A1;height:28px;margin:14px 0}
+.calcbox .ln{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-top:1px solid var(--line);font-weight:700}
+.calcbox .ln .v{font:900 26px Montserrat,sans-serif;color:var(--brand)}
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px}
+@media(max-width:860px){.faq{grid-template-columns:1fr}}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:4px 18px;margin-bottom:10px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:56px;font-weight:800}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--panel2);font-size:20px;transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{margin:0 0 16px;color:var(--mute)}
+/* auth page */
+body.authmode header.top,body.authmode footer,body.authmode .demo-note{display:none}
+body.authmode #view{max-width:none;padding:0}
+.auth{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;gap:24px;padding:16px}
+@media(max-width:900px){.auth{grid-template-columns:1fr}.auth .art{display:none}}
+.art{position:relative;border-radius:30px;overflow:hidden;background:radial-gradient(70% 60% at 30% 20%,#1f5a45,transparent 70%),linear-gradient(160deg,#0f3d2e,#081410 80%);display:grid;place-items:center;min-height:560px}
+.art .grid-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(166,247,207,.14) 1px,transparent 1px);background-size:26px 26px}
+.art .obj{position:absolute;font-size:clamp(44px,5vw,70px);filter:drop-shadow(0 18px 24px rgba(0,0,0,.45));animation:bob 7s ease-in-out infinite}
+.art .bub{position:absolute;padding:10px 16px;border-radius:16px;font:800 18px Montserrat,sans-serif;color:#06140d;box-shadow:0 16px 30px -12px rgba(0,0,0,.5);animation:bob 6s ease-in-out infinite}
+.art .lc{position:relative;z-index:2;display:flex;gap:16px;align-items:center;padding:26px 32px;border-radius:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
+.art .lc i{display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#38F2A1;color:#06140d;font:900 22px "JetBrains Mono",monospace;font-style:normal}
+.art .lc b{display:block;font:900 32px/1 Montserrat,sans-serif;color:#fff}.art .lc small{color:#A6F7CF;font-weight:800;letter-spacing:.16em;font-size:12px}
+.art .quote{position:absolute;bottom:22%;left:0;right:0;text-align:center;color:#E8F2EC;font:800 22px Montserrat,sans-serif;z-index:2}
+.aside{position:relative;display:grid;place-items:center;padding:60px 10px 30px}
+.aside .tl{position:absolute;top:10px;right:10px;display:flex;gap:10px;align-items:center}
+.acard{width:min(470px,100%);background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+.acard h2{font:900 clamp(26px,3vw,34px)/1.1 Montserrat,sans-serif;margin:18px 0 18px}
+.tabs2{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;border-radius:18px;background:var(--bg);border:1px solid var(--line)}
+.tabs2 button{min-height:48px;border:0;border-radius:13px;background:transparent;font-weight:800;color:var(--mute);cursor:pointer}
+.tabs2 button.on{background:var(--panel2);color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.fld{display:grid;gap:8px;margin-bottom:16px}.fld>span{display:flex;justify-content:space-between;font-weight:800;font-size:14px}
+.fld a{color:var(--brand);font-weight:700;text-decoration:none;cursor:pointer}
+.inp{display:flex;align-items:center;gap:10px;min-height:56px;padding:0 16px;border-radius:16px;border:1px solid var(--line);background:var(--bg);transition:border-color .2s}
+.inp:focus-within{border-color:#38F2A1}
+.inp input{flex:1;border:0;background:transparent;outline:none;font-size:16px;min-height:50px}
+.inp .pre{font-weight:800}.inp .ey{border:0;background:transparent;cursor:pointer;font-size:18px;color:var(--mute);min-width:32px;min-height:32px}
+.strength{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:-6px 0 14px}.strength i{height:4px;border-radius:3px;background:var(--panel2)}
+.strength i.on1{background:#ff6b6b}.strength i.on2{background:#f5b041}.strength i.on3{background:#38F2A1}
+.chk{display:flex;gap:10px;align-items:center;font-size:14px;margin:4px 0 16px}.chk input{width:20px;height:20px;accent-color:#38F2A1}
+.abtn{width:100%;min-height:58px;border:0;border-radius:16px;background:#38F2A1;color:#06140d;font:800 17px Inter,sans-serif;cursor:pointer;box-shadow:0 14px 30px -12px rgba(56,242,161,.6);transition:transform .15s}
+.abtn:active{transform:translateY(2px)}
+.aerr{min-height:20px;color:var(--bad);font-weight:700;font-size:14px;margin:-6px 0 8px}
+.alt{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;margin-top:12px;padding:0 14px;border-radius:16px;border:1px solid var(--line);background:transparent;font-weight:800;cursor:pointer;text-align:left;text-decoration:none}
+.alt .dots{display:flex}.alt .dots span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;margin-left:-6px;border:2px solid var(--panel);font-size:14px}
+.alt .go2{margin-left:auto;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#38F2A1;color:#06140d}
+.alt.green{background:color-mix(in srgb,#38F2A1 10%,transparent);border-color:color-mix(in srgb,#38F2A1 40%,transparent)}
+.alt.green small{display:block;color:var(--mute);font-weight:600}.alt.green b{color:var(--brand)}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;border-radius:14px;font-weight:800;border:0;cursor:pointer;margin-bottom:10px;text-decoration:none}
+.sbtn.tg{background:#2aa3e0;color:#fff}.sbtn.gg{background:#fff;color:#111;border:1px solid #ddd}
+.or{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:13px;margin:12px 0 16px}.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+.terms{font-size:12px;color:var(--mute);text-align:center;margin-top:16px}
+.back3{display:inline-flex;gap:8px;align-items:center;min-height:42px;padding:0 16px;border-radius:99px;border:1px solid var(--line);font-weight:800;text-decoration:none}
+
+.phone .go{text-decoration:none}
 /* lessons */
 .tabs{display:flex;gap:8px;margin:14px 0 22px;flex-wrap:wrap}
 .tabs button{min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700;cursor:pointer}
@@ -393,6 +505,37 @@ eHolder:"Enter the card holder's name",eCard:"Invalid card number",eType:"Enter 
 paid:"Payment received! The {p} plan is now active.",needLogin:"Please sign in first",
 profile:"Profile",plan:"Plan",xp:"XP",streak:"Streak (days)",completed:"Lessons completed",logout:"Log out",upgrade:"Upgrade plan",today:"Today"}};
 const LI={uz:0,ru:1,en:2};
+Object.assign(I.uz,{tgLive:"Telegram'da allaqachon ishlaydi",phHi:"Xayrli kun",phTitle:"Bugungi dars",phProg:"Kurs bo'yicha",phGo:"Darsni boshlash",flA:"Kod o'zi tekshiriladi",flAs:"Xato qayerda — darrov ko'rasiz",flB:"3 tilda",flBs:"O'zbek · Русский · English",
+plK:"TARIFLAR",plA:"Bepul boshlang.",plB:"Kerak bo'lsa — kuchaytiring.",rL:"Darslar",rD:"Kunlik limit",rV:"Video darslar",rA:"AI ustoz",rC:"Sertifikat",
+pv:{free:["HTML'ning 10 ta darsi","Kuniga 3 ta dars","3 ta video","Kuniga 5 savol","—"],premium:["60 ta dars (HTML + CSS)","Kuniga 5 ta dars","Hammasi","Kuniga 50 savol","Bor"],alpha:["60 ta dars + yangi kurslar birinchi","Limitsiz","Hammasi","Limitsiz + kod tahlili","Bor"]},
+calcK:"O'QISH KALKULYATORI",calcA:"Har kuni ozgina.",calcB:"Natija — katta.",calcQ:"Kuniga nechta dars?",calcU:"dars / kun",calcEnd:"Kurs tugaydi",calcDays:"{n} kunda",calcXp:"Yig'iladigan XP",
+pk1:"Kuniga 5 tagacha dars",pk1s:"Bitta dars — 5–10 daqiqa",pk2:"Streak",pk2s:"Har kuni o'qisangiz, ketma-ketlik o'sadi",pk3:"XP",pk3s:"Har bir dars uchun 60 XP gacha",
+faqK:"SAVOLLAR",faqT:"Ko'p so'raladigan savollar",faq:[["Bu bepulmi?","Ha. Free tarifda HTML'ning birinchi 10 ta darsi, video va AI ustoz bepul. Hammasi kerak bo'lsa — Premium yoki Alpha."],["Kompyuter kerakmi?","Yo'q. Hammasi telefonda ishlaydi: Telegram'dagi botda ham, brauzerda ham."],["Qaysi tillarda?","O'zbek, rus va ingliz tillarida. Tilni yuqoridagi menyudan istalgan payt almashtirasiz."],["Kodimni kim tekshiradi?","Tizimning o'zi: har bir topshiriqni darrov tekshirib, qaysi qism xato ekanini ko'rsatadi. Tushunmagan joyni AI ustozdan so'raysiz."],["Tarifni qanday olaman?","\"Telegram orqali olish\" tugmasini bosasiz — @lowgx bilan chat ochiladi, xabar tayyor bo'ladi."]],
+tabIn:"Kirish",tabTry:"Sinab ko'rish",aTitle:"HTML Akademiya'ga kirish",phoneL:"Telefon raqam",passL:"Parol",forgot:"Parolni unutdingizmi?",passPh:"Parolni kiriting",otherW:"Yoki boshqa usul bilan",noAcc3:"Akkauntingiz yo'qmi?",regFree:"Bepul ro'yxatdan o'tish",
+backLogin:"Kirishga qaytish",regT:"Bepul ro'yxatdan o'tish",regLead:"Eng tezi — Telegram orqali. Yoki telefon raqam va parol bilan.",tgReg:"Telegram orqali",ggReg:"Google bilan",orPhone:"yoki telefon raqam va parol bilan",passMin:"Kamida 6 belgi",pass2:"Parolni takrorlang",agree:"Foydalanish shartlariga roziman",
+eAgree:"Shartlarga rozilik bering",ePhone:"Telefon raqamni to'liq kiriting",eMatch:"Parollar bir xil emas",eNoPhone:"Bu raqam bilan akkaunt yo'q — ro'yxatdan o'ting",backSite:"Saytga",quote:"“Kod — bu ham til.”",slogan:"O'RGAN. YOZ. YARAT.",
+tryT:"Ro'yxatdan o'tmasdan sinab ko'ring",tryLead:"Darslar, video va AI ustoz — darhol. Natijangiz shu brauzerda saqlanadi.",tryBtn:"Mehmon sifatida boshlash",forgotMsg:"Parolni tiklash uchun Telegram botimizga yozing",socSoon2:"Google orqali kirish tez orada",guest:"Mehmon",terms2:"Davom etish orqali foydalanish shartlariga rozilik bildirasiz."});
+Object.assign(I.ru,{tgLive:"Уже работает в Telegram",phHi:"Добрый день",phTitle:"Урок на сегодня",phProg:"Прогресс курса",phGo:"Начать урок",flA:"Код проверяется сам",flAs:"Сразу видно, где ошибка",flB:"На 3 языках",flBs:"O'zbek · Русский · English",
+plK:"ТАРИФЫ",plA:"Начните бесплатно.",plB:"Когда нужно — усильте.",rL:"Уроки",rD:"Лимит в день",rV:"Видеоуроки",rA:"AI-учитель",rC:"Сертификат",
+pv:{free:["10 уроков HTML","3 урока в день","3 видео","5 вопросов в день","—"],premium:["60 уроков (HTML + CSS)","5 уроков в день","Все","50 вопросов в день","Есть"],alpha:["60 уроков + новые курсы первыми","Без лимита","Все","Без лимита + разбор кода","Есть"]},
+calcK:"КАЛЬКУЛЯТОР ОБУЧЕНИЯ",calcA:"Понемногу каждый день.",calcB:"Результат — большой.",calcQ:"Сколько уроков в день?",calcU:"уроков / день",calcEnd:"Курс закончится",calcDays:"за {n} дн.",calcXp:"Наберёте XP",
+pk1:"До 5 уроков в день",pk1s:"Один урок — 5–10 минут",pk2:"Серия",pk2s:"Занимаетесь каждый день — серия растёт",pk3:"XP",pk3s:"До 60 XP за каждый урок",
+faqK:"ВОПРОСЫ",faqT:"Частые вопросы",faq:[["Это бесплатно?","Да. На тарифе Free первые 10 уроков HTML, видео и AI-учитель бесплатны. Нужно всё — Premium или Alpha."],["Нужен ли компьютер?","Нет. Всё работает на телефоне: и в Telegram-боте, и в браузере."],["На каких языках?","На узбекском, русском и английском. Язык можно сменить в меню сверху в любой момент."],["Кто проверяет мой код?","Сама система: проверяет каждое задание сразу и показывает, какая часть неверна. Непонятное можно спросить у AI-учителя."],["Как оформить тариф?","Нажмите «Оформить через Telegram» — откроется чат с @lowgx, сообщение уже будет готово."]],
+tabIn:"Вход",tabTry:"Попробовать",aTitle:"Вход в HTML Akademiya",phoneL:"Номер телефона",passL:"Пароль",forgot:"Забыли пароль?",passPh:"Введите пароль",otherW:"Или другим способом",noAcc3:"Нет аккаунта?",regFree:"Бесплатная регистрация",
+backLogin:"Назад ко входу",regT:"Бесплатная регистрация",regLead:"Быстрее всего — через Telegram. Или по номеру телефона и паролю.",tgReg:"Через Telegram",ggReg:"Через Google",orPhone:"или по номеру телефона и паролю",passMin:"Минимум 6 символов",pass2:"Повторите пароль",agree:"Согласен с условиями использования",
+eAgree:"Подтвердите согласие с условиями",ePhone:"Введите номер полностью",eMatch:"Пароли не совпадают",eNoPhone:"Аккаунта с этим номером нет — зарегистрируйтесь",backSite:"На сайт",quote:"«Код — это тоже язык.»",slogan:"УЧИСЬ. ПИШИ. СОЗДАВАЙ.",
+tryT:"Попробуйте без регистрации",tryLead:"Уроки, видео и AI-учитель — сразу. Прогресс сохранится в этом браузере.",tryBtn:"Продолжить как гость",forgotMsg:"Чтобы восстановить пароль, напишите нашему Telegram-боту",socSoon2:"Вход через Google скоро появится",guest:"Гость",terms2:"Продолжая, вы соглашаетесь с условиями использования."});
+Object.assign(I.en,{tgLive:"Already live in Telegram",phHi:"Good afternoon",phTitle:"Today's lesson",phProg:"Course progress",phGo:"Start lesson",flA:"Code is checked for you",flAs:"See the mistake right away",flB:"3 languages",flBs:"O'zbek · Русский · English",
+plK:"PRICING",plA:"Start for free.",plB:"Upgrade when you need it.",rL:"Lessons",rD:"Daily limit",rV:"Video lessons",rA:"AI tutor",rC:"Certificate",
+pv:{free:["10 HTML lessons","3 lessons a day","3 videos","5 questions a day","—"],premium:["60 lessons (HTML + CSS)","5 lessons a day","All","50 questions a day","Yes"],alpha:["60 lessons + new courses first","Unlimited","All","Unlimited + code review","Yes"]},
+calcK:"STUDY CALCULATOR",calcA:"A little every day.",calcB:"A big result.",calcQ:"How many lessons a day?",calcU:"lessons / day",calcEnd:"You'll finish in",calcDays:"{n} days",calcXp:"XP you'll earn",
+pk1:"Up to 5 lessons a day",pk1s:"One lesson takes 5–10 minutes",pk2:"Streak",pk2s:"Study every day and it keeps growing",pk3:"XP",pk3s:"Up to 60 XP for every lesson",
+faqK:"QUESTIONS",faqT:"Frequently asked questions",faq:[["Is it free?","Yes. The Free plan includes the first 10 HTML lessons, videos and the AI tutor. Want everything? Premium or Alpha."],["Do I need a computer?","No. Everything works on a phone — in the Telegram bot and in the browser."],["Which languages?","Uzbek, Russian and English. Switch the language from the top menu at any time."],["Who checks my code?","The system itself: it checks every task instantly and shows which part is wrong. Ask the AI tutor about anything unclear."],["How do I get a plan?","Tap \"Get it via Telegram\" — a chat with @lowgx opens with the message already written."]],
+tabIn:"Sign in",tabTry:"Try it",aTitle:"Sign in to HTML Akademiya",phoneL:"Phone number",passL:"Password",forgot:"Forgot password?",passPh:"Enter your password",otherW:"Or another way",noAcc3:"Don't have an account?",regFree:"Sign up for free",
+backLogin:"Back to sign in",regT:"Sign up for free",regLead:"Fastest is via Telegram. Or with a phone number and password.",tgReg:"Via Telegram",ggReg:"With Google",orPhone:"or with a phone number and password",passMin:"At least 6 characters",pass2:"Repeat password",agree:"I agree to the terms of use",
+eAgree:"Please accept the terms",ePhone:"Enter the full phone number",eMatch:"Passwords don't match",eNoPhone:"No account with this number — please sign up",backSite:"Back to site",quote:"“Code is a language too.”",slogan:"LEARN. WRITE. BUILD.",
+tryT:"Try it without signing up",tryLead:"Lessons, videos and the AI tutor — right away. Your progress is saved in this browser.",tryBtn:"Continue as a guest",forgotMsg:"To reset your password, message our Telegram bot",socSoon2:"Sign-in with Google is coming soon",guest:"Guest",terms2:"By continuing you agree to the terms of use."});
+
 const PLANS={free:{name:"Free",uzs:0,usd:0,maxLesson:10,perDay:3,videos:3,ai:5},premium:{name:"Premium",uzs:49000,usd:3.99,maxLesson:999,perDay:5,videos:999,ai:50},alpha:{name:"Alpha",uzs:99000,usd:7.99,maxLesson:999,perDay:999,videos:999,ai:1e9}};
 
 /* ---------- state ---------- */
@@ -432,21 +575,57 @@ addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 const SVG_M='<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H11.5V11.5H4V4ZM12.5 4H20V11.5H12.5V4ZM4 12.5H11.5V20H4V12.5ZM12.5 12.5H20V20H12.5V12.5Z"></path></svg>';
 const SVG_G='<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill-rule="evenodd"><g transform="translate(-300.000000, -7399.000000)"><g transform="translate(56.000000, 160.000000)"><path d="M263.821537,7247.00386 L254.211298,7247.00386 C254.211298,7248.0033 254.211298,7250.00218 254.205172,7251.00161 L259.774046,7251.00161 C259.560644,7252.00105 258.804036,7253.40026 257.734984,7254.10487 C257.733963,7254.10387 257.732942,7254.11086 257.7309,7254.10986 C256.309581,7255.04834 254.43389,7255.26122 253.041161,7254.98137 C250.85813,7254.54762 249.130492,7252.96451 248.429023,7250.95364 C248.433107,7250.95064 248.43617,7250.92266 248.439233,7250.92066 C248.000176,7249.67336 248.000176,7248.0033 248.439233,7247.00386 L248.438212,7247.00386 C249.003881,7245.1669 250.783592,7243.49084 252.969687,7243.0321 C254.727956,7242.65931 256.71188,7243.06308 258.170978,7244.42831 C258.36498,7244.23842 260.856372,7241.80579 261.043226,7241.6079 C256.0584,7237.09344 248.076756,7238.68155 245.090149,7244.51127 L245.089128,7244.51127 C245.089128,7244.51127 245.090149,7244.51127 245.084023,7244.52226 L245.084023,7244.52226 C243.606545,7247.38565 243.667809,7250.75975 245.094233,7253.48622 C245.090149,7253.48921 245.087086,7253.49121 245.084023,7253.49421 C246.376687,7256.0028 248.729215,7257.92672 251.563684,7258.6593 C254.574796,7259.44886 258.406843,7258.90916 260.973794,7256.58747 C260.974815,7256.58847 260.975836,7256.58947 260.976857,7256.59047 C263.15172,7254.63157 264.505648,7251.29445 263.821537,7247.00386"></path></g></g></g></svg>';
 const SVG_A='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-145 129 220 256"><path d="M75,316.8c-6,13.3-8.9,19.3-16.6,31c-10.8,16.4-26,36.9-44.9,37.1c-16.8,0.2-21.1-10.9-43.8-10.8c-22.7,0.1-27.5,11-44.3,10.8c-18.9-0.2-33.3-18.7-44.1-35.1c-30.2-46-33.4-99.9-14.7-128.6c13.2-20.4,34.1-32.3,53.8-32.3c20,0,32.5,11,49.1,11c16,0,25.8-11,48.9-11c17.5,0,36,9.5,49.2,26C24.3,238.6,31.3,300.3,75,316.8L75,316.8z M0.8,170.6c8.4-10.8,14.8-26,12.5-41.6c-13.7,0.9-29.8,9.7-39.1,21.1c-8.5,10.3-15.5,25.6-12.8,40.5C-23.7,191.1-8.2,182.1,0.8,170.6L0.8,170.6z"></path></svg>';
-function authModal(after,step){
- const ok=em=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em);
- const done=u=>{S.user=u;store.set("user",u);paintStatic();closeModal();toast(t("welcome",{n:u.name}));after&&after()};
- const home=`<div class="login-card ua-login"><button class="normal-signin" data-step="in">${t("login")}</button><div class="instruction-text">${t("noAcc")}</div><button class="create-account" data-step="up">${t("signup")}</button><div class="instruction-text">${t("orWith")}</div>
-  <div class="alternate-login"><button class="m-sign" data-soc="Microsoft" aria-label="Microsoft">${SVG_M}</button><button class="g-sign" data-soc="Google" aria-label="Google">${SVG_G}</button><button class="a-sign" data-soc="Apple" aria-label="Apple">${SVG_A}</button></div></div>`;
- const form=up=>`<div class="login-card ua-login"><form id="fAuth" novalidate><h3>${up?t("signup"):t("login")}</h3>${up?`<input name="name" placeholder="${t("name")}" autocomplete="name">`:""}<input name="email" type="email" placeholder="${t("email")}" autocomplete="email"><input name="password" type="password" placeholder="${t("password")}" autocomplete="${up?"new-password":"current-password"}"><div class="err"></div><button class="normal-signin">${up?t("confirm"):t("letsgo")}</button><button type="button" class="create-account" data-step="home">← ${t("back2")}</button></form></div>`;
- openModal(step==="in"?form(false):step==="up"?form(true):home);
- const box=$("#mBody");
- box.querySelectorAll("[data-step]").forEach(b=>b.onclick=()=>authModal(after,b.dataset.step));
- box.querySelectorAll("[data-soc]").forEach(b=>b.onclick=()=>toast(t("socSoon",{p:b.dataset.soc})));
- const f=$("#fAuth");if(!f)return;f.querySelector("input").focus();
- f.addEventListener("submit",e=>{e.preventDefault();const er=f.querySelector(".err"),em=f.email.value.trim().toLowerCase(),up=!!f.name;
-  if(up&&!f.name.value.trim())return er.textContent=t("errName");if(!ok(em))return er.textContent=t("errEmail");if(f.password.value.length<6)return er.textContent=t("errPass");
-  if(up){const u=S.users[em]||{name:f.name.value.trim(),email:em,plan:"free"};u.name=f.name.value.trim();S.users[em]=u;store.set("users",S.users);return done(u)}
-  const u=S.users[em];if(!u)return er.textContent=t("errNoUser");done(u)})}
+const BOT="https://t.me/html_akademiya_uz_bot";
+const phoneDigits=v=>v.replace(/\D/g,"").replace(/^998/,"").slice(0,9);
+const fmtPhone=d=>[d.slice(0,2),d.slice(2,5),d.slice(5,7),d.slice(7,9)].filter(Boolean).join(" ");
+function authArt(){return `<div class="art"><div class="grid-dots"></div>
+ <span class="obj" style="left:8%;top:8%">📚</span><span class="obj" style="left:34%;top:9%;animation-delay:-2s">💡</span><span class="obj" style="right:9%;top:8%;animation-delay:-4s">🚀</span>
+ <span class="obj" style="left:8%;bottom:8%;animation-delay:-1s">💻</span><span class="obj" style="right:10%;bottom:20%;animation-delay:-3s">🌍</span>
+ <span class="bub" style="left:12%;top:26%;background:#7ee8c0">Salom</span><span class="bub" style="right:12%;top:24%;background:#ffd479;animation-delay:-2s">Hello</span>
+ <span class="bub" style="left:10%;bottom:30%;background:#fff;animation-delay:-4s">&lt;html&gt;</span><span class="bub" style="right:14%;bottom:10%;background:#cdbdff;animation-delay:-1s">Привет</span>
+ <div class="lc"><i>&lt;/&gt;</i><div><b>HTML Akademiya</b><small>${t("slogan")}</small></div></div><div class="quote">${t("quote")}</div></div>`}
+function vAuth(mode){
+ document.body.classList.add("authmode");
+ const tl=`<div class="tl"><a class="back3" href="#home">← ${t("backSite")}</a></div>`;
+ let card;
+ if(mode==="signup") card=`<div class="acard"><a class="fld" href="#login" style="display:inline-flex;margin:0;text-decoration:none;color:var(--mute);font-weight:700">← ${t("backLogin")}</a><h2>${t("regT")}</h2><p class="muted" style="margin-top:-8px">${t("regLead")}</p>
+  <a class="sbtn tg" href="${BOT}" target="_blank" rel="noopener">✈ ${t("tgReg")}</a><button class="sbtn gg" data-soc="g" type="button"><b style="color:#4285f4">G</b> ${t("ggReg")}</button>
+  <div class="or">${t("orPhone")}</div>
+  <form id="fA" novalidate><label class="fld"><span>${t("name")}</span><div class="inp"><input name="name" autocomplete="name"></div></label>
+  <label class="fld"><span>${t("phoneL")}</span><div class="inp"><span>📞</span><span class="pre">+998</span><input name="phone" inputmode="tel" placeholder="90 123 45 67" autocomplete="tel-national"></div></label>
+  <label class="fld"><span>${t("passL")}</span><div class="inp"><span>🔒</span><input name="password" type="password" placeholder="${t("passMin")}" autocomplete="new-password"><button class="ey" type="button" aria-label="Show">👁</button></div></label>
+  <div class="strength" id="str"><i></i><i></i><i></i><i></i></div>
+  <label class="fld"><span>${t("pass2")}</span><div class="inp"><span>🔒</span><input name="password2" type="password" autocomplete="new-password"></div></label>
+  <label class="chk"><input type="checkbox" name="agree"> ${t("agree")}</label><div class="aerr"></div><button class="abtn">${t("regT")} →</button></form></div>`;
+ else if(mode==="try") card=`<div class="acard"><div class="tabs2"><button data-go="login">${t("tabIn")}</button><button class="on">⚡ ${t("tabTry")}</button></div><h2>${t("tryT")}</h2><p class="muted">${t("tryLead")}</p><button class="abtn" id="guestGo">${t("tryBtn")} →</button>
+  <a class="alt green" href="#signup"><span class="dots"><span style="background:#38F2A1">👤</span></span><span><small>${t("noAcc3")}</small><b>${t("regFree")}</b></span><span class="go2">→</span></a></div>`;
+ else card=`<div class="acard"><div class="tabs2"><button class="on">${t("tabIn")}</button><button data-go="try">⚡ ${t("tabTry")}</button></div><h2>${t("aTitle")}</h2>
+  <form id="fA" novalidate><label class="fld"><span>${t("phoneL")}</span><div class="inp"><span>📞</span><span class="pre">+998</span><input name="phone" inputmode="tel" placeholder="90 123 45 67" autocomplete="tel-national"></div></label>
+  <div class="fld"><span>${t("passL")}<a id="forgot">${t("forgot")}</a></span><div class="inp"><span>🔒</span><input name="password" type="password" placeholder="${t("passPh")}" autocomplete="current-password" aria-label="${t("passL")}"><button class="ey" type="button" aria-label="Show">👁</button></div></div>
+  <div class="aerr"></div><button class="abtn">${t("tabIn")} →</button></form>
+  <a class="alt" href="${BOT}" target="_blank" rel="noopener"><span class="dots"><span style="background:#2aa3e0;color:#fff">✈</span><span style="background:#fff;color:#4285f4">G</span></span>${t("otherW")}<span class="go2">→</span></a>
+  <a class="alt green" href="#signup"><span class="dots"><span style="background:#38F2A1">👤</span></span><span><small>${t("noAcc3")}</small><b>${t("regFree")}</b></span><span class="go2">→</span></a></div>`;
+ return `<div class="auth">${authArt()}<div class="aside">${tl}${card}<p class="terms">${t("terms2")}</p></div></div>`}
+function bindAuth(mode){
+ const box=$("#view");
+ box.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>location.hash=b.dataset.go);
+ box.querySelectorAll("[data-soc]").forEach(b=>b.onclick=()=>toast(t("socSoon2")));
+ box.querySelectorAll(".ey").forEach(b=>b.onclick=()=>{const i=b.parentNode.querySelector("input");i.type=i.type==="password"?"text":"password"});
+ const fg=$("#forgot");if(fg)fg.onclick=()=>{toast(t("forgotMsg"));window.open(BOT,"_blank")};
+ const gg=$("#guestGo");if(gg)gg.onclick=()=>{location.hash="lessons"};
+ const f=$("#fA");if(!f)return;
+ f.phone.addEventListener("input",()=>{f.phone.value=fmtPhone(phoneDigits(f.phone.value))});
+ const st=$("#str");if(st)f.password.addEventListener("input",()=>{const v=f.password.value;let sc=0;if(v.length>=6)sc++;if(v.length>=10)sc++;if(/\d/.test(v)&&/[a-zA-Z]/.test(v))sc++;if(/[^\w]/.test(v))sc++;
+  st.querySelectorAll("i").forEach((x,k)=>x.className=k<sc?"on"+(sc<2?1:sc<3?2:3):"")});
+ f.addEventListener("submit",e=>{e.preventDefault();const er=f.querySelector(".aerr"),ph=phoneDigits(f.phone.value),key="+998"+ph;
+  if(f.name&&!f.name.value.trim())return er.textContent=t("errName");
+  if(ph.length!==9)return er.textContent=t("ePhone");if(f.password.value.length<6)return er.textContent=t("errPass");
+  let u;
+  if(mode==="signup"){if(f.password.value!==f.password2.value)return er.textContent=t("eMatch");if(!f.agree.checked)return er.textContent=t("eAgree");
+   u=S.users[key]||{name:f.name.value.trim(),email:key,plan:"free"};u.name=f.name.value.trim();S.users[key]=u;store.set("users",S.users)}
+  else{u=S.users[key];if(!u)return er.textContent=t("eNoPhone")}
+  S.user=u;store.set("user",u);paintStatic();toast(t("welcome",{n:u.name}));location.hash=S.afterLogin||"home";S.afterLogin=null})}
+function authModal(after){S.afterLogin=location.hash.slice(1)||"home";location.hash="login"}
 const signin=()=>authModal();
 $("#signinBtn").addEventListener("click",signin);
 $("#userChip").addEventListener("click",()=>{location.hash="profile"});
@@ -497,19 +676,31 @@ const HERO_CODE='<style>\n  .card {\n    padding: 18px;\n    border-radius: 16px
 const spark=(up)=>`<svg viewBox="0 0 200 46" preserveAspectRatio="none"><defs><linearGradient id="g${up}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#38F2A1" stop-opacity=".35"/><stop offset="1" stop-color="#38F2A1" stop-opacity="0"/></linearGradient></defs><path d="M0 40 C30 36 40 30 60 32 S95 18 120 22 S160 8 200 6 L200 46 L0 46Z" fill="url(#g${up})"/><path d="M0 40 C30 36 40 30 60 32 S95 18 120 22 S160 8 200 6" fill="none" stroke="#38F2A1" stroke-width="2.5"/></svg>`;
 function vHome(){
  const f=[["code","f1"],["check","f2"],["bot","f3"],["play","f4"],["fire","f5"],["globe","f6"]],hrefs=["#lessons","#lessons","#ai","#videos","#lessons","#home"];
- return `<section class="hero2"><span class="plus" style="left:14%;top:22%">+</span><span class="plus" style="right:16%;top:62%">+</span>
-  <div class="float f-l"><span class="k">${t("stK")}</span><b>🔥 ${S.streak}</b>${spark(1)}<small>${t("stN")}</small></div>
-  <div class="float f-r"><span class="k">${t("xpK")}</span><b>${S.xp} <span style="font-size:18px;color:var(--mute)">XP</span></b>${spark(2)}<small>${t("xpN")}</small></div>
-  <h1>${t("heroA")} <span class="pill">${t("heroB")}</span></h1><p class="lead">${t("heroLead")}</p>
-  <div class="cta"><a class="btn pri" href="#lessons">${t("start")} →</a><a class="btn ghost" href="#videos">${t("seeHow")}</a></div>
-  <div class="statbar"><div><b>60</b><span>${t("sLessons")}</span></div><div><b>20</b><span>${t("sLevels")}</span></div><div><b>5</b><span>${t("sPerDay")}</span></div><div><b>3</b><span>${t("sLangs")}</span></div></div>
-  <div class="works"><span>${t("worksIn")}</span><span>Telegram</span><span>${t("browser")}</span><span>Android</span><span>iPhone</span></div></section>
- <section class="band"><div class="sec-h"><h2>${t("secA")} <span class="pill">${t("secB")}</span></h2><p>${t("secLead")}</p></div>
-  <div class="grid">${f.map(([i,k],n)=>`<div class="fcard"><div class="top2"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></span><span class="lab">0${n+1} · ${t("labs")[n]}</span></div><h3>${t(k)}</h3><p class="muted" style="margin:0">${t(k+"d")}</p><a href="${hrefs[n]}">${t("more")} ↗</a></div>`).join("")}</div></section>
- <section class="band"><div class="sec-h"><h2>${t("wsA")} <span class="pill">${t("wsB")}</span></h2><p>${t("wsLead")}</p></div>
-  <div class="shots"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/lesson-${S.lang}.jpg" alt="${esc(t("wsA")+" "+t("wsB"))}" loading="lazy"></div><div class="col"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/quiz-${S.lang}.jpg" alt="${esc(t("quiz"))}" loading="lazy"></div><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/map-${S.lang}.jpg" alt="${esc(t("lessonsTitle"))}" loading="lazy"></div></div></div></section>
- <section class="band"><div class="sec-h"><h2>${t("liveA")} <span class="pill">${t("liveB")}</span></h2><p>${t("liveLead")}</p></div>
-  <div class="ide"><div class="bar"><span></span><span></span><span></span></div><div class="split"><pre id="heroCode"></pre><div class="live" id="heroPrev"></div></div></div></section>`}
+ const next=LESSONS.find(l=>!S.prog[l.id]?.done)||LESSONS[0],done=LESSONS.filter(l=>S.prog[l.id]?.done).length;
+ return `<section class="hero3"><div><span class="badge"><i>✈</i>${t("tgLive")}</span>
+  <h1>${t("heroA")}<br><span class="dim">${t("heroB")}</span></h1><p class="lead">${t("heroLead")}</p>
+  <div class="cta3"><a class="btn pri big" href="#lessons">${t("start")} →</a><a class="btn ghost big" href="#pricing">${t("seePlans")}</a></div></div>
+  <div class="phone-wrap"><div class="phone"><div class="sb"><span>9:41</span><span>● ▮</span></div><small>${t("phHi")}${S.user?", "+esc(S.user.name):""}</small><h4>${t("phTitle")}</h4>
+   <div class="pc"><small>${next.course.toUpperCase()} · ${t("lvl")} ${next.level}</small><div style="font-weight:800;margin-top:4px">${esc(tr(next.title))}</div><pre>${esc(next.example.slice(0,70))}</pre></div>
+   <div class="pc"><small>${t("lessonsTitle")}</small><div class="chips2"><span class="on">HTML</span><span>CSS</span><span>JS · soon</span></div><small style="display:block;margin-top:10px">${t("phProg")}: ${done}/60</small><div class="bar2"><i style="width:${Math.max(4,done/60*100)}%"></i></div></div>
+   <a class="go" href="#lesson-${next.id}">▶ ${t("phGo")}</a><div class="nav2"><span>⌂</span><span>▶</span><span>✦</span><span>☺</span></div></div>
+   <div class="fl a"><span class="ico2">✓</span><div><b>${t("flA")}</b><span>${t("flAs")}</span></div></div>
+   <div class="fl b"><span class="ico2">文</span><div><b>${t("flB")}</b><span>${t("flBs")}</span></div></div></div></section>
+ <div class="scrollhint" aria-hidden="true"></div>
+ <section class="band"><div class="statbar"><div><b>60</b><span>${t("sLessons")}</span></div><div><b>20</b><span>${t("sLevels")}</span></div><div><b>5</b><span>${t("sPerDay")}</span></div><div><b>3</b><span>${t("sLangs")}</span></div></div></section>
+ <section class="band"><span class="eyebrow">${t("featTitle")}</span><h2 class="h2big">${t("secA")}<br><span class="dim">${t("secB")}</span></h2><p class="muted" style="max-width:60ch">${t("secLead")}</p>
+  <div class="grid" style="margin-top:24px">${f.map(([i,k],n)=>`<div class="fcard"><div class="top2"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></span><span class="lab">0${n+1} · ${t("labs")[n]}</span></div><h3>${t(k)}</h3><p class="muted" style="margin:0">${t(k+"d")}</p><a href="${hrefs[n]}">${t("more")} ↗</a></div>`).join("")}</div></section>
+ <section class="band"><span class="eyebrow">${t("wsA")}</span><h2 class="h2big">${t("wsA")}<br><span class="dim">${t("wsB")}</span></h2><p class="muted" style="max-width:60ch">${t("wsLead")}</p>
+  <div class="shots" style="margin-top:24px"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/lesson-${S.lang}.jpg" alt="${esc(t("wsA")+" "+t("wsB"))}" loading="lazy"></div><div class="col"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/quiz-${S.lang}.jpg" alt="${esc(t("quiz"))}" loading="lazy"></div><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/map-${S.lang}.jpg" alt="${esc(t("lessonsTitle"))}" loading="lazy"></div></div></div></section>
+ <section class="band"><h2 class="h2big">${t("liveA")}<br><span class="dim">${t("liveB")}</span></h2><p class="muted">${t("liveLead")}</p>
+  <div class="ide" style="margin-top:20px"><div class="bar"><span></span><span></span><span></span></div><div class="split"><pre id="heroCode"></pre><div class="live" id="heroPrev"></div></div></div></section>
+ <section class="band calc"><div><span class="eyebrow">${t("calcK")}</span><h2 class="h2big">${t("calcA")}<br><span class="dim">${t("calcB")}</span></h2>
+   <div class="perk"><i>📅</i><div><b>${t("pk1")}</b><span>${t("pk1s")}</span></div></div><div class="perk"><i>🔥</i><div><b>${t("pk2")}</b><span>${t("pk2s")}</span></div></div><div class="perk"><i>⭐</i><div><b>${t("pk3")}</b><span>${t("pk3s")}</span></div></div></div>
+  <div class="calcbox"><small class="eyebrow">${t("calcQ")}</small><div class="big2"><span id="cN">3</span> <small style="font-size:16px;color:var(--mute)">${t("calcU")}</small></div>
+   <input type="range" id="cR" min="1" max="5" value="3" aria-label="${t("calcQ")}"><div class="ln"><span>${t("calcEnd")}</span><span class="v" id="cD"></span></div><div class="ln"><span>${t("calcXp")}</span><span class="v">3 600</span></div>
+   <div class="bar2" style="height:10px;border-radius:9px;background:var(--panel2);overflow:hidden"><i id="cB" style="display:block;height:100%;background:#38F2A1;width:60%"></i></div></div></section>
+ <section class="band faq"><div><span class="eyebrow">${t("faqK")}</span><h2 class="h2big">${t("faqT")}</h2></div><div>${t("faq").map((q,i)=>`<details ${i?"":"open"}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join("")}</div></section>`}
+function bindHome(){heroType();const r=$("#cR");if(!r)return;const upd=()=>{const n=+r.value;$("#cN").textContent=n;$("#cD").textContent=t("calcDays",{n:Math.ceil(60/n)});$("#cB").style.width=n/5*100+"%"};r.oninput=upd;upd()}
 function heroType(){const pre=$("#heroCode"),box=$("#heroPrev");if(!pre||!box)return;
  const root=box.shadowRoot||box.attachShadow({mode:"open"});const caret='<span class="caret"></span>';
  let i=0,last=0;cancelAnimationFrame(heroType.r);
@@ -605,14 +796,14 @@ function bindAi(){drawChat();const inp=$("#aiIn");if(S.aiPrefill){inp.value=S.ai
   drawChat();const l=$("#aiLeft");if(l&&lim<1e6)l.textContent=t("left",{n:Math.max(0,lim-dayCount("ai"))})})}
 
 /* ---------- pricing ---------- */
-function vPricing(){const cur=S.user?.plan||"free";
- const card=(k,feat,noIdx)=>{const P=PLANS[k];const price=k==="free"?t("free"):(S.lang==="en"?"$"+P.usd:fmtUZS(P.uzs));
-  return `<div class="card plan ${k==="premium"?"pop":""}">${k==="premium"?`<span class="ribbon">${t("popular")}</span>`:""}<h3>${P.name}</h3>
-  <div class="price">${price}${k!=="free"?`<small> ${t("perMonth")}</small>`:""}</div>${k!=="free"?`<span class="muted" style="font-size:14px">${S.lang==="en"?"≈ "+fmtUZS(P.uzs):"≈ $"+P.usd}</span>`:""}
-  <ul>${feat.map((f,i)=>`<li class="${noIdx.includes(i)?"no":""}">${esc(f)}</li>`).join("")}</ul>
-  ${cur===k?`<button class="btn" disabled>${t("current")}</button>`:k==="free"?`<a class="btn ghost" href="#lessons">${t("freeStart")}</a>`:`<a class="btn ${k==="premium"?"pri":"acc"}" target="_blank" rel="noopener" href="https://t.me/lowgx?text=${encodeURIComponent(t("tgMsg",{p:P.name}))}">${t("tgChoose")} ↗</a>`}</div>`};
- return `<section class="band"><h1>${t("pricingTitle")}</h1><p class="muted">${t("pricingLead")}</p><div class="plans" style="margin-top:26px">
- ${card("free",t("pFree"),[4,5])}${card("premium",t("pPrem"),[])}${card("alpha",t("pAlpha"),[])}</div>
+function vPricing(){const cur=S.user?.plan||"free",labels=[t("rL"),t("rD"),t("rV"),t("rA"),t("rC")],ico={free:"👤",premium:"⭐",alpha:"🚀"};
+ const card=k=>{const P=PLANS[k];const price=k==="free"?t("free"):(S.lang==="en"?"$"+P.usd:fmtUZS(P.uzs));
+  return `<div class="plan2 ${k==="premium"?"pop":""}">${k==="premium"?`<span class="ribbon2">${t("popular")}</span>`:""}<span class="pi">${ico[k]}</span><h3>${P.name}</h3>
+  <div class="pr">${price}${k!=="free"?` <small>/ ${t("perMonth").replace("/","")}</small>`:""}</div>${k!=="free"?`<span class="muted" style="font-size:14px">${S.lang==="en"?"≈ "+fmtUZS(P.uzs):"≈ $"+P.usd}</span>`:""}
+  ${t("pv")[k].map((v,i)=>`<div class="row"><small>${labels[i]}</small><b class="${v==="—"?"no":""}">${esc(v)}</b></div>`).join("")}<div class="sp"></div>
+  ${cur===k&&k!=="free"?`<button class="btn" disabled>${t("current")}</button>`:k==="free"?`<a class="btn ghost" href="#lessons">${t("freeStart")}</a>`:`<a class="btn pri" target="_blank" rel="noopener" href="https://t.me/lowgx?text=${encodeURIComponent(t("tgMsg",{p:P.name}))}">${t("tgChoose")} ↗</a>`}</div>`};
+ return `<section class="band"><span class="eyebrow">${t("plK")}</span><h1 class="h2big">${t("plA")}<br><span class="dim">${t("plB")}</span></h1>
+ <div class="plans2">${card("free")}${card("premium")}${card("alpha")}</div>
  <p class="muted" style="margin-top:22px">${t("tgNote")}</p><h3 style="margin-top:20px">${t("payMethods")}</h3><div class="paylogos"><span>VISA</span><span>Mastercard</span><span>Uzcard</span><span>HUMO</span></div></section>`}
 
 function vProfile(){if(!S.user){setTimeout(signin);return vHome()}const doneN=LESSONS.filter(l=>S.prog[l.id]?.done).length;
@@ -621,13 +812,14 @@ function vProfile(){if(!S.user){setTimeout(signin);return vHome()}const doneN=LE
  <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">${S.user.plan!=="alpha"?`<a class="btn pri" href="#pricing">${t("upgrade")}</a>`:""}<button class="btn" id="doLogout">${t("logout")}</button></div></section>`}
 
 /* ---------- router ---------- */
-function route(){if(!$("#modal").classList.contains("hidden"))closeModal();const h=location.hash.slice(1)||"home";const v=$("#view");let html,after;
+function route(){if(!$("#modal").classList.contains("hidden"))closeModal();document.body.classList.remove("authmode");const h=location.hash.slice(1)||"home";const v=$("#view");let html,after;
  const m=h.match(/^lesson-(\d+)$/);
  if(m){html=vLesson(+m[1]);after=()=>bindLesson(+m[1])}
  else if(h==="lessons")html=vLessons();else if(h==="videos")html=vVideos();
  else if(h==="ai"){html=vAi();after=bindAi}else if(h==="pricing")html=vPricing();
  else if(h==="profile"){html=vProfile();after=()=>{const b=$("#doLogout");if(b)b.onclick=()=>{S.user=null;store.set("user",null);paintStatic();location.hash="home"}}}
- else{html=vHome();after=heroType}
+ else if(h==="login"||h==="signup"||h==="try"){html=vAuth(h);after=()=>bindAuth(h)}
+ else{html=vHome();after=bindHome}
  if(html==="")return;v.innerHTML=html;after&&after();
  document.querySelectorAll("nav.main a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(m?"lessons":h)));scrollTo(0,0)}
 addEventListener("hashchange",route);
