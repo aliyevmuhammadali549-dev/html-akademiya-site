@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HTML Akademiya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 /* VOICE: friendly, energetic school for teens learning to code on a phone
    IDEA: a code editor that is also a classroom — every screen looks like a working IDE pane
    PICTURE: live editor + preview in the hero, typing itself
    COLOUR and TYPE: brand teal #375758 / mint accent on warm paper (light) or near-black (dark); Inter + JetBrains Mono
    LAYOUT: sticky top bar, hash-routed views, single column on phones */
-:root{color-scheme:dark;--bg:#081410;--panel:#0f1c16;--panel2:#1F3128;--ink:#E8F2EC;--mute:#8FA89A;--line:rgba(166,247,207,.10);
---brand:#38F2A1;--brand-ink:#06140d;--mint2:#A6F7CF;--acc:#38F2A1;--ok:#38F2A1;--bad:#ff6b6b;--glow:rgba(56,242,161,.18)}
-html.light{color-scheme:light;--bg:#EEF5F0;--panel:#ffffff;--panel2:#E2EDE6;--ink:#0b1a13;--mute:#55695e;--line:rgba(8,20,16,.10);--brand:#13b877;--brand-ink:#ffffff;--mint2:#0e8a5a;--acc:#13b877;--ok:#13a86c;--glow:rgba(19,184,119,.15)}
+:root{color-scheme:dark;--bg:#0A0E0C;--panel:#111714;--panel2:#18201C;--ink:#E9EEEB;--mute:#98A49E;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+--brand:#3DDC97;--brand-ink:#04140C;--mint2:#A6F7CF;--acc:#3DDC97;--ok:#3DDC97;--bad:#ff6b6b;--glow:rgba(61,220,151,.10);
+--r1:8px;--r2:12px;--r3:16px;--s1:8px;--s2:16px;--s3:24px;--s4:40px;--s5:64px;--s6:96px;--shadow:0 1px 0 rgba(255,255,255,.04) inset,0 24px 48px -28px rgba(0,0,0,.7)}
+html.light{color-scheme:light;--bg:#F6F7F6;--panel:#FFFFFF;--panel2:#EEF1EF;--ink:#0D1411;--mute:#59665F;--line:rgba(13,20,17,.10);--line2:rgba(13,20,17,.18);--brand:#0E9F66;--brand-ink:#ffffff;--mint2:#0B7A4F;--acc:#0E9F66;--ok:#0E9F66;--glow:rgba(14,159,102,.10);--shadow:0 1px 2px rgba(13,20,17,.05),0 20px 40px -28px rgba(13,20,17,.25)}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:80px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;transition:background .4s,color .4s;overflow-x:clip}
@@ -24,18 +25,18 @@ code,pre,.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 code{background:var(--panel2);padding:1px 6px;border-radius:6px;font-size:.9em;overflow-wrap:anywhere}
 .wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,16px)}
 .band{padding:clamp(28px,4vw,56px) 0}
-h1,h2,h3{line-height:1.04;text-wrap:balance;margin:0 0 .4em;font-family:Montserrat,Manrope,Inter,sans-serif;letter-spacing:-.025em}
+h1,h2,h3{line-height:1.04;text-wrap:balance;margin:0 0 .4em;font-family:Manrope,Inter,sans-serif;letter-spacing:-.025em}
 h1 .dim,h2 .dim{color:var(--mute);opacity:.75}
-.pill{display:inline-block;background:#38F2A1;color:#06140d;border-radius:999px;padding:0 .32em .06em;line-height:1.1}
+.pill{display:inline-block;background:var(--brand);color:var(--brand-ink);border-radius:999px;padding:0 .32em .06em;line-height:1.1}
 h1{font-size:clamp(34px,5vw,52px);font-weight:900;letter-spacing:-.02em}
 h2{font-size:clamp(26px,3.4vw,36px);font-weight:800}
 h3{font-size:19px;font-weight:700}
 .muted{color:var(--mute)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel);cursor:pointer;font-weight:600;text-decoration:none}
 .btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
-.btn.pri{background:#38F2A1;color:#06140d;border-color:transparent;border-radius:999px}
+.btn.pri{background:var(--brand);color:var(--brand-ink);border-color:transparent;border-radius:999px}
 .btn.ghost{border-radius:999px;background:transparent}
-.btn.acc{background:#38F2A1;color:#06140d;border-color:transparent;border-radius:999px}
+.btn.acc{background:var(--brand);color:var(--brand-ink);border-color:transparent;border-radius:999px}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
 .tag{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--panel2);color:var(--mute)}
@@ -45,7 +46,7 @@ h3{font-size:19px;font-weight:700}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:14px;min-height:68px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;text-decoration:none;margin-right:auto}
-.logo i{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#38F2A1;color:#06140d;font-style:normal;font-family:"JetBrains Mono",monospace;font-size:15px}
+.logo i{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-style:normal;font-family:"JetBrains Mono",monospace;font-size:15px}
 nav.main{display:flex;gap:4px;flex-wrap:wrap}
 nav.main a{padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--mute)}
 nav.main a.on,nav.main a:hover{color:var(--brand)}
@@ -53,38 +54,10 @@ nav.main a.on{position:relative}nav.main a.on:after{content:"";position:absolute
 .tools{display:flex;align-items:center;gap:12px}
 select.lang{min-height:40px;border-radius:10px;border:1px solid var(--line);background:var(--panel);padding:0 8px;font-weight:600}
 .userchip{display:flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:4px 12px 4px 4px;min-height:40px}
-.userchip b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#38F2A1;color:#06140d}
-.plan-badge{font-size:12px;padding:2px 8px;border-radius:99px;background:#38F2A1;color:#06140d;font-weight:700}
+.userchip b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink)}
+.plan-badge{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--brand);color:var(--brand-ink);font-weight:700}
 @media(max-width:1120px){nav.main{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px}nav.main a{flex:none}}
 .demo-note{font-size:13px;text-align:center;padding:6px 12px;background:var(--panel2);color:var(--mute)}
-/* hero (Verda-style) */
-.hero2{position:relative;text-align:center;padding:clamp(48px,7vw,96px) 0 40px}
-.hero2:before{content:"";position:absolute;inset:-40px -10vw auto;height:520px;background:radial-gradient(50% 60% at 50% 30%,var(--glow),transparent 70%);pointer-events:none;z-index:-1}
-.hero2 h1{font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:-.03em;max-width:13ch;margin:0 auto .3em}
-.hero2 .lead{font-size:18px;color:var(--mute);max-width:56ch;margin:0 auto 26px}
-.hero2 .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.plus{position:absolute;color:var(--mute);opacity:.5;font:300 26px/1 Inter}
-.float{position:absolute;width:196px;text-align:left;padding:16px;border-radius:20px;background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.6);animation:bob 6s ease-in-out infinite}
-.float .k{font-size:11px;letter-spacing:.08em;color:var(--mute);display:flex;gap:6px;align-items:center;text-transform:uppercase}
-.float .k:before{content:"";width:7px;height:7px;border-radius:50%;background:#38F2A1}
-.float b{display:block;font:800 34px/1.1 Manrope,sans-serif;margin:6px 0}
-.float svg{width:100%;height:46px}
-.float small{color:var(--brand);font-weight:700}
-.f-l{left:-10px;top:200px;transform:rotate(-6deg)}.f-r{right:-10px;top:40px;transform:rotate(5deg);animation-delay:-3s}
-@keyframes bob{50%{translate:0 -10px}}
-@media(max-width:1180px){.float{display:none}}
-.statbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:22px;background:var(--panel);margin-top:46px}
-.statbar div{padding:20px 22px;border-left:1px solid var(--line);text-align:left}.statbar div:first-child{border-left:0}
-.statbar b{display:block;font:800 30px/1.1 Manrope,sans-serif}.statbar span{font-size:12px;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
-@media(max-width:700px){.statbar{grid-template-columns:1fr 1fr}.statbar div:nth-child(3){border-left:0}.statbar div:nth-child(n+3){border-top:1px solid var(--line)}}
-.works{display:flex;justify-content:center;gap:clamp(18px,5vw,64px);flex-wrap:wrap;margin-top:34px;color:var(--mute);font:700 15px Manrope,sans-serif;opacity:.8}
-.sec-h{text-align:center;max-width:720px;margin:0 auto 34px}.sec-h h2{font-size:clamp(30px,4.4vw,50px);letter-spacing:-.02em}.sec-h p{color:var(--mute)}
-.fcard{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:10px}
-.fcard .top2{display:flex;justify-content:space-between;align-items:center}
-.fcard .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--panel2)}
-.fcard .ic svg{width:20px;height:20px;stroke:var(--brand);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.fcard .lab{font-size:11px;letter-spacing:.1em;color:var(--mute);text-transform:uppercase}
-.fcard a{color:var(--brand);font-weight:700;text-decoration:none;font-size:14px;margin-top:auto}
 .shot{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
 .shot img{display:block;width:100%;height:auto}
 .shots{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start}
@@ -95,113 +68,38 @@ select.lang{min-height:40px;border-radius:10px;border:1px solid var(--line);back
 .ide .bar span{width:11px;height:11px;border-radius:50%;background:#ff5f57}.ide .bar span:nth-child(2){background:#febc2e}.ide .bar span:nth-child(3){background:#28c840}
 .ide .split{display:grid;grid-template-columns:1fr 1fr;min-height:300px}
 .ide pre{margin:0;padding:18px;color:#cfeee0;font-size:14px;white-space:pre-wrap;line-height:1.65}
-.ide .caret{display:inline-block;width:8px;height:1.1em;background:#38F2A1;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.ide .caret{display:inline-block;width:8px;height:1.1em;background:var(--brand);vertical-align:-2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .ide .live{background:#fff;color:#111;padding:14px;overflow:auto}
-@media(max-width:600px){.ide .split{grid-template-columns:1fr}.ide .live{min-height:180px}}
+@media(max-width:600px){.ide .split{grid-template-columns:1fr}.ide .live{min-height:180px}#pPrev{min-height:200px!important}#pCode{min-height:220px!important}}
 
-/* ===== v3 layout: hero with phone, row-style plans, calculator, FAQ, auth page ===== */
-.hero3{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:clamp(40px,6vw,80px) 0 30px;position:relative}
-.hero3:before{content:"";position:absolute;inset:-60px -20vw auto;height:640px;background:radial-gradient(40% 55% at 75% 40%,var(--glow),transparent 70%),radial-gradient(35% 45% at 10% 70%,rgba(56,242,161,.08),transparent 70%);pointer-events:none;z-index:-1}
-.hero3 h1{font-size:clamp(40px,6.4vw,84px);font-weight:900;line-height:.98;margin:.25em 0 .35em}
-.hero3 .lead{font-size:18px;color:var(--mute);max-width:52ch;margin:0 0 28px}
-.badge{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--brand)}
-.badge i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--panel2);font-style:normal;box-shadow:0 0 0 1px var(--line),0 10px 30px -10px var(--glow)}
-.cta3{display:flex;gap:14px;flex-wrap:wrap}
-.btn.big{min-height:56px;padding:0 28px;font-size:17px;font-weight:800;border-radius:16px}
-.btn.pri.big{box-shadow:0 14px 34px -12px rgba(56,242,161,.6)}
-.phone-wrap{position:relative;display:grid;place-items:center;min-height:560px}
-.phone{width:290px;height:580px;border-radius:46px;background:#050a08;border:10px solid #1a2420;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06),inset 0 0 0 1px rgba(255,255,255,.04);padding:16px 14px;color:#E8F2EC;position:relative;overflow:hidden;transform:rotate(-2deg)}
-.phone:before{content:"";position:absolute;top:10px;left:50%;width:90px;height:24px;border-radius:14px;background:#000;transform:translateX(-50%)}
-.phone .sb{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:2px 10px 18px}
-.phone small{color:#8FA89A;font-size:11px}
-.phone h4{margin:2px 0 12px;font:800 18px Montserrat,sans-serif}
-.phone .pc{background:#0f1c16;border:1px solid rgba(166,247,207,.1);border-radius:16px;padding:12px;margin-bottom:10px}
-.phone .chips2{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-.phone .chips2 span{font-size:11px;padding:4px 9px;border-radius:9px;background:#1F3128;color:#cfe3da}
-.phone .chips2 span.on{background:transparent;border:1px solid #38F2A1;color:#38F2A1}
-.phone .bar2{height:8px;border-radius:9px;background:#1F3128;overflow:hidden;margin-top:8px}.phone .bar2 i{display:block;height:100%;background:#38F2A1}
-.phone pre{margin:6px 0 0;font-size:11px;color:#a8e6c9;white-space:pre-wrap}
-.phone .go{display:block;text-align:center;background:#38F2A1;color:#06140d;font-weight:800;font-size:13px;border-radius:12px;padding:11px;margin-top:6px;box-shadow:0 10px 24px -10px rgba(56,242,161,.7)}
-.phone .nav2{position:absolute;left:14px;right:14px;bottom:16px;display:flex;justify-content:space-around;background:#0f1c16;border-radius:16px;padding:10px;font-size:15px;opacity:.85}
-.fl{position:absolute;display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:18px;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);backdrop-filter:blur(8px);max-width:270px;animation:bob 6s ease-in-out infinite}
-.fl b{display:block;font:800 15px Montserrat,sans-serif}.fl span{font-size:13px;color:var(--mute)}
-.fl .ico2{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#38F2A1;color:#06140d;font-weight:900}
-.fl.a{left:-40px;top:300px;transform:rotate(-5deg)}.fl.b{right:-70px;top:150px;transform:rotate(4deg);animation-delay:-3s}
-.scrollhint{display:grid;place-items:center;margin:10px auto 0;width:26px;height:42px;border:2px solid var(--line);border-radius:14px}
-.scrollhint:after{content:"";width:4px;height:9px;border-radius:3px;background:var(--mute);animation:wheel 1.6s infinite}
-@keyframes wheel{0%{transform:translateY(-6px);opacity:1}100%{transform:translateY(8px);opacity:0}}
-@media(max-width:900px){.hero3{grid-template-columns:1fr}.phone-wrap{min-height:520px}.fl{display:none}}
-.eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:10px}
-.h2big{font-size:clamp(32px,4.6vw,58px);font-weight:900;line-height:1}
-.plans2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:30px}
-.plan2{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px}
-.plan2.pop{background:linear-gradient(160deg,color-mix(in srgb,#38F2A1 10%,var(--panel)),var(--panel) 55%);border-color:color-mix(in srgb,#38F2A1 45%,transparent)}
-.plan2 .pi{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--panel2);font-size:22px;margin-bottom:14px}
-.plan2.pop .pi{background:#38F2A1;color:#06140d}
-.plan2 h3{font:800 20px Montserrat,sans-serif;margin:0}
-.plan2 .pr{font:900 clamp(30px,3.4vw,38px)/1.1 Montserrat,sans-serif;margin:8px 0 2px;white-space:nowrap}.plan2 .pr small{font:700 14px Inter,sans-serif;color:var(--mute)}
-.plan2 .ribbon2{position:absolute;top:20px;right:20px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#38F2A1;color:#06140d;padding:6px 10px;border-radius:99px}
-.plan2 .row{padding:14px 0;border-top:1px solid var(--line)}
-.plan2 .row:first-of-type{margin-top:14px}
-.plan2 .row small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
-.plan2 .row b{font-weight:700}.plan2 .row b.no{color:var(--mute);font-weight:500}
-.plan2 .btn{margin-top:auto;width:100%;min-height:52px;border-radius:16px;font-weight:800}
-.plan2 .sp{flex:1;min-height:18px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-@media(max-width:860px){.calc{grid-template-columns:1fr}}
-.perk{display:flex;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:10px}
-.perk i{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;font-style:normal;font-size:20px;background:var(--panel2)}
-.perk b{display:block}.perk span{font-size:14px;color:var(--mute)}
-.calcbox{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 40px 80px -50px var(--glow)}
-.calcbox .big2{font:900 clamp(40px,5vw,56px)/1 Montserrat,sans-serif;margin:6px 0 2px}
-.calcbox input[type=range]{width:100%;accent-color:#38F2A1;height:28px;margin:14px 0}
-.calcbox .ln{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-top:1px solid var(--line);font-weight:700}
-.calcbox .ln .v{font:900 26px Montserrat,sans-serif;color:var(--brand)}
-.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px}
-@media(max-width:860px){.faq{grid-template-columns:1fr}}
-.faq details{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:4px 18px;margin-bottom:10px}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:56px;font-weight:800}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--panel2);font-size:20px;transition:transform .2s}
-.faq details[open] summary:after{transform:rotate(45deg)}
-.faq details p{margin:0 0 16px;color:var(--mute)}
-/* auth page */
 body.authmode header.top,body.authmode footer,body.authmode .demo-note{display:none}
 body.authmode #view{max-width:none;padding:0}
 .auth{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;gap:24px;padding:16px}
 @media(max-width:900px){.auth{grid-template-columns:1fr}.auth .art{display:none}}
-.art{position:relative;border-radius:30px;overflow:hidden;background:radial-gradient(70% 60% at 30% 20%,#1f5a45,transparent 70%),linear-gradient(160deg,#0f3d2e,#081410 80%);display:grid;place-items:center;min-height:560px}
-.art .grid-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(166,247,207,.14) 1px,transparent 1px);background-size:26px 26px}
-.art .obj{position:absolute;font-size:clamp(44px,5vw,70px);filter:drop-shadow(0 18px 24px rgba(0,0,0,.45));animation:bob 7s ease-in-out infinite}
-.art .bub{position:absolute;padding:10px 16px;border-radius:16px;font:800 18px Montserrat,sans-serif;color:#06140d;box-shadow:0 16px 30px -12px rgba(0,0,0,.5);animation:bob 6s ease-in-out infinite}
-.art .lc{position:relative;z-index:2;display:flex;gap:16px;align-items:center;padding:26px 32px;border-radius:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
-.art .lc i{display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#38F2A1;color:#06140d;font:900 22px "JetBrains Mono",monospace;font-style:normal}
-.art .lc b{display:block;font:900 32px/1 Montserrat,sans-serif;color:#fff}.art .lc small{color:#A6F7CF;font-weight:800;letter-spacing:.16em;font-size:12px}
-.art .quote{position:absolute;bottom:22%;left:0;right:0;text-align:center;color:#E8F2EC;font:800 22px Montserrat,sans-serif;z-index:2}
 .aside{position:relative;display:grid;place-items:center;padding:60px 10px 30px}
 .aside .tl{position:absolute;top:10px;right:10px;display:flex;gap:10px;align-items:center}
 .acard{width:min(470px,100%);background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
-.acard h2{font:900 clamp(26px,3vw,34px)/1.1 Montserrat,sans-serif;margin:18px 0 18px}
+.acard h2{font:900 clamp(26px,3vw,34px)/1.1 sans-serif;margin:18px 0 18px}
 .tabs2{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;border-radius:18px;background:var(--bg);border:1px solid var(--line)}
 .tabs2 button{min-height:48px;border:0;border-radius:13px;background:transparent;font-weight:800;color:var(--mute);cursor:pointer}
 .tabs2 button.on{background:var(--panel2);color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.25)}
 .fld{display:grid;gap:8px;margin-bottom:16px}.fld>span{display:flex;justify-content:space-between;font-weight:800;font-size:14px}
 .fld a{color:var(--brand);font-weight:700;text-decoration:none;cursor:pointer}
 .inp{display:flex;align-items:center;gap:10px;min-height:56px;padding:0 16px;border-radius:16px;border:1px solid var(--line);background:var(--bg);transition:border-color .2s}
-.inp:focus-within{border-color:#38F2A1}
+.inp:focus-within{border-color:var(--brand)}
 .inp input{flex:1;border:0;background:transparent;outline:none;font-size:16px;min-height:50px}
 .inp .pre{font-weight:800}.inp .ey{border:0;background:transparent;cursor:pointer;font-size:18px;color:var(--mute);min-width:32px;min-height:32px}
 .strength{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:-6px 0 14px}.strength i{height:4px;border-radius:3px;background:var(--panel2)}
-.strength i.on1{background:#ff6b6b}.strength i.on2{background:#f5b041}.strength i.on3{background:#38F2A1}
-.chk{display:flex;gap:10px;align-items:center;font-size:14px;margin:4px 0 16px}.chk input{width:20px;height:20px;accent-color:#38F2A1}
-.abtn{width:100%;min-height:58px;border:0;border-radius:16px;background:#38F2A1;color:#06140d;font:800 17px Inter,sans-serif;cursor:pointer;box-shadow:0 14px 30px -12px rgba(56,242,161,.6);transition:transform .15s}
+.strength i.on1{background:#ff6b6b}.strength i.on2{background:#f5b041}.strength i.on3{background:var(--brand)}
+.chk{display:flex;gap:10px;align-items:center;font-size:14px;margin:4px 0 16px}.chk input{width:20px;height:20px;accent-color:var(--brand)}
+.abtn{width:100%;min-height:58px;border:0;border-radius:16px;background:var(--brand);color:var(--brand-ink);font:800 17px Inter,sans-serif;cursor:pointer;box-shadow:0 14px 30px -12px rgba(56,242,161,.6);transition:transform .15s}
 .abtn:active{transform:translateY(2px)}
 .aerr{min-height:20px;color:var(--bad);font-weight:700;font-size:14px;margin:-6px 0 8px}
 .alt{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;margin-top:12px;padding:0 14px;border-radius:16px;border:1px solid var(--line);background:transparent;font-weight:800;cursor:pointer;text-align:left;text-decoration:none}
 .alt .dots{display:flex}.alt .dots span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;margin-left:-6px;border:2px solid var(--panel);font-size:14px}
-.alt .go2{margin-left:auto;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#38F2A1;color:#06140d}
-.alt.green{background:color-mix(in srgb,#38F2A1 10%,transparent);border-color:color-mix(in srgb,#38F2A1 40%,transparent)}
+.alt .go2{margin-left:auto;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink)}
+.alt.green{background:color-mix(in srgb,var(--brand) 10%,transparent);border-color:color-mix(in srgb,var(--brand) 40%,transparent)}
 .alt.green small{display:block;color:var(--mute);font-weight:600}.alt.green b{color:var(--brand)}
 .sbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;border-radius:14px;font-weight:800;border:0;cursor:pointer;margin-bottom:10px;text-decoration:none}
 .sbtn.tg{background:#2aa3e0;color:#fff}.sbtn.gg{background:#fff;color:#111;border:1px solid #ddd}
@@ -209,11 +107,10 @@ body.authmode #view{max-width:none;padding:0}
 .terms{font-size:12px;color:var(--mute);text-align:center;margin-top:16px}
 .back3{display:inline-flex;gap:8px;align-items:center;min-height:42px;padding:0 16px;border-radius:99px;border:1px solid var(--line);font-weight:800;text-decoration:none}
 
-.phone .go{text-decoration:none}
 /* lessons */
 .tabs{display:flex;gap:8px;margin:14px 0 22px;flex-wrap:wrap}
 .tabs button{min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700;cursor:pointer}
-.tabs button.on{background:#38F2A1;color:#06140d;border-color:transparent}
+.tabs button.on{background:var(--brand);color:var(--brand-ink);border-color:transparent}
 .level{margin-bottom:22px}
 .level h3{font-size:15px;color:var(--mute);font-weight:700}
 .lrow{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
@@ -258,25 +155,13 @@ body.authmode #view{max-width:none;padding:0}
 /* AI */
 .chat{display:flex;flex-direction:column;gap:10px;min-height:340px;max-height:60vh;overflow-y:auto;padding:4px}
 .msg{max-width:85%;padding:12px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}
-.msg.me{align-self:flex-end;background:#38F2A1;color:#06140d;border-bottom-right-radius:4px}
+.msg.me{align-self:flex-end;background:var(--brand);color:var(--brand-ink);border-bottom-right-radius:4px}
 .msg.ai{align-self:flex-start;background:var(--panel2);border-bottom-left-radius:4px}
 .chatform{display:flex;gap:10px;margin-top:12px}
 .chatform textarea{flex:1;min-height:48px;max-height:160px;border-radius:12px;border:1px solid var(--line);background:var(--panel);padding:12px;font-size:16px;resize:vertical}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 .chips button{border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:8px 14px;cursor:pointer;min-height:40px}
 /* pricing */
-.plans{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-items:stretch}
-.plan{display:flex;flex-direction:column;gap:12px;position:relative}
-.plan.pop{border:2px solid #38F2A1;box-shadow:0 20px 50px -25px color-mix(in srgb,var(--brand) 70%,transparent)}
-.plan .price{font-size:34px;font-weight:900;white-space:nowrap}
-.plan .price small{font-size:15px;color:var(--mute);font-weight:600}
-.plan ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;flex:1}
-.plan li{padding-left:28px;position:relative}
-.plan li:before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;background:color-mix(in srgb,var(--ok) 18%,transparent)}
-.plan li:after{content:"";position:absolute;left:6px;top:7px;width:5px;height:9px;border:solid var(--ok);border-width:0 2px 2px 0;transform:rotate(45deg)}
-.plan li.no{color:var(--mute);text-decoration:line-through}
-.plan li.no:before{background:var(--panel2)}.plan li.no:after{display:none}
-.plan .ribbon{position:absolute;top:-12px;right:18px;background:#38F2A1;color:#06140d;font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px}
 .paylogos{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 .paylogos span{font-weight:800;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel)}
 /* modal */
@@ -287,118 +172,387 @@ body.authmode #view{max-width:none;padding:0}
 .profile-grid .card b{display:block;font-size:30px;font-weight:900}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mute);font-size:14px}
 
-/* From Uiverse.io by alexruix - https://uiverse.io/alexruix/tame-fly-42
-   MIT License, Copyright (c) alexruix (Alex Ruiz) */
-#boot{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#081410;color:#E8F2EC;transition:opacity .45s;animation:ua-bootHide .45s 2.6s forwards}
-@keyframes ua-bootHide{to{opacity:0;visibility:hidden;pointer-events:none}}
-#boot .inner{display:grid;justify-items:center;gap:26px}
-#boot p{font:800 18px Manrope,Inter,sans-serif;margin:0;letter-spacing:.02em}
-.ua-loader{position:relative;width:120px;height:90px;margin:0 auto}
-.ua-loader:before{content:"";position:absolute;bottom:30px;left:50px;height:30px;width:30px;border-radius:50%;background:#2a9d8f;animation:ua-loading-bounce .5s ease-in-out infinite alternate}
-.ua-loader:after{content:"";position:absolute;right:0;top:0;height:7px;width:45px;border-radius:4px;box-shadow:0 5px 0 #f2f2f2,-35px 50px 0 #f2f2f2,-70px 95px 0 #f2f2f2;animation:ua-loading-step 1s ease-in-out infinite}
-@keyframes ua-loading-bounce{0%{transform:scale(1,.7)}40%{transform:scale(.8,1.2)}60%{transform:scale(1,1)}100%{bottom:140px}}
-@keyframes ua-loading-step{0%{box-shadow:0 10px 0 rgba(0,0,0,0),0 10px 0 #f2f2f2,-35px 50px 0 #f2f2f2,-70px 90px 0 #f2f2f2}100%{box-shadow:0 10px 0 #f2f2f2,-35px 50px 0 #f2f2f2,-70px 90px 0 #f2f2f2,-70px 90px 0 rgba(0,0,0,0)}}
 
-/* From Uiverse.io by 3bdel3ziz-T - https://uiverse.io/3bdel3ziz-T/honest-deer-30
-   MIT License, Copyright (c) 3bdel3ziz-T (3bdel3zizT) */
-.ua-day{--transition:300ms;--transition500:500ms;--color-dark:#0c0f14;--color-darkGray:#21262e;--color-gray:#52555a;--color-offwhite:#cecece;--shadow-color:var(--color-dark);position:relative;display:flex;align-items:center;width:60px;height:fit-content;background-color:var(--color-dark);border-radius:30px;padding:4px;transition:var(--transition500);user-select:none;cursor:pointer;overflow:hidden;flex:none}
-.ua-day .svg{transition:var(--transition);position:absolute;left:5px}
-.ua-day .moon{width:18px;fill:var(--color-gray);opacity:1}
-.ua-day .sun{transform:translateY(-50%);width:12px;height:12px;border-radius:50%;left:calc(100% - 21.5px);top:15px;display:flex;align-items:center;justify-content:center;scale:.8;opacity:0}
-.ua-day .sun .dot{position:relative;display:block;width:3px;height:3px;border-radius:50%;background:white;z-index:1;box-shadow:11px 0 0 var(--shadow-color),10.3px 0 0 var(--shadow-color),-11px 0 0 var(--shadow-color),-10.3px 0 0 var(--shadow-color),0 -11px 0 var(--shadow-color),0 -10.3px 0 var(--shadow-color),0 11px 0 var(--shadow-color),0 10.3px 0 var(--shadow-color),8px 8px 0 var(--shadow-color),7.3px 7.3px 0 var(--shadow-color),8px -8px 0 var(--shadow-color),7.3px -7.3px 0 var(--shadow-color),-8px -8px 0 var(--shadow-color),-7.3px -7.3px 0 var(--shadow-color),-8px 8px 0 var(--shadow-color),-7.3px 7.3px 0 var(--shadow-color)}
-.ua-day .sun .dot::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:white;border:2px solid var(--color-dark)}
-.ua-day .circle{appearance:none;position:relative;width:25px;height:25px;border-radius:50%;left:0;margin:0;background-color:var(--color-darkGray);border:1px solid var(--color-darkGray);transition:var(--transition500);box-shadow:1px 1px 20px 3px var(--color-darkGray);cursor:pointer}
-.ua-day:has(.circle:checked){background:var(--color-offwhite)}
-.ua-day .circle:hover{margin-left:3px}
-.ua-day .circle:checked:hover{margin-left:-3px}
-.ua-day .circle:checked{left:calc(100% - 24px);background:white;border-color:white;box-shadow:1px 1px 30px 12px white}
-.ua-day:has(.circle:checked)>.sun{opacity:1}
-.ua-day:has(.circle:checked)>.moon{opacity:0}
-.ua-day .circle:focus-visible{outline:3px solid #38F2A1;outline-offset:2px}
-
-/* From Uiverse.io by Gaurav-WebDev - https://uiverse.io/Gaurav-WebDev/tall-mayfly-60
-   MIT License, Copyright (c) Gaurav-WebDev (Gaurav Sharma) */
-.ua-btn{--b-line:#252525;--b-ink:#333;--b-fill:#333;--b-hover-ink:#fff;height:44px;min-width:150px;padding:0 22px;position:relative;background-color:transparent;cursor:pointer;border:2px solid var(--b-line);overflow:hidden;border-radius:30px;color:var(--b-ink);transition:all .5s ease-in-out;isolation:isolate;flex:none;font:inherit}
-html:not(.light) .ua-btn{--b-line:#38F2A1;--b-ink:#38F2A1;--b-fill:#38F2A1;--b-hover-ink:#06140d}
-.ua-btn .btn-txt{position:relative;z-index:1;font-weight:800;letter-spacing:4px}
-.ua-btn.type1::after{content:"";position:absolute;left:0;top:0;transition:all .5s ease-in-out;background-color:var(--b-fill);border-radius:30px;visibility:hidden;height:10px;width:10px;z-index:-1}
-.ua-btn:hover{box-shadow:1px 1px 200px var(--b-line);color:var(--b-hover-ink);border:none}
-.ua-btn.type1:hover::after{visibility:visible;transform:scale(100) translateX(2px)}
-.ua-btn:focus-visible{outline:3px solid #38F2A1;outline-offset:2px}
-
-/* From Uiverse.io by aadium - https://uiverse.io/aadium/wet-bird-34
-   MIT License, Copyright (c) aadium (Aadi Umrani) */
-.ua-login{width:250px;min-height:240px;background-color:#f2f2f2;border-radius:25px;box-shadow:2px 2px 15px rgb(193,193,193);padding-bottom:16px;color:#333}
-.ua-login .instruction-text{color:rgb(150,150,150);text-align:center;font-size:12px;margin-top:10px}
-.ua-login button{cursor:pointer}
-.ua-login .normal-signin{padding:10px;font-size:17px;width:70%;margin-top:25px;margin-left:37px;border:2px solid transparent;border-radius:5em;background-color:#1b77da;color:#f2f2f2;font-weight:bold;font-family:sans-serif;transition:.2s}
-.ua-login .normal-signin:hover{background-color:transparent;color:#1b77da;border:2px solid #1b77da}
-.ua-login .create-account{padding:10px;font-size:17px;width:70%;margin-top:5px;margin-left:37px;margin-bottom:5px;border:2px solid transparent;border-radius:5em;background-color:#e8e8e8;color:#1b77da;font-weight:bold;font-family:sans-serif;transition:.2s}
-.ua-login .create-account:hover{background-color:transparent;color:#1b77da;border:2px solid #1b77da}
-.ua-login .alternate-login{margin-left:42px;margin-top:5px;background-color:#f2f2f2;border-radius:5em}
-.ua-login .m-sign{padding:7px;font-size:14px;height:40px;width:40px;border-radius:5em;margin-top:5px;background-color:#7FBA00;border:2px solid transparent;transition:.2s}
-.ua-login .m-sign svg{width:27px;height:27px;margin-top:-2px;margin-left:-2px;fill:#f2f2f2}
-.ua-login .m-sign:hover{background-color:transparent;border:2px solid #7FBA00}.ua-login .m-sign:hover svg{fill:#7FBA00}
-.ua-login .g-sign{padding:7px;font-size:14px;height:40px;width:40px;border-radius:5em;margin-top:5px;margin-left:15px;background-color:#DB4437;border:2px solid transparent;transition:.2s}
-.ua-login .g-sign svg{width:23px;height:25px;margin-top:-1.5px;fill:#f2f2f2}
-.ua-login .g-sign:hover{background-color:transparent;border:2px solid #DB4437}.ua-login .g-sign:hover svg{fill:#DB4437}
-.ua-login .a-sign{padding:7px;font-size:14px;height:40px;width:40px;border-radius:5em;margin-top:5px;margin-left:15px;background-color:#000;border:2px solid transparent;transition:.2s}
-.ua-login .a-sign svg{width:25px;height:25px;margin-top:-1px;margin-left:-1px;fill:#f2f2f2}
-.ua-login .a-sign:hover{background-color:transparent;border:2px solid #000}.ua-login .a-sign:hover svg{fill:#000}
-/* form step, styled to match the card */
-.ua-login form{display:grid;gap:10px;padding:22px 22px 0}
-.ua-login h3{margin:0 0 4px;text-align:center;font:800 18px Manrope,Inter,sans-serif;color:#1b77da}
-.ua-login input{height:42px;border-radius:5em;border:2px solid #e0e0e0;background:#fff;padding:0 16px;font-size:16px;color:#333;outline:none;transition:.2s}
-.ua-login input:focus{border-color:#1b77da}
-.ua-login form .normal-signin,.ua-login form .create-account{margin:4px 0 0;width:100%}
-.ua-login .err{color:#c62828;font-size:12px;font-weight:600;text-align:center;min-height:16px}
-
-/* From Uiverse.io by 3bdel3ziz-T - https://uiverse.io/3bdel3ziz-T/helpless-wasp-32
-   MIT License, Copyright (c) 3bdel3ziz-T (3bdel3zizT) */
-.ua-pay .form{background:#0c0f14;box-shadow:0 187px 75px rgba(0,0,0,.01),0 105px 63px rgba(0,0,0,.05),0 47px 47px rgba(0,0,0,.09),0 12px 26px rgba(0,0,0,.1),0 0 0 rgba(0,0,0,.1);width:340px;max-width:100%;display:flex;flex-direction:column;gap:15px;padding:20px;position:relative;border-radius:25px;color:#aeaeae}
-.ua-pay .form .label{display:flex;flex-direction:column;gap:5px;height:fit-content}
-.ua-pay .form .label:has(input:focus) .title{top:0;left:0;color:#d17842}
-.ua-pay .form .label .title{padding:0 10px;transition:all .3s;font-size:12px;color:#8b8e98;font-weight:600;width:fit-content;top:14px;position:relative;left:15px;background:#0c0f14}
-.ua-pay .form .input-field{width:auto;height:50px;text-indent:15px;border-radius:15px;outline:none;background-color:transparent;border:1px solid #21262e;transition:all .3s;caret-color:#d17842;color:#aeaeae;font-size:16px}
-.ua-pay .form .input-field:hover{border-color:rgba(209,121,66,.5)}
-.ua-pay .form .input-field:focus{border-color:#d17842}
-.ua-pay .form .split{display:flex;flex-direction:row;justify-content:space-between;width:100%;gap:15px}
-.ua-pay .form .split label{width:50%}
-.ua-pay .form .checkout-btn{margin-top:20px;padding:20px 0;border-radius:25px;cursor:pointer;font-size:20px;font-weight:500;display:flex;align-items:center;justify-content:center;fill:#fff;color:#fff;border:2px solid transparent;background:#d17842;transition:all .2s}
-.ua-pay .form .checkout-btn:active{scale:.95}
-.ua-pay .form .checkout-btn:hover{color:#d17842;border:2px solid #d17842;background:transparent}
-.ua-pay .form .checkout-btn:disabled{opacity:.6;cursor:wait}
-.ua-pay .sum{display:flex;justify-content:space-between;align-items:baseline;color:#fff;font-weight:700;padding:4px 4px 0}
-.ua-pay .sum small{color:#8b8e98;font-weight:600}
-.ua-pay .brand{position:absolute;right:16px;bottom:13px;font-size:12px;font-weight:800;color:#d17842}
-.ua-pay .numwrap{position:relative}
-.ua-pay .note{font-size:12px;color:#8b8e98;text-align:center}
-.ua-pay .perr{color:#ff7b7b;font-size:13px;font-weight:600;min-height:18px;text-align:center}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ===================== v4 design system ===================== */
+h1,h2,h3{font-family:Manrope,Inter,sans-serif;letter-spacing:-.03em}
+h1{font-weight:800}h2{font-weight:800}h3{font-weight:700;letter-spacing:-.015em}
+.card,.fcard{border-radius:var(--r3)}
+.btn{border-radius:var(--r1);font-weight:700;transition:background .15s,border-color .15s,transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn.pri,.btn.acc,.btn.ghost{border-radius:var(--r1)}
+.btn.pri:hover,.btn.acc:hover{background:color-mix(in srgb,var(--brand) 88%,var(--ink))}
+.btn.ghost:hover,.btn:not(.pri):not(.acc):hover{border-color:var(--line2)}
+.btn.lg{min-height:52px;padding:0 22px;font-size:16px}
+.shot{border-radius:var(--r2);box-shadow:var(--shadow)}
+.ide{border-radius:var(--r2);box-shadow:var(--shadow)}
+.logo i{border-radius:8px}
+.lbl{display:flex;align-items:center;gap:10px;font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.04em;color:var(--mute);text-transform:uppercase;margin-bottom:18px}
+.lbl b{color:var(--brand);font-weight:600}
+.lbl:after{content:"";flex:0 0 40px;height:1px;background:var(--line2)}
+.sec{padding:var(--s5) 0;border-top:1px solid var(--line)}
+.sec-t{font-size:clamp(28px,3.6vw,44px);line-height:1.06;margin:0 0 14px;max-width:18ch}
+.sec-p{color:var(--mute);font-size:17px;max-width:58ch;margin:0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:var(--s3);align-items:end;margin-bottom:var(--s4)}
+@media(max-width:860px){.sec-head{grid-template-columns:1fr}}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{padding:22px 20px 22px 0}.facts div+div{padding-left:20px;border-left:1px solid var(--line)}
+.facts b{display:block;font:800 26px/1.1 Manrope,sans-serif;letter-spacing:-.02em}.facts span{font-size:14px;color:var(--mute)}
+@media(max-width:700px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(3){padding-left:0;border-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* how it works */
+.how{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--s4);align-items:start}
+.how ol{list-style:none;margin:0;padding:0;counter-reset:st}
+.how li button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:44px 1fr;gap:4px 14px;width:100%;padding:20px 0;border-top:1px solid var(--line)}
+.how li:last-child button{border-bottom:1px solid var(--line)}
+.how li button:before{counter-increment:st;content:"0" counter(st);grid-row:span 2;font:600 13px/1.9 "JetBrains Mono",monospace;color:var(--mute)}
+.how li b{font:700 19px/1.3 Manrope,sans-serif;letter-spacing:-.01em}
+.how li span{color:var(--mute);font-size:15px;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s,opacity .3s}
+.how li.on button:before{color:var(--brand)}
+.how li.on span{max-height:120px;opacity:1}
+.how li button:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:4px}
+.how .view{position:sticky;top:96px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--line2);background:var(--panel);box-shadow:var(--shadow);aspect-ratio:4/3;display:grid;place-items:center}
+.how .view img{width:100%;height:100%;object-fit:contain;background:var(--bg);display:block}
+@media(max-width:860px){.how{grid-template-columns:1fr}.how .view{position:static;order:-1}}
+/* courses */
+.courses{border-top:1px solid var(--line2)}
+.course{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:var(--s3);padding:28px 0;border-bottom:1px solid var(--line);align-items:start}
+.course h3{font-size:28px;margin:0 0 6px;display:flex;align-items:center;gap:12px}
+.course .st{font:600 12px/1 Inter,sans-serif;padding:6px 10px;border-radius:99px;border:1px solid var(--line2);color:var(--mute)}
+.course .st.on{color:var(--brand);border-color:color-mix(in srgb,var(--brand) 45%,transparent)}
+.course .meta{color:var(--mute);font-size:15px}
+.course ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.course li{font:500 13px/1 "JetBrains Mono",monospace;padding:8px 10px;border-radius:6px;background:var(--panel2);color:var(--ink)}
+.course.soon{opacity:.62}
+@media(max-width:860px){.course{grid-template-columns:1fr;gap:14px}}
+/* practice */
+.practice{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:var(--s3);align-items:stretch}
+.practice .side{display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.practice .side p{margin:0;color:var(--mute)}
+.chk-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.chk-list li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px}
+.chk-list li:before{content:"✓";color:var(--brand);font-weight:800}
+@media(max-width:860px){.practice{grid-template-columns:1fr}}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-top:var(--s4)}
+.projects figure{margin:0}
+.projects .pic{border-radius:var(--r2);overflow:hidden;border:1px solid var(--line);background:#fff;aspect-ratio:16/10}
+.projects img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .4s}
+.projects figure:hover img{transform:scale(1.03)}
+.projects figcaption{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14px}
+.projects figcaption small{color:var(--mute);font-family:"JetBrains Mono",monospace;font-size:12px;white-space:nowrap}
+.projects a{text-decoration:none}
+@media(max-width:860px){.projects{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.projects{grid-template-columns:1fr}}
+/* progress */
+.prog4{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--s4);align-items:center}
+.meters{display:grid;gap:0;border-top:1px solid var(--line)}
+.meter{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.meter b{font:800 28px/1 Manrope,sans-serif;letter-spacing:-.02em}
+.meter span{color:var(--mute);font-size:15px}
+.meter p{grid-column:1/-1;margin:0;font-size:14px;color:var(--mute)}
+.meter .bar{grid-column:1/-1;height:6px;border-radius:9px;background:var(--panel2);overflow:hidden}
+.meter .bar i{display:block;height:100%;background:var(--brand)}
+.note{font-size:14px;color:var(--mute);margin-top:16px}
+.note a{color:var(--brand)}
+@media(max-width:860px){.prog4{grid-template-columns:1fr}}
+/* pricing */
+.plans2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line2);border-radius:var(--r3);overflow:hidden;background:var(--panel)}
+.plan2{display:flex;flex-direction:column;padding:28px;position:relative}
+.plan2+.plan2{border-left:1px solid var(--line)}
+.plan2.pop{background:color-mix(in srgb,var(--brand) 6%,var(--panel))}
+.plan2 h3{font-size:20px;margin:0 0 4px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.plan2 .ribbon2{font:600 12px/1 Inter,sans-serif;padding:6px 10px;border-radius:99px;background:var(--brand);color:var(--brand-ink);letter-spacing:0}
+.plan2 .who{color:var(--mute);font-size:14px;margin:0 0 18px;min-height:2.6em}
+.plan2 .pr{font:800 36px/1 Manrope,sans-serif;letter-spacing:-.03em}
+.plan2 .pr small{font:500 15px Inter,sans-serif;color:var(--mute);letter-spacing:0}
+.plan2 .alt2{font-size:13px;color:var(--mute);margin-top:6px;min-height:1.2em}
+.plan2 dl{margin:22px 0;display:grid;gap:0}
+.plan2 dl div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.plan2 dt{color:var(--mute)}.plan2 dd{margin:0;font-weight:700;text-align:right}
+.plan2 dd.no{color:var(--mute);font-weight:500}
+.plan2 .btn{margin-top:auto;width:100%}
+@media(max-width:900px){.plans2{grid-template-columns:1fr}.plan2+.plan2{border-left:0;border-top:1px solid var(--line)}}
+/* faq */
+.faq4{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--s4)}
+.faq4 details{border-bottom:1px solid var(--line)}
+.faq4 details:first-child{border-top:1px solid var(--line)}
+.faq4 summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font:700 17px/1.35 Manrope,sans-serif}
+.faq4 summary::-webkit-details-marker{display:none}
+.faq4 summary:after{content:"+";font:400 22px/1 Inter;color:var(--mute);transition:transform .2s}
+.faq4 details[open] summary:after{transform:rotate(45deg)}
+.faq4 details p{margin:0 0 20px;color:var(--mute);max-width:62ch}
+@media(max-width:860px){.faq4{grid-template-columns:1fr}}
+.endcta{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s4);border-radius:var(--r3);background:var(--panel);border:1px solid var(--line2)}
+.endcta h2{margin:0;font-size:clamp(24px,3vw,34px)}
+/* footer */
+footer{padding:var(--s5) 0 var(--s3)}
+.foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr));gap:var(--s3)}
+.foot h4{margin:0 0 12px;font:600 12px/1 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.foot p{margin:12px 0 0;max-width:38ch}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.foot a{text-decoration:none;color:var(--ink)}.foot a:hover{color:var(--brand)}
+.foot .copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;margin-top:var(--s2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+@media(max-width:760px){.foot{grid-template-columns:1fr}.foot>div:first-child{grid-column:1/-1}}
+/* auth side visual */
+.art{position:relative;border-radius:var(--r3);overflow:hidden;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,4vw,48px);gap:28px;min-height:100%}
+.art .device{margin:0 auto;max-width:300px;width:70%}
+.art blockquote{margin:0;font:700 clamp(20px,2.2vw,28px)/1.25 Manrope,sans-serif;letter-spacing:-.02em;max-width:22ch}
+.art blockquote small{display:block;margin-top:10px;font:500 14px Inter,sans-serif;color:var(--mute);letter-spacing:0}
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@keyframes ua-bootHide{to{opacity:0;visibility:hidden;pointer-events:none}}
+.device{border-radius:22px;padding:6px;background:#05080a;border:1px solid var(--line2);box-shadow:var(--shadow)}.device img{display:block;width:100%;height:auto;border-radius:17px}.art .device{position:relative}
+/* ===================== Forge layer (adapted from forge-hardware-hero) ===================== */
+:root{--fg-ease:cubic-bezier(.22,1,.36,1);--nav-h:76px}
+:root{color-scheme:dark;--bg:#141414;--panel:#1D1C1B;--panel2:#262523;--ink:#F5F3EF;--mute:#AAA7A3;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.18);--brand:#3DDC97;--brand-deep:#2AC584;--brand-ink:#0F1512;--shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+html.light{color-scheme:light;--bg:#F5F3EF;--panel:#FFFFFF;--panel2:#ECE9E3;--ink:#141414;--mute:#5F5C58;--line:rgba(20,20,20,.09);--line2:rgba(20,20,20,.2);--brand:#0E9F66;--brand-deep:#0B8455;--brand-ink:#fff;--shadow:0 30px 60px -36px rgba(20,20,20,.35)}
+body{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:102%;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.sec-t{font-family:Archivo,Manrope,Inter,sans-serif;font-stretch:104%;letter-spacing:-.04em;font-weight:720}
+h3{letter-spacing:-.02em;font-weight:650}
+::selection{background:var(--brand);color:var(--brand-ink)}
+.fmono,.lbl,.foot h4{font-family:"Geist Mono","JetBrains Mono",ui-monospace,monospace}
+/* buttons */
+.btn{border-radius:14px;font-weight:600;min-height:46px;transition:background-color .3s var(--fg-ease),color .3s,border-color .3s,translate .3s var(--fg-ease),box-shadow .3s}
+.btn.pri,.btn.acc{border-radius:14px;position:relative;overflow:hidden}
+.btn.pri:hover,.btn.acc:hover{background:var(--brand-deep);translate:0 -2px;box-shadow:0 14px 30px -14px color-mix(in srgb,var(--brand) 70%,transparent)}
+.btn.pri:after,.btn.acc:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+.btn.pri:hover:after,.btn.acc:hover:after{transform:translateX(120%);transition:transform .7s var(--fg-ease)}
+.btn.ghost{border-radius:14px;border-color:color-mix(in srgb,var(--ink) 45%,transparent)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.lg{min-height:52px;border-radius:16px;padding:0 22px;font-size:15px}
+.btn .ar{transition:transform .3s var(--fg-ease)}.btn:hover .ar{transform:translateX(5px)}
+.card{border-radius:20px}
+.lbl{gap:12px;font-size:11.5px;letter-spacing:.22em;font-weight:500}
+.lbl:before{content:"";width:28px;height:1px;background:var(--brand);order:-1}.lbl:after{display:none}
+.lbl b{color:var(--mute);font-weight:500}
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:40;background:transparent;backdrop-filter:none;border-bottom:1px solid transparent;transition:background-color .35s var(--fg-ease),border-color .35s var(--fg-ease)}
+.top[data-scrolled="true"]{background:color-mix(in srgb,var(--bg) 74%,transparent);border-color:var(--line);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
+.top .wrap.navw{position:relative;display:flex;align-items:center;gap:20px;height:var(--nav-h);min-height:0;flex-wrap:nowrap;max-width:1600px;padding-inline:clamp(20px,3.9vw,56px)}
+.fg-logo{font-family:Archivo,Manrope,sans-serif;font-weight:800;font-stretch:118%;letter-spacing:-.045em;font-size:24px;line-height:1;color:var(--ink);text-decoration:none;white-space:nowrap;position:relative}
+.fg-logo:after{content:"";position:absolute;inset:-10px -4px}
+.ember{color:var(--brand);display:inline-block;text-shadow:0 0 10px color-mix(in srgb,var(--brand) 45%,transparent)}
+.fg-logo:hover .ember{animation:fgEmber .9s var(--fg-ease)}
+@keyframes fgEmber{30%{text-shadow:0 0 14px #fff,0 0 30px var(--brand)}}
+nav.main{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:30px;flex-wrap:nowrap}
+nav.main>a,.dd>button{position:relative;padding:8px 0;border-radius:6px;background:none;border:0;cursor:pointer;font:500 14.5px Archivo,Inter,sans-serif;color:color-mix(in srgb,var(--ink) 75%,transparent);text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap}
+nav.main>a:hover,nav.main>a.on,.dd>button:hover,.dd>button[aria-expanded="true"]{color:var(--ink)}
+nav.main>a:after,.dd>button:after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s var(--fg-ease)}
+nav.main>a:hover:after,nav.main>a.on:after,.dd>button:hover:after,.dd>button[aria-expanded="true"]:after{transform:scaleX(1);transform-origin:left}
+nav.main a.on:before{display:none}
+.dd{position:relative}.dd svg{width:14px;height:14px;transition:transform .3s}.dd>button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.fg-panel{position:absolute;top:100%;left:50%;margin-top:12px;width:340px;padding:8px;border-radius:18px;background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line2);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 18px 40px -18px rgba(0,0,0,.7);transform:translate(-50%,-6px) scale(.98);opacity:0;visibility:hidden;transition:opacity .22s var(--fg-ease),transform .22s var(--fg-ease),visibility .22s;transform-origin:top;z-index:50}
+.dd.open .fg-panel{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.clist a{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;text-decoration:none;color:var(--ink);transition:background .2s}
+.clist a:hover,.clist a:focus-visible{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.clist .ic{display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:10px;background:color-mix(in srgb,var(--ink) 6%,transparent);transition:background .3s,color .3s}
+.clist a:hover .ic{background:var(--brand);color:var(--brand-ink)}
+.clist .ic svg{width:17px;height:17px}
+.clist b{display:block;font-size:14px;font-weight:500}.clist small{display:block;font-size:12.5px;color:var(--mute)}
+.clist .go{margin-left:auto;color:var(--mute);transition:transform .3s var(--fg-ease)}.clist a:hover .go{transform:translateX(4px)}
+.fg-panel .all{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding:12px 8px 6px;border-top:1px solid var(--line2);color:var(--brand);font-weight:600;font-size:13px;text-decoration:none}
+.tools{margin-left:auto;display:flex;align-items:center;gap:4px}
+.ibtn{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:0;background:none;color:color-mix(in srgb,var(--ink) 80%,transparent);cursor:pointer;transition:color .2s,background .2s;text-decoration:none}
+.ibtn:hover{color:var(--ink)}.ibtn svg{width:19px;height:19px}
+.srch{position:relative;display:flex;align-items:center;height:44px;border-radius:12px;border:1px solid transparent;transition:border-color .3s}
+.srch.open{border-color:var(--line2);background:color-mix(in srgb,var(--panel) 60%,transparent)}
+.srch.open:focus-within{border-color:var(--brand)}
+.srch input{width:0;padding:0;border:0;background:transparent;color:var(--ink);font:14px Archivo,Inter,sans-serif;outline:none;transition:width .35s var(--fg-ease)}
+.srch.open input{width:clamp(110px,16vw,220px);padding-right:10px}
+.srch input::-webkit-search-cancel-button{-webkit-appearance:none}
+.sres{position:absolute;top:calc(100% + 8px);right:0;width:min(320px,86vw);padding:6px;border-radius:14px;background:var(--panel);border:1px solid var(--line2);box-shadow:0 18px 40px -18px rgba(0,0,0,.7);list-style:none;margin:0;z-index:60}
+.sres a{display:flex;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:10px;text-decoration:none;color:var(--ink);font-size:14px}
+.sres a:hover,.sres a.hl{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.sres small{color:var(--mute);font-family:"Geist Mono",monospace;font-size:11px;white-space:nowrap}
+select.lang{height:44px;min-height:0;border:0;background:transparent;color:color-mix(in srgb,var(--ink) 80%,transparent);font:500 12px "Geist Mono",monospace;letter-spacing:.12em;padding:0 6px;cursor:pointer}
+select.lang option{background:var(--panel);color:var(--ink)}
+#themeBtn .sun{display:none}html.light #themeBtn .sun{display:block}html.light #themeBtn .moon{display:none}
+.userchip{min-height:40px;border-radius:12px;background:transparent}
+.mbtn{display:none;border:1px solid var(--line2)}
+.mmenu{border-top:1px solid var(--line2);padding:12px clamp(20px,3.9vw,56px) 24px;background:color-mix(in srgb,var(--bg) 96%,transparent);max-height:calc(100svh - var(--nav-h));overflow:auto}
+.mmenu>a{display:flex;align-items:center;min-height:48px;font-size:17px;font-weight:500;color:var(--ink);text-decoration:none}
+.mmenu p{font:500 10.5px "Geist Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+@media(max-width:1100px){nav.main{display:none}.mbtn{display:grid}}
+@media(max-width:560px){.top .wrap.navw{gap:8px}.fg-logo{font-size:20px}.srch.open~*{display:none}#signinBtn,.userchip span{display:none}.tools .lang{padding:0 2px}}
+.mrow{display:none;gap:8px;align-items:center;margin-top:8px}.mrow .lang{border:1px solid var(--line2);border-radius:12px;padding:0 12px}#themeBtn2{border:1px solid var(--line2)}
+@media(max-width:420px){.mrow{display:flex}.tools>#lang,.tools>#themeBtn{display:none}.fg-logo{font-size:18px}}
+.demo-note{position:relative;z-index:41;font:500 11px "Geist Mono",monospace;letter-spacing:.08em;background:var(--bg);border-bottom:1px solid var(--line)}
+/* ---------- splash ---------- */
+#boot{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:transparent;cursor:pointer;animation:ua-bootHide .4s 4.2s forwards;transition:none}
+#boot .veil{position:absolute;inset:0;background:var(--bg);transition:opacity .6s ease}
+#boot .heat{position:absolute;width:70vmin;height:70vmin;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 16%,transparent) 0%,color-mix(in srgb,var(--brand) 5%,transparent) 38%,transparent 68%);opacity:0;transform:scale(.8);transition:opacity 1.8s ease-out,transform 1.8s ease-out}
+#boot.forge .heat{opacity:1;transform:scale(1)}
+#boot .stage{position:relative;display:flex;flex-direction:column;align-items:center}
+#boot .word{position:relative;display:flex;font-size:clamp(34px,8.6vw,128px);transform-origin:top left;white-space:pre}
+#boot .word .ch{position:relative;display:inline-block}
+#boot .word .ch>i{font-style:normal;display:inline-block;opacity:0;transform-origin:50% 100%}
+#boot.forge .word .ch>i{animation:fgStrike .42s ease-out both,fgCool 1.3s .1s both;animation-delay:var(--d),calc(var(--d) + .1s)}
+@keyframes fgStrike{0%{opacity:1;transform:translateY(-.32em) scale(.94,1.1)}35%{transform:translateY(0) scale(1.14,.82)}100%{opacity:1;transform:none}}
+@keyframes fgCool{0%{color:#FFF6DD;text-shadow:0 0 34px rgba(255,236,190,.95)}20%{color:#DDFFE9;text-shadow:0 0 22px color-mix(in srgb,var(--brand) 60%,transparent)}55%{color:var(--brand);text-shadow:0 0 8px color-mix(in srgb,var(--brand) 20%,transparent)}100%{color:var(--ink);text-shadow:none}}
+#boot .word .flash{position:absolute;left:-25%;right:-25%;bottom:-.08em;height:.16em;opacity:0;background:radial-gradient(ellipse at center,rgba(220,255,235,.95) 0%,color-mix(in srgb,var(--brand) 55%,transparent) 35%,transparent 70%);filter:blur(2px)}
+#boot.forge .word .flash{animation:fgFlash .5s both;animation-delay:var(--i)}
+@keyframes fgFlash{15%{opacity:1}100%{opacity:0}}
+#boot .word .dot{color:var(--brand);opacity:0;display:inline-block}
+#boot.forge .word .dot{animation:fgDrop .62s ease-in both;animation-delay:var(--d)}
+@keyframes fgDrop{0%{opacity:1;transform:translateY(-1.6em)}70%{transform:translateY(0)}85%{transform:translateY(-.06em)}100%{opacity:1;transform:none}}
+#boot .anvil{position:absolute;left:-6%;right:-6%;bottom:.02em;height:1px;background:rgba(255,255,255,.15);opacity:0;transform:scaleX(.4);transition:opacity .6s,transform .6s}
+#boot.forge .anvil{opacity:1;transform:none}
+#boot .spark{position:absolute;left:50%;bottom:.1em;border-radius:50%;background:#e0ffe9;box-shadow:0 0 6px 1px color-mix(in srgb,var(--brand) 90%,transparent),0 0 14px 2px color-mix(in srgb,var(--brand) 45%,transparent);opacity:0;pointer-events:none}
+#boot .eyebrow{position:absolute;top:calc(100% + 28px);font:500 11px "Geist Mono",monospace;text-transform:uppercase;letter-spacing:.5em;color:var(--mute);white-space:nowrap;opacity:0;transition:opacity .9s,letter-spacing .9s}
+#boot.forge .eyebrow{opacity:1;letter-spacing:.32em;transition-delay:1.6s}
+#boot.handoff .veil,#boot.skip .veil{opacity:0}#boot.handoff .heat,#boot.handoff .eyebrow,#boot.handoff .anvil{opacity:0;transition-delay:0s;transition-duration:.3s}
+#boot.skip .stage{opacity:0;transition:opacity .2s}
+html.splash-on .top .fg-logo{opacity:0}
+/* ---------- hero ---------- */
+.fhero{position:relative;isolation:isolate;width:100vw;margin-left:calc(50% - 50vw);margin-top:calc(-1 * var(--nav-h));overflow:hidden}
+.fhero .bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.fhero .bg .fb{position:absolute;inset:0;background:linear-gradient(148deg,transparent 8%,rgba(255,189,133,.07) 22%,rgba(255,189,133,.035) 40%,transparent 58%)}
+.fhero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s var(--fg-ease)}
+.fhero canvas[data-ready]{opacity:1}
+html.light .fhero canvas{display:none}html.light .fhero .bg .fb{background:linear-gradient(148deg,transparent 8%,rgba(255,176,110,.16) 22%,rgba(255,176,110,.06) 40%,transparent 58%)}
+.fhero .in{max-width:1600px;margin:0 auto;padding:calc(var(--nav-h) + 28px) clamp(20px,3.9vw,56px) 40px;display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+@media(min-width:1024px){.fhero .in{min-height:calc(100svh - 28px);grid-template-columns:minmax(0,.82fr) minmax(0,1.55fr);align-items:center;gap:clamp(48px,4vw,64px);padding-top:calc(var(--nav-h) + 12px);padding-bottom:32px}}
+.eyb{display:flex;align-items:center;gap:12px;margin:0;font:500 11.5px "Geist Mono",monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.eyb:before{content:"";width:28px;height:1px;background:var(--brand)}
+.fdisp{margin:24px 0 0;font-size:clamp(2.9rem,.9rem + 9vw,4.4rem);font-weight:720;font-stretch:104%;line-height:.95;letter-spacing:-.048em;white-space:nowrap}
+@media(min-width:1024px){.fdisp{font-size:clamp(52px,min(5.2vw,9svh),92px)}}
+.fdisp .mk{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.fdisp .ln{display:block;transform:translateY(108%);transition:transform .8s var(--fg-ease)}
+.fhero.go .fdisp .ln{transform:none}
+.fdisp .mk:nth-child(2) .ln{transition-delay:.12s}.fdisp .mk:nth-child(3) .ln{transition-delay:.24s}
+.fdisp .mk:last-child{color:var(--brand)}
+.fdisp .w{display:inline-block}
+.fdisp .lt{display:inline-block;transition:translate .7s cubic-bezier(.34,1.56,.64,1),scale .7s cubic-bezier(.34,1.56,.64,1),color .9s var(--fg-ease);transform-origin:50% 100%}
+.fdisp .lt.in{animation:ltIn .5s var(--fg-ease) both}
+@keyframes ltIn{from{transform:translateY(110%)}to{transform:none}}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.fdisp .lt:hover{translate:0 .07em;scale:1.04 .9;color:var(--brand);transition:translate .07s ease-in,scale .07s ease-in,color .07s}}
+.fsub{margin:28px 0 0;max-width:30rem;color:var(--mute);font-size:clamp(16px,1.2vw,17px);line-height:1.6}
+.fcta{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px}
+.trust{list-style:none;margin:48px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--mute)}
+.trust li{display:flex;align-items:center;gap:6px}.trust svg{width:15px;height:15px;color:var(--brand)}
+.fade{opacity:0;transform:translateY(16px);transition:opacity .7s var(--fg-ease),transform .7s var(--fg-ease)}
+.fhero.go .fade{opacity:1;transform:none}
+.fhero.go .d1{transition-delay:.1s}.fhero.go .d2{transition-delay:.35s}.fhero.go .d3{transition-delay:.5s}.fhero.go .d4{transition-delay:.9s}.fhero.go .d5{transition-delay:1s}.fhero.go .d6{transition-delay:1.15s}
+.fright{display:flex;flex-direction:column;gap:14px;min-width:0;width:100%}
+@media(min-width:1024px){.fright{margin-left:auto;max-width:calc((100svh - var(--nav-h) - 318px) * 1.5 + 38px)}}
+.pick{display:flex;flex-direction:column;gap:10px}
+@media(min-width:1536px){.pick{flex-direction:row;align-items:center;justify-content:space-between}}
+.pick>p{margin:0;font:500 10.5px "Geist Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);flex:none}
+.tabs3{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--panel);border:1px solid var(--line);overflow-x:auto;scrollbar-width:none;position:relative}
+.tabs3 button{position:relative;flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 14px;border:0;border-radius:10px;background:transparent;color:color-mix(in srgb,var(--ink) 70%,transparent);font:500 13px Archivo,Inter,sans-serif;cursor:pointer;white-space:nowrap;transition:color .3s;z-index:1}
+.tabs3 button:hover{color:var(--ink)}.tabs3 button[aria-checked="true"]{color:var(--brand-ink)}
+.tabs3 button svg{width:16px;height:16px}
+.tabs3 .pill{position:absolute;top:4px;bottom:4px;left:0;border-radius:10px;background:var(--brand);transition:transform .45s cubic-bezier(.3,1.3,.5,1),width .45s cubic-bezier(.3,1.3,.5,1);z-index:0}
+.tabs3 .dot{position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--brand);transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.tabs3 button[aria-checked="true"] .dot{background:var(--brand-ink)}.tabs3 button.uses .dot{transform:scale(1)}
+.mat{position:relative;border-radius:22px;padding:8px;padding-top:28px;padding-left:28px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+@media(min-width:640px){.mat{padding:10px;padding-top:32px;padding-left:32px}}
+.rx,.ry{position:absolute;font:9px "Geist Mono",monospace;color:color-mix(in srgb,var(--ink) 45%,transparent)}
+.rx{top:10px;right:10px;left:32px;height:20px;background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--ink) 28%,transparent) 0 1px,transparent 1px 1%) bottom/100% 5px no-repeat}
+.ry{top:32px;bottom:10px;left:10px;width:20px;background:repeating-linear-gradient(180deg,color-mix(in srgb,var(--ink) 28%,transparent) 0 1px,transparent 1px 1.5%) right/5px 100% no-repeat}
+@media(min-width:640px){.rx{left:42px}.ry{top:42px}}
+.rx span{position:absolute;top:0;transform:translateX(-50%)}.ry span{position:absolute;left:0;transform:translateY(-50%)}
+.board{position:relative;isolation:isolate;aspect-ratio:1600/1066;width:100%;overflow:hidden;border-radius:14px;--lx:22;--ly:12;
+ background:#211f1c;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:5% 7.5%}
+html.light .board{background-color:#2a2825}
+.board .lamp{position:absolute;inset:0;z-index:30;pointer-events:none;background:radial-gradient(circle at calc(var(--lx)*1%) calc(var(--ly)*1%),rgba(255,226,190,.22) 0%,rgba(255,226,190,.08) 22%,transparent 48%);mix-blend-mode:soft-light}
+.board .sweep{position:absolute;inset:0 auto 0 0;width:50%;z-index:24;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,236,214,.16) 50%,transparent);mix-blend-mode:screen;transform:translateX(-60%);opacity:0}
+.board .sweep.run{animation:sweep 1.1s var(--fg-ease)}
+@keyframes sweep{from{transform:translateX(-60%);opacity:.9}to{transform:translateX(220%);opacity:0}}
+.tile{position:absolute;padding:0;border:0;background:none;cursor:pointer;border-radius:6px;z-index:11}
+.tile:after{content:"";position:absolute;inset:-4px}
+.tile:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
+.tile .pp{position:absolute;inset:0;border-radius:6px;overflow:hidden;transition:filter .45s var(--fg-ease),transform .5s cubic-bezier(.3,1.35,.5,1),box-shadow .45s var(--fg-ease);transition-delay:var(--dl,0s);box-shadow:0 2px 6px rgba(0,0,0,.45)}
+.tile img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+.tile code{position:absolute;left:6%;top:9%;padding:2px 6px;border-radius:5px;background:rgba(20,20,20,.86);color:#E9F6EF;font:500 clamp(7px,.75vw,11px) "Geist Mono",monospace;letter-spacing:.02em;white-space:nowrap}
+.board.dim .tile .pp{filter:brightness(.24) saturate(.45)}
+.board.dim .tile.kit .pp,.board .tile:hover .pp,.board .tile.act .pp{filter:none}
+.board .tile.kit .pp{transform:translateY(-6px) scale(1.025);box-shadow:calc((var(--tx) - var(--lx)) * .3px) calc((var(--ty) - var(--ly)) * .3px + 8px) 14px rgba(0,0,0,.78);filter:brightness(1.06)}
+.tile.act{z-index:40}
+.ttag{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,4px);display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:99px;white-space:nowrap;background:rgba(20,19,18,.92);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);box-shadow:0 10px 24px -10px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
+.tile.below .ttag{bottom:auto;top:calc(100% + 8px);transform:translate(-50%,-4px)}
+.tile.act .ttag{opacity:1;transform:translate(-50%,0)}
+.tile.edge-l .ttag{left:0;transform:translateY(4px)}.tile.edge-l.act .ttag{transform:none}
+.tile.edge-r .ttag{left:auto;right:0;transform:translateY(4px)}.tile.edge-r.act .ttag{transform:none}
+.ttag i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.12);color:#F5F3EF;font-style:normal;font-size:12px;font-weight:800}
+.tile.kit .ttag i{background:var(--brand);color:var(--brand-ink)}
+.ttag b{color:#F5F3EF;font-size:12.5px;font-weight:600}.ttag small{font:500 9.5px "Geist Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#AAA7A3}
+.bpill{position:absolute;top:12px;right:12px;z-index:45;display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;background:#F5F3EF;color:#141414;font:500 10px "Geist Mono",monospace;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(-6px);transition:opacity .2s,transform .2s;pointer-events:none}
+.bpill.on{opacity:1;transform:none}
+.bhint{position:absolute;left:12px;bottom:12px;z-index:45;display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);color:rgba(255,255,255,.75);font:500 10px "Geist Mono",monospace;letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
+.bhint svg,.bpill svg{width:14px;height:14px}
+@media(max-width:639px){.bhint{display:none}.tile code{display:none}}
+.board .ph{position:absolute;inset:0;opacity:.01;transform:scale(1.08);filter:blur(14px);transition:opacity 1.4s var(--fg-ease),transform 1.4s var(--fg-ease),filter 1.4s var(--fg-ease)}
+.fhero.go .board .ph{opacity:1;transform:none;filter:none}
+.dock{display:flex;flex-direction:column;gap:16px;padding:12px;border-radius:20px;background:var(--panel);border:1px solid var(--line)}
+@media(min-width:640px){.dock{flex-direction:row;align-items:center;gap:20px;padding-left:20px}}
+.dock .k{min-width:0;flex:none}
+.dock .k p{margin:0;font:500 10px "Geist Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--brand)}
+.dock .k div{margin-top:4px;display:flex;align-items:center;font-size:15px;font-weight:600;white-space:nowrap}
+.dock .k span.ksub{color:var(--mute);font-weight:400;overflow:hidden;text-overflow:ellipsis}
+.dock .cnt{display:inline-flex;height:1.25em;overflow:hidden;font-variant-numeric:tabular-nums}
+.dock .cnt b{display:block;animation:roll .3s var(--fg-ease)}
+@keyframes roll{from{transform:translateY(100%)}to{transform:none}}
+.dock ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:4px;min-height:44px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.dock li{flex:none;animation:pop .3s var(--fg-ease)}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.dock li button{position:relative;display:grid;place-items:center;width:40px;height:36px;padding:0;border:0;border-radius:10px;background:color-mix(in srgb,var(--ink) 6%,transparent);cursor:pointer;color:var(--ink);font:600 10px "Geist Mono",monospace}
+.dock li button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent)}
+.dock li button img{width:30px;height:22px;object-fit:cover;border-radius:4px}
+.dock li button i{position:absolute;top:-4px;right:-4px;display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--ink);color:var(--bg);font-style:normal;font-size:10px;transform:scale(0);transition:transform .2s}
+.dock li button:hover i,.dock li button:focus-visible i{transform:scale(1)}
+.dock .empty{color:var(--mute);font-size:13px;animation:none}
+.dock .act{display:flex;align-items:center;gap:8px;flex:none}
+.dock .act .btn{min-height:44px;border-radius:12px;font-size:14px}
+.dock .act .btn.pri[aria-disabled="true"]{opacity:.4;pointer-events:none}
+@media(max-width:639px){.dock .act .btn.pri{flex:1}}
+.fhero .trust-m{display:block}@media(min-width:1024px){.fhero .trust-m{display:none}.fhero .trust-d{display:flex}}.fhero .trust-d{display:none}
+@media(prefers-reduced-motion:reduce){.fdisp .ln,.fade,.board .ph{transition:none!important;transform:none!important;opacity:1!important;filter:none!important}.tile .pp{transition:none}.board .tile.kit .pp{transform:none}.btn.pri:after{display:none}}
+#boot .word{font-family:Archivo,Manrope,sans-serif;font-weight:800;font-stretch:118%;letter-spacing:-.045em;line-height:1;color:var(--ink)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.facts{margin-top:0}
+
+.lfit{overflow:hidden}.lf{display:block;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.tile .pp{background:#fff}.dock li button code{font:600 9px "Geist Mono",monospace;white-space:nowrap;max-width:72px;overflow:hidden;text-overflow:ellipsis}.dock li button{width:auto;min-width:40px;padding:0 8px}
+.how .view.live{aspect-ratio:auto;min-height:420px;display:block;padding:18px;background:var(--bg);overflow:hidden}
+.view.live .vp{display:grid;gap:14px}.view.live .vp.hidden{display:none}
+.ed{margin:0;padding:16px;font:13px/1.6 "JetBrains Mono",monospace;white-space:pre-wrap;color:var(--ink);min-height:160px}
+.view.live .preview iframe,.phonemini .preview iframe{width:100%;height:220px;border:0;background:#fff;border-radius:10px}
+.view.live .q label{display:flex;gap:8px;align-items:center;padding:6px 0}
+.mapmini{position:relative;height:440px;overflow:hidden;pointer-events:none;background:var(--bg)}
+.mapmini .mm-in{width:1100px;transform-origin:0 0;transform:scale(var(--ms,.55));padding:0 20px}
+.phonemini{display:grid;gap:10px;padding:12px;max-height:520px;overflow:hidden;background:var(--bg);border-radius:22px}
+.phonemini .card{padding:14px}.phonemini .ed{min-height:0;font-size:11px}.phonemini .preview iframe{height:120px}
 </style>
 </head>
 <body>
-<div id="boot"><div class="inner"><div class="ua-loader"></div><p>HTML Akademiya</p></div></div>
+<div id="boot" aria-hidden="true"><div class="veil"></div><div class="heat"></div><div class="stage"><div class="word"></div><p class="eyebrow"></p></div></div>
 <div class="demo-note" data-t="demoNote"></div>
-<header class="top"><div class="wrap">
-  <a class="logo" href="#home"><i>&lt;/&gt;</i>HTML Akademiya</a>
-  <nav class="main">
-    <a href="#home" data-t="navHome"></a><a href="#lessons" data-t="navLessons"></a><a href="#videos" data-t="navVideos"></a><a href="#ai" data-t="navAi"></a><a href="#pricing" data-t="navPricing"></a>
+<header class="top" id="hdr"><div class="wrap navw">
+  <a class="fg-logo" href="#home">HTML Akademiya<span class="ember">.</span></a>
+  <nav class="main" aria-label="Main">
+    <a href="#lessons" data-t="navLessons"></a>
+    <div class="dd" id="ddCourses"><button type="button" aria-expanded="false" aria-controls="ddPanel"><span data-t="navCourses"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="fg-panel" id="ddPanel"><ul class="clist" id="ddList"></ul><a class="all" href="#lessons" id="ddAll">x<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <a href="#videos" data-t="navVideos"></a><a href="#ai" data-t="navAi"></a><a href="#pricing" data-t="navPricing"></a>
   </nav>
   <div class="tools">
+    <form class="srch" id="srch" role="search"><button class="ibtn" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><input type="search" tabindex="-1" autocomplete="off"><ul class="sres hidden" id="sres"></ul></form>
     <select class="lang" id="lang" aria-label="Language"><option value="uz">UZ</option><option value="ru">RU</option><option value="en">EN</option></select>
-    <label class="ua-day" for="themeToggle" title="Day / Night">
-      <input id="themeToggle" type="checkbox" class="circle" aria-label="Day / Night">
-      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="moon svg"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg>
-      <div class="sun svg"><span class="dot"></span></div>
-    </label>
-    <button class="ua-btn type1" id="signinBtn"><span class="btn-txt" data-t="signin"></span></button>
+    <button class="ibtn" id="themeBtn" type="button" aria-label="Day / Night"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg></button>
+    <button class="ibtn" id="signinBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="sr" data-t="signin"></span></button>
     <div class="userchip hidden" id="userChip"><b id="uInit">A</b><span id="uName"></span><span class="plan-badge" id="uPlan"></span></div>
+    <button class="ibtn mbtn" id="mBtn" type="button" aria-expanded="false" aria-controls="mMenu" aria-label="Menu"></button>
   </div>
-</div></header>
+</div>
+<div class="mmenu hidden" id="mMenu"><a href="#home" data-t="navHome"></a><a href="#lessons" data-t="navLessons"></a><a href="#videos" data-t="navVideos"></a><a href="#ai" data-t="navAi"></a><a href="#pricing" data-t="navPricing"></a><a href="#login" data-t="signin"></a><div class="mrow"><select class="lang" id="lang2" aria-label="Language"><option value="uz">UZ</option><option value="ru">RU</option><option value="en">EN</option></select><button class="ibtn" id="themeBtn2" type="button" aria-label="Day / Night"></button></div><p data-t="navCourses"></p><ul class="clist" id="mCourses"></ul></div>
+</header>
 
 <main id="view" class="wrap"></main>
-<footer><div class="wrap" data-t="footer"></div></footer>
+<footer><div class="wrap foot" id="foot"></div></footer>
 
 <div class="modal hidden" id="modal"><div class="box"><button class="x" id="mClose" aria-label="Close">×</button><div id="mBody"></div></div></div>
 <div class="toast hidden" id="toast"></div>
@@ -408,133 +562,13 @@ html:not(.light) .ua-btn{--b-line:#38F2A1;--b-ink:#38F2A1;--b-fill:#38F2A1;--b-h
 const T0=performance.now();
 /* ---------- i18n ---------- */
 const I = {
-uz:{noAcc:"Hisobingiz yo'qmi?",orWith:"Yoki shular orqali kiring",back2:"Orqaga",socSoon:"{p} orqali kirish tez orada qo'shiladi",heroA:"HTML va CSS'ni o'rgan",heroB:"telefoningda",seeHow:"Qanday ishlaydi",sPerDay:"dars kuniga",worksIn:"Ishlaydi:",browser:"Brauzer",
-secA:"O'qish sen uchun",secB:"qulay qilingan",secLead:"Darslar, AI ustoz va video — hammasi bitta joyda, kuniga bir necha daqiqa.",more:"Batafsil",labs:["Darslar","Tekshiruv","AI ustoz","Video","Motivatsiya","Tillar"],
-wsA:"Kod yozish uchun",wsB:"o'z ish joying",wsLead:"Chapda topshiriq, o'ngda editor va jonli natija. Xato bo'lsa, qaysi qator ekanini darrov ko'rsatadi.",
-liveA:"Yozasan —",liveB:"darrov ko'rasan",liveLead:"Har bir harf natijada shu zahoti paydo bo'ladi.",xpK:"Sizning XP",xpN:"har dars uchun 60 XP gacha",stK:"Streak",stN:"kun ketma-ket",
-tgChoose:"Telegram orqali olish",freeStart:"Bepul boshlash",tgNote:"\"Telegram orqali olish\" tugmasi @lowgx bilan chat ochadi — xabar tayyor yozilgan bo'ladi, faqat yuborasiz.",tgMsg:"Salom! HTML Akademiya'ning {p} tarifini olmoqchiman. Qanday to'lasam bo'ladi?",demoNote:"Demo versiya · Tarifni Telegram orqali olasiz.",navHome:"Bosh sahifa",navLessons:"Darslar",navVideos:"Video darslar",navAi:"AI ustoz",navPricing:"Tariflar",signin:"Kirish",
-footer:"© 2026 HTML Akademiya · Telegram: @html_akademiya_uz_bot",
-heroTitle:"HTML va CSS'ni telefoningda o'rgan",heroLead:"Har kuni qisqa dars, o'zing kod yozasan, natijani darrov ko'rasan. AI ustoz savollaringga javob beradi, video darslar tushuntirib beradi.",
-start:"Boshlash",seePlans:"Tariflarni ko'rish",sLessons:"dars",sLangs:"til",sLevels:"daraja",
-featTitle:"Nima bor?",f1:"Amaliy darslar",f1d:"60 ta dars: avval HTML, keyin CSS. Har 3 darsda qiyinlik oshadi.",f2:"Kod tekshiruvi",f2d:"Yozgan kodingiz darhol tekshiriladi, xato qayerdaligini ko'rsatadi.",
-f3:"AI ustoz",f3d:"Tushunmagan joyingni so'ra — kodingni ko'rib, oddiy tilda tushuntiradi.",f4:"Video darslar",f4d:"Kod qanday yozilishini qadamma-qadam ko'rsatadigan video darslar.",
-f5:"Streak va XP",f5d:"Har kuni o'qisang, streak oshadi. Ball yig'ib, o'zingni sinab ko'r.",f6:"3 tilda",f6d:"O'zbek, rus va ingliz tillarida to'liq tarjima.",
-lessonsTitle:"Darslar",yourProgress:"Sizning natijangiz",lvl:"Daraja",locked:"Yopiq",done:"Bajarildi",
-theory:"Nazariya",example:"Namuna",task:"Topshiriq",check:"Tekshirish",reset:"Qaytadan",solution:"Yechimni ko'rsatish",askAi:"AI ustozdan so'rash",preview:"Natija",
-tabHint:"Tab — avtomatik yozish",allOk:"Zo'r! Endi testga o'ting.",notYet:"Hali hammasi to'g'ri emas — qizil qatorlarni tuzating.",quiz:"Test",finish:"Darsni tugatish",
-answerAll:"Hamma savollarga javob bering",lessonDone:"Dars tugadi! +{x} XP",back:"← Darslar",next:"Keyingi dars →",
-lockPlan:"Bu dars {p} tarifida ochiladi",lockDay:"Bugungi limit tugadi ({n} dars). Ertaga davom eting yoki tarifni oshiring.",lockOrder:"Avval oldingi darsni tugating",
-videosTitle:"Video darslar",videosLead:"Har bir mavzu bo'yicha YouTube'dan tanlangan video dars — o'zbek tilida.",play:"Ko'rish",pause:"Pauza",replay:"Qayta",voiceOff:"Ovozli tushuntirish sayt botning serveridan ochilganda ishlaydi. Bu yerda subtitrlar bilan ko'ring.",
-aiTitle:"AI ustoz",aiLead:"HTML yoki CSS bo'yicha istalgan savolni ber. Kodingni yubor — xatoni topib, tushuntirib beradi.",aiPh:"Savolingizni yozing…",send:"Yuborish",
-aiHello:"Salom! Men HTML Akademiya'ning AI ustoziman. Qaysi mavzu tushunarsiz bo'ldi?",aiOff:"AI ustoz hali ulanmagan: serverda API kalit sozlanmagan.",aiLimit:"Bugungi AI savollar limiti tugadi ({n}). Tarifni oshiring.",aiErr:"Javob olib bo'lmadi, birozdan keyin urinib ko'ring.",left:"Bugun qoldi: {n}",
-c1:"<div> va <span> farqi nima?",c2:"Flexbox'ni oddiy tushuntir",c3:"Rasmni qanday markazga qo'yaman?",
-pricingTitle:"Tariflar",pricingLead:"Bepul boshlang, tayyor bo'lganda kuchliroq tarifga o'ting.",perMonth:"/oy",current:"Joriy tarif",choose:"Tanlash",free:"Bepul",popular:"Ommabop",
-payMethods:"To'lov usullari",
-pFree:["HTML kursining 10 ta darsi","Kuniga 3 ta dars","3 ta video dars","AI ustoz: kuniga 5 savol","CSS kursi","Sertifikat"],
-pPrem:["60 ta dars (HTML + CSS)","Kuniga 5 ta dars","Barcha video darslar","AI ustoz: kuniga 50 savol","Kod tekshiruvi va yechimlar","Sertifikat"],
-pAlpha:["Premium'dagi hamma narsa","Kunlik limitsiz darslar","AI ustoz: limitsiz","Kodingni AI to'liq tahlil qiladi","Kurs tugagach sertifikat","Yangi kurslarga birinchi bo'lib kirish"],
-login:"Kirish",signup:"Ro'yxatdan o'tish",name:"Ism",email:"Email",password:"Parol",letsgo:"Kirish!",confirm:"Tasdiqlash!",
-errEmail:"Email noto'g'ri",errPass:"Parol kamida 6 belgi",errName:"Ismingizni yozing",errNoUser:"Bunday foydalanuvchi yo'q — ro'yxatdan o'ting",welcome:"Xush kelibsiz, {n}!",
-holder:"Karta egasining ismi",holderPh:"Ism Familiya",cardNo:"Karta raqami",exp:"Amal qilish muddati",cvv:"CVV",phone:"Kartaga ulangan telefon",smsCode:"SMS kod",
-pay:"To'lash",payTotal:"Jami",paying:"To'lov qilinmoqda…",payDemo:"Demo: karta ma'lumotlari hech qayerga yuborilmaydi va saqlanmaydi.",smsSent:"Demo: SMS kod yuborildi deb hisoblanadi — istalgan 6 ta raqamni kiriting.",
-eHolder:"Karta egasining ismini yozing",eCard:"Karta raqami noto'g'ri",eType:"Visa, Mastercard, Uzcard yoki Humo kartasini kiriting",eExp:"Muddat noto'g'ri yoki o'tib ketgan",eCvv:"CVV 3 ta raqam",ePhone:"Telefon raqami noto'g'ri",eSms:"6 xonali kodni kiriting",
-paid:"To'lov qabul qilindi! {p} tarifi faollashdi.",needLogin:"Avval tizimga kiring",
-profile:"Profil",plan:"Tarif",xp:"XP",streak:"Streak (kun)",completed:"Tugatilgan darslar",logout:"Chiqish",upgrade:"Tarifni oshirish",today:"Bugun"},
-ru:{noAcc:"Нет аккаунта?",orWith:"Или войдите через",back2:"Назад",socSoon:"Вход через {p} скоро появится",heroA:"Учи HTML и CSS",heroB:"с телефона",seeHow:"Как это работает",sPerDay:"урока в день",worksIn:"Работает:",browser:"Браузер",
-secA:"Учёба, которая",secB:"подстроится под тебя",secLead:"Уроки, AI-учитель и видео — всё в одном месте, по несколько минут в день.",more:"Подробнее",labs:["Уроки","Проверка","AI-учитель","Видео","Мотивация","Языки"],
-wsA:"Своё рабочее место",wsB:"для кода",wsLead:"Слева задание, справа редактор и живой результат. Если есть ошибка, сразу видно, в каком пункте.",
-liveA:"Пишешь —",liveB:"сразу видишь",liveLead:"Каждый символ тут же появляется в результате.",xpK:"Твой XP",xpN:"до 60 XP за урок",stK:"Серия",stN:"дней подряд",
-tgChoose:"Оформить через Telegram",freeStart:"Начать бесплатно",tgNote:"Кнопка «Оформить через Telegram» открывает чат с @lowgx — сообщение уже будет написано, останется отправить.",tgMsg:"Здравствуйте! Хочу оформить тариф {p} в HTML Akademiya. Как можно оплатить?",demoNote:"Демо-версия · Тариф оформляется через Telegram.",navHome:"Главная",navLessons:"Уроки",navVideos:"Видеоуроки",navAi:"AI-учитель",navPricing:"Тарифы",signin:"Войти",
-footer:"© 2026 HTML Akademiya · Telegram: @html_akademiya_uz_bot",
-heroTitle:"Учи HTML и CSS прямо с телефона",heroLead:"Каждый день короткий урок: сам пишешь код и сразу видишь результат. AI-учитель отвечает на вопросы, видеоуроки всё объясняют.",
-start:"Начать",seePlans:"Смотреть тарифы",sLessons:"уроков",sLangs:"языка",sLevels:"уровней",
-featTitle:"Что внутри?",f1:"Практические уроки",f1d:"60 уроков: сначала HTML, потом CSS. Каждые 3 урока сложность растёт.",f2:"Проверка кода",f2d:"Твой код проверяется сразу и показывает, где ошибка.",
-f3:"AI-учитель",f3d:"Спроси, что непонятно, — он посмотрит твой код и объяснит простыми словами.",f4:"Видеоуроки",f4d:"Видео шаг за шагом показывают, как пишется код.",
-f5:"Серия и XP",f5d:"Занимайся каждый день — серия растёт. Набирай очки и проверяй себя.",f6:"На 3 языках",f6d:"Полный перевод на узбекский, русский и английский.",
-lessonsTitle:"Уроки",yourProgress:"Твой прогресс",lvl:"Уровень",locked:"Закрыт",done:"Пройден",
-theory:"Теория",example:"Пример",task:"Задание",check:"Проверить",reset:"Сбросить",solution:"Показать решение",askAi:"Спросить AI-учителя",preview:"Результат",
-tabHint:"Tab — автодополнение",allOk:"Отлично! Теперь переходи к тесту.",notYet:"Пока не всё верно — исправь красные пункты.",quiz:"Тест",finish:"Завершить урок",
-answerAll:"Ответь на все вопросы",lessonDone:"Урок пройден! +{x} XP",back:"← Уроки",next:"Следующий урок →",
-lockPlan:"Этот урок открывается в тарифе {p}",lockDay:"Дневной лимит исчерпан ({n} уроков). Продолжи завтра или повысь тариф.",lockOrder:"Сначала пройди предыдущий урок",
-videosTitle:"Видеоуроки",videosLead:"Видеоурок с YouTube по каждой теме — на русском языке.",play:"Смотреть",pause:"Пауза",replay:"Заново",voiceOff:"Озвучка работает, когда сайт открыт с сервера бота. Здесь смотри с субтитрами.",
-aiTitle:"AI-учитель",aiLead:"Задай любой вопрос по HTML или CSS. Пришли свой код — он найдёт ошибку и объяснит.",aiPh:"Напиши свой вопрос…",send:"Отправить",
-aiHello:"Привет! Я AI-учитель HTML Akademiya. Какая тема осталась непонятной?",aiOff:"AI-учитель ещё не подключён: на сервере не настроен API-ключ.",aiLimit:"Дневной лимит вопросов AI исчерпан ({n}). Повысь тариф.",aiErr:"Не удалось получить ответ, попробуй чуть позже.",left:"Осталось сегодня: {n}",
-c1:"Чем <div> отличается от <span>?",c2:"Объясни Flexbox простыми словами",c3:"Как поставить картинку по центру?",
-pricingTitle:"Тарифы",pricingLead:"Начни бесплатно и переходи на тариф мощнее, когда будешь готов.",perMonth:"/мес",current:"Текущий тариф",choose:"Выбрать",free:"Бесплатно",popular:"Популярный",
-payMethods:"Способы оплаты",
-pFree:["10 уроков курса HTML","3 урока в день","3 видеоурока","AI-учитель: 5 вопросов в день","Курс CSS","Сертификат"],
-pPrem:["60 уроков (HTML + CSS)","5 уроков в день","Все видеоуроки","AI-учитель: 50 вопросов в день","Проверка кода и решения","Сертификат"],
-pAlpha:["Всё, что есть в Premium","Уроки без дневного лимита","AI-учитель без ограничений","Полный AI-разбор твоего кода","Сертификат после курса","Ранний доступ к новым курсам"],
-login:"Вход",signup:"Регистрация",name:"Имя",email:"Email",password:"Пароль",letsgo:"Войти!",confirm:"Готово!",
-errEmail:"Неверный email",errPass:"Пароль — минимум 6 символов",errName:"Введи имя",errNoUser:"Такого пользователя нет — зарегистрируйся",welcome:"Добро пожаловать, {n}!",
-holder:"Имя владельца карты",holderPh:"Имя Фамилия",cardNo:"Номер карты",exp:"Срок действия",cvv:"CVV",phone:"Телефон, привязанный к карте",smsCode:"Код из SMS",
-pay:"Оплатить",payTotal:"Итого",paying:"Идёт оплата…",payDemo:"Демо: данные карты никуда не отправляются и не сохраняются.",smsSent:"Демо: считаем, что SMS-код отправлен — введи любые 6 цифр.",
-eHolder:"Введи имя владельца карты",eCard:"Неверный номер карты",eType:"Введи карту Visa, Mastercard, Uzcard или Humo",eExp:"Неверный или истёкший срок",eCvv:"CVV — 3 цифры",ePhone:"Неверный номер телефона",eSms:"Введи 6-значный код",
-paid:"Оплата прошла! Тариф {p} активирован.",needLogin:"Сначала войди в аккаунт",
-profile:"Профиль",plan:"Тариф",xp:"XP",streak:"Серия (дней)",completed:"Пройдено уроков",logout:"Выйти",upgrade:"Повысить тариф",today:"Сегодня"},
-en:{noAcc:"Don't have an Account?",orWith:"Or sign in with",back2:"Back",socSoon:"Sign-in with {p} is coming soon",heroA:"Learn HTML & CSS",heroB:"on your phone",seeHow:"See how it works",sPerDay:"lessons a day",worksIn:"Works in:",browser:"Browser",
-secA:"Built around",secB:"the way you learn",secLead:"Lessons, an AI tutor and videos — all in one place, a few minutes a day.",more:"Learn more",labs:["Lessons","Checking","AI tutor","Video","Motivation","Languages"],
-wsA:"A workspace",wsB:"for your code",wsLead:"The task on the left, the editor and live result on the right. If something's wrong, you see exactly which item.",
-liveA:"Type it —",liveB:"see it instantly",liveLead:"Every character shows up in the result right away.",xpK:"Your XP",xpN:"up to 60 XP per lesson",stK:"Streak",stN:"days in a row",
-tgChoose:"Get it via Telegram",freeStart:"Start for free",tgNote:"\"Get it via Telegram\" opens a chat with @lowgx — the message is already written, you just send it.",tgMsg:"Hi! I'd like to get the {p} plan of HTML Akademiya. How can I pay?",demoNote:"Demo version · Plans are purchased via Telegram.",navHome:"Home",navLessons:"Lessons",navVideos:"Video lessons",navAi:"AI tutor",navPricing:"Pricing",signin:"Sign in",
-footer:"© 2026 HTML Akademiya · Telegram: @html_akademiya_uz_bot",
-heroTitle:"Learn HTML and CSS right on your phone",heroLead:"A short lesson every day: you write the code yourself and see the result instantly. The AI tutor answers your questions and video lessons explain everything.",
-start:"Get started",seePlans:"See plans",sLessons:"lessons",sLangs:"languages",sLevels:"levels",
-featTitle:"What's inside?",f1:"Hands-on lessons",f1d:"60 lessons: HTML first, then CSS. Difficulty rises every 3 lessons.",f2:"Code checking",f2d:"Your code is checked instantly and shows exactly what's wrong.",
-f3:"AI tutor",f3d:"Ask about anything unclear — it reads your code and explains it in plain words.",f4:"Video lessons",f4d:"Videos that show step by step how the code is written.",
-f5:"Streak and XP",f5d:"Study every day to grow your streak. Earn points and test yourself.",f6:"3 languages",f6d:"Fully translated into Uzbek, Russian and English.",
-lessonsTitle:"Lessons",yourProgress:"Your progress",lvl:"Level",locked:"Locked",done:"Done",
-theory:"Theory",example:"Example",task:"Task",check:"Check",reset:"Reset",solution:"Show solution",askAi:"Ask the AI tutor",preview:"Result",
-tabHint:"Tab — autocomplete",allOk:"Great! Now go to the quiz.",notYet:"Not quite yet — fix the red items.",quiz:"Quiz",finish:"Finish lesson",
-answerAll:"Answer all the questions",lessonDone:"Lesson complete! +{x} XP",back:"← Lessons",next:"Next lesson →",
-lockPlan:"This lesson unlocks with the {p} plan",lockDay:"Daily limit reached ({n} lessons). Continue tomorrow or upgrade your plan.",lockOrder:"Finish the previous lesson first",
-videosTitle:"Video lessons",videosLead:"A hand-picked YouTube lesson for every topic — in English.",play:"Watch",pause:"Pause",replay:"Replay",voiceOff:"Voice-over works when the site is opened from the bot's server. Here, watch with subtitles.",
-aiTitle:"AI tutor",aiLead:"Ask anything about HTML or CSS. Send your code and it will find the mistake and explain it.",aiPh:"Type your question…",send:"Send",
-aiHello:"Hi! I'm the HTML Akademiya AI tutor. Which topic felt unclear?",aiOff:"The AI tutor isn't connected yet: the API key isn't set on the server.",aiLimit:"Today's AI question limit is used up ({n}). Upgrade your plan.",aiErr:"Couldn't get an answer, please try again shortly.",left:"Left today: {n}",
-c1:"What's the difference between <div> and <span>?",c2:"Explain Flexbox simply",c3:"How do I center an image?",
-pricingTitle:"Pricing",pricingLead:"Start for free and move to a stronger plan when you're ready.",perMonth:"/mo",current:"Current plan",choose:"Choose",free:"Free",popular:"Popular",
-payMethods:"Payment methods",
-pFree:["10 lessons of the HTML course","3 lessons a day","3 video lessons","AI tutor: 5 questions a day","CSS course","Certificate"],
-pPrem:["60 lessons (HTML + CSS)","5 lessons a day","All video lessons","AI tutor: 50 questions a day","Code checking and solutions","Certificate"],
-pAlpha:["Everything in Premium","No daily lesson limit","Unlimited AI tutor","Full AI review of your code","Certificate when you finish","Early access to new courses"],
-login:"Sign in",signup:"Create Account",name:"Name",email:"Email",password:"Password",letsgo:"Let's go!",confirm:"Confirm!",
-errEmail:"Invalid email",errPass:"Password must be at least 6 characters",errName:"Enter your name",errNoUser:"No such user — please sign up",welcome:"Welcome, {n}!",
-holder:"Card holder full name",holderPh:"Enter your full name",cardNo:"Card Number",exp:"Expiry Date",cvv:"CVV",phone:"Phone linked to the card",smsCode:"SMS code",
-pay:"Checkout",payTotal:"Total",paying:"Processing payment…",payDemo:"Demo: card details are not sent anywhere and are not stored.",smsSent:"Demo: we pretend an SMS code was sent — enter any 6 digits.",
-eHolder:"Enter the card holder's name",eCard:"Invalid card number",eType:"Enter a Visa, Mastercard, Uzcard or Humo card",eExp:"Invalid or expired date",eCvv:"CVV is 3 digits",ePhone:"Invalid phone number",eSms:"Enter the 6-digit code",
-paid:"Payment received! The {p} plan is now active.",needLogin:"Please sign in first",
-profile:"Profile",plan:"Plan",xp:"XP",streak:"Streak (days)",completed:"Lessons completed",logout:"Log out",upgrade:"Upgrade plan",today:"Today"}};
+uz:{"tgChoose":"Telegram orqali olish","freeStart":"Bepul boshlash","tgNote":"\"Telegram orqali olish\" tugmasi @lowgx bilan chat ochadi — xabar tayyor yozilgan bo'ladi, faqat yuborasiz.","tgMsg":"Salom! HTML Akademiya'ning {p} tarifini olmoqchiman. Qanday to'lasam bo'ladi?","demoNote":"Demo versiya · Tarifni Telegram orqali olasiz.","navHome":"Bosh sahifa","navLessons":"Darslar","navVideos":"Video darslar","navAi":"AI ustoz","navPricing":"Tariflar","signin":"Kirish","start":"Boshlash","lessonsTitle":"Darslar","yourProgress":"Sizning natijangiz","lvl":"Daraja","locked":"Yopiq","done":"Bajarildi","theory":"Nazariya","example":"Namuna","task":"Topshiriq","check":"Tekshirish","reset":"Qaytadan","solution":"Yechimni ko'rsatish","askAi":"AI ustozdan so'rash","preview":"Natija","tabHint":"Tab — avtomatik yozish","allOk":"Zo'r! Endi testga o'ting.","notYet":"Hali hammasi to'g'ri emas — qizil qatorlarni tuzating.","quiz":"Test","finish":"Darsni tugatish","answerAll":"Hamma savollarga javob bering","lessonDone":"Dars tugadi! +{x} XP","back":"← Darslar","next":"Keyingi dars →","lockPlan":"Bu dars {p} tarifida ochiladi","lockDay":"Bugungi limit tugadi ({n} dars). Ertaga davom eting yoki tarifni oshiring.","lockOrder":"Avval oldingi darsni tugating","videosTitle":"Video darslar","videosLead":"Har bir mavzu bo'yicha YouTube'dan tanlangan video dars — o'zbek tilida.","play":"Ko'rish","aiTitle":"AI ustoz","aiLead":"HTML yoki CSS bo'yicha istalgan savolni ber. Kodingni yubor — xatoni topib, tushuntirib beradi.","aiPh":"Savolingizni yozing…","send":"Yuborish","aiHello":"Salom! Men HTML Akademiya'ning AI ustoziman. Qaysi mavzu tushunarsiz bo'ldi?","aiOff":"AI ustoz hali ulanmagan: serverda API kalit sozlanmagan.","aiLimit":"Bugungi AI savollar limiti tugadi ({n}). Tarifni oshiring.","aiErr":"Javob olib bo'lmadi, birozdan keyin urinib ko'ring.","left":"Bugun qoldi: {n}","c1":"<div> va <span> farqi nima?","c2":"Flexbox'ni oddiy tushuntir","c3":"Rasmni qanday markazga qo'yaman?","perMonth":"/oy","current":"Joriy tarif","free":"Bepul","popular":"Ommabop","payMethods":"To'lov usullari","login":"Kirish","signup":"Ro'yxatdan o'tish","name":"Ism","password":"Parol","errPass":"Parol kamida 6 belgi","errName":"Ismingizni yozing","welcome":"Xush kelibsiz, {n}!","phone":"Kartaga ulangan telefon","ePhone":"Telefon raqamni to'liq kiriting","profile":"Profil","plan":"Tarif","xp":"XP","streak":"Streak (kun)","completed":"Tugatilgan darslar","logout":"Chiqish","upgrade":"Tarifni oshirish","today":"Bugun","plA":"Bepul boshlang.","plB":"Kerak bo'lsa — kuchaytiring.","tabIn":"Kirish","tabTry":"Sinab ko'rish","aTitle":"HTML Akademiya'ga kirish","phoneL":"Telefon raqam","passL":"Parol","forgot":"Parolni unutdingizmi?","passPh":"Parolni kiriting","otherW":"Yoki boshqa usul bilan","noAcc3":"Akkauntingiz yo'qmi?","regFree":"Bepul ro'yxatdan o'tish","backLogin":"Kirishga qaytish","regT":"Bepul ro'yxatdan o'tish","regLead":"Eng tezi — Telegram orqali. Yoki telefon raqam va parol bilan.","tgReg":"Telegram orqali","ggReg":"Google bilan","orPhone":"yoki telefon raqam va parol bilan","passMin":"Kamida 6 belgi","pass2":"Parolni takrorlang","agree":"Foydalanish shartlariga roziman","eAgree":"Shartlarga rozilik bering","eMatch":"Parollar bir xil emas","eNoPhone":"Bu raqam bilan akkaunt yo'q — ro'yxatdan o'ting","backSite":"Saytga","tryT":"Ro'yxatdan o'tmasdan sinab ko'ring","tryLead":"Darslar, video va AI ustoz — darhol. Natijangiz shu brauzerda saqlanadi.","tryBtn":"Mehmon sifatida boshlash","forgotMsg":"Parolni tiklash uchun Telegram botimizga yozing","socSoon2":"Google orqali kirish tez orada","terms2":"Davom etish orqali foydalanish shartlariga rozilik bildirasiz.","h4a":"Kod yozishni ","h4b":"telefoningizda","h4c":" o'rganing","h4lead":"HTML Akademiya — HTML va CSS bo'yicha qisqa amaliy darslar. Har bir darsda kodni o'zingiz yozasiz, natijani shu zahoti ko'rasiz, tizim esa uni tekshiradi.","h4go":"O'rganishni boshlash","h4how":"Qanday ishlaydi","h4w":["Telegram botda","Brauzerda","Kompyutersiz"],"h4cap":"Haqiqiy dars ekrani — CSS kursi, 28-dars: «{t}».","fc":[["60","ta dars: HTML 30 + CSS 30"],["20","daraja, oddiydan murakkabga"],["3","til: o'zbek, rus, ingliz"],["0 so'm","boshlash uchun — Free tarif"]],"s1":"Qanday ishlaydi","s1t":"To'rt qadam. Har bir darsda.","s1p":"Har bir dars bir xil tartibda: nazariyadan amaliyotgacha — bitta ekranda.","steps":[["Darsni o'rganish","Qisqa nazariya va tayyor misol. Bitta mavzu, ortiqcha gapsiz."],["Kod yozish","Topshiriqni muharrirda o'zingiz yozasiz — nusxa ko'chirmasdan."],["Natijani ko'rish","Yozgan kodingiz shu zahoti sahifa ko'rinishida chiqadi."],["Bilimni tekshirish","Tizim kodni tekshiradi, keyin qisqa test. To'g'ri bajarsangiz — XP."]],"s2":"Kurslar","s2t":"Ikki kurs. 60 ta dars.","s2p":"Avval HTML — sahifa tuzilishi, keyin CSS — dizayn. Darslar ketma-ket ochiladi.","avail":"Mavjud","cHtml":"30 dars · 10 daraja · Free tarifda birinchi 10 dars ochiq","cCss":"30 dars · 10 daraja · Premium va Alpha tariflarida","cHtmlD":"Sahifa tuzilishi: matn, havolalar, rasmlar, ro'yxatlar, jadvallar, formalar.","cCssD":"Ko'rinish: ranglar, shriftlar, bo'shliqlar, Flexbox, Grid, animatsiya.","openC":"Kursni ochish","s3":"Amaliyot","s3t":"Video kurs emas. Haqiqiy muharrir.","s3p":"Darslarda aynan shunday ishlaysiz. Chapdagi kodni o'zgartirib ko'ring — natija o'ng tomonda yangilanadi.","s3l":["Kod va natija yonma-yon","Har bir topshiriq avtomatik tekshiriladi","Tushunmagan joyni AI ustozdan so'raysiz"],"s3go":"Birinchi darsni ochish","edLbl":"Muharrir","resLbl":"Natija","prT":"Kurs davomida quradigan sahifalar","prP":"Quyidagilar — darslardagi haqiqiy topshiriqlar natijasi.","lessonN":"{n}-dars","s4":"Natijalar","s4t":"Har kuni ozgina — va buni ko'rib turasiz.","s4p":"XP, kunlik seriya va kurs bo'yicha progress har bir dars bilan yangilanadi. Quyida — sizning hozirgi natijangiz.","mXp":"XP","mXpD":"Har bir tugatilgan dars uchun beriladi","mSt":"Kunlik seriya","mStD":"Ketma-ket o'qilgan kunlar","mDone":"Kurs progressi","lbNote":"Reyting (top-20) Telegram botda ishlaydi — u yerda boshqa o'quvchilar bilan XP bo'yicha solishtirasiz.","lbBot":"Botni ochish","mapCap":"Darslar xaritasi: tugatilgan, ochiq va yopiq darslar.","s5":"Tariflar","s6":"Savollar","s6t":"Ko'p so'raladigan savollar","who":{"free":"Boshlash va sinab ko'rish uchun","premium":"Ikkala kursni to'liq o'tish uchun","alpha":"Kunlik cheklovlarsiz o'qish uchun"},"rows":["Darslar","Kuniga darslar","Video darslar","AI ustoz"],"pv":{"free":["1–10 (HTML)","3 ta","3 ta","kuniga 5 savol"],"premium":["Barcha 60 ta","5 ta","Hammasi","kuniga 50 savol"],"alpha":["Barcha 60 ta","Cheklovsiz","Hammasi","Cheklovsiz"]},"faq":[["Platforma qanday ishlaydi?","Har bir dars: qisqa nazariya, misol, topshiriq va test. Kodni muharrirda yozasiz, natijani darhol ko'rasiz, tizim uni tekshiradi va XP beradi."],["Qaysi kurslar bor?","Hozir ikkita: HTML (30 dars) va CSS (30 dars). Darslar o'zbek, rus va ingliz tillarida."],["Telefonda kod yozish qulaymi?","Ha. Muharrir va natija telefon ekraniga moslashtirilgan — kompyuter shart emas. Telegram botda ham, brauzerda ham ishlaydi."],["Tariflar nimasi bilan farq qiladi?","Free: HTML'ning birinchi 10 darsi, kuniga 3 dars, 3 video, AI ustozga kuniga 5 savol. Premium: barcha 60 dars, kuniga 5 dars, barcha videolar, kuniga 50 savol. Alpha: kunlik cheklovlarsiz. Tarif Telegram orqali olinadi."],["Progressim saqlanadimi?","Saytda progress shu brauzerda saqlanadi. Telegram botdagi progress bot hisobingizda saqlanadi — hozircha ular o'zaro sinxronlanmaydi."]],"endT":"Birinchi darsdan boshlang.","endP":"Ro'yxatdan o'tmasdan ham sinab ko'rish mumkin.","fAbout":"HTML va CSS'ni telefonda amaliy o'rganish uchun platforma. Telegram Mini App va veb-versiya.","fPlat":"Platforma","fTg":"Telegram","fBot":"O'quv bot","fBuy":"Tarif olish","fDemo":"Veb-versiya: progress shu brauzerda saqlanadi.","artQ":"Har bir darsda — o'zingiz yozgan kod.","artS":"Haqiqiy dars ekrani, telefonda."},
+ru:{"tgChoose":"Оформить через Telegram","freeStart":"Начать бесплатно","tgNote":"Кнопка «Оформить через Telegram» открывает чат с @lowgx — сообщение уже будет написано, останется отправить.","tgMsg":"Здравствуйте! Хочу оформить тариф {p} в HTML Akademiya. Как можно оплатить?","demoNote":"Демо-версия · Тариф оформляется через Telegram.","navHome":"Главная","navLessons":"Уроки","navVideos":"Видеоуроки","navAi":"AI-учитель","navPricing":"Тарифы","signin":"Войти","start":"Начать","lessonsTitle":"Уроки","yourProgress":"Твой прогресс","lvl":"Уровень","locked":"Закрыт","done":"Пройден","theory":"Теория","example":"Пример","task":"Задание","check":"Проверить","reset":"Сбросить","solution":"Показать решение","askAi":"Спросить AI-учителя","preview":"Результат","tabHint":"Tab — автодополнение","allOk":"Отлично! Теперь переходи к тесту.","notYet":"Пока не всё верно — исправь красные пункты.","quiz":"Тест","finish":"Завершить урок","answerAll":"Ответь на все вопросы","lessonDone":"Урок пройден! +{x} XP","back":"← Уроки","next":"Следующий урок →","lockPlan":"Этот урок открывается в тарифе {p}","lockDay":"Дневной лимит исчерпан ({n} уроков). Продолжи завтра или повысь тариф.","lockOrder":"Сначала пройди предыдущий урок","videosTitle":"Видеоуроки","videosLead":"Видеоурок с YouTube по каждой теме — на русском языке.","play":"Смотреть","aiTitle":"AI-учитель","aiLead":"Задай любой вопрос по HTML или CSS. Пришли свой код — он найдёт ошибку и объяснит.","aiPh":"Напиши свой вопрос…","send":"Отправить","aiHello":"Привет! Я AI-учитель HTML Akademiya. Какая тема осталась непонятной?","aiOff":"AI-учитель ещё не подключён: на сервере не настроен API-ключ.","aiLimit":"Дневной лимит вопросов AI исчерпан ({n}). Повысь тариф.","aiErr":"Не удалось получить ответ, попробуй чуть позже.","left":"Осталось сегодня: {n}","c1":"Чем <div> отличается от <span>?","c2":"Объясни Flexbox простыми словами","c3":"Как поставить картинку по центру?","perMonth":"/мес","current":"Текущий тариф","free":"Бесплатно","popular":"Популярный","payMethods":"Способы оплаты","login":"Вход","signup":"Регистрация","name":"Имя","password":"Пароль","errPass":"Пароль — минимум 6 символов","errName":"Введи имя","welcome":"Добро пожаловать, {n}!","phone":"Телефон, привязанный к карте","ePhone":"Введите номер полностью","profile":"Профиль","plan":"Тариф","xp":"XP","streak":"Серия (дней)","completed":"Пройдено уроков","logout":"Выйти","upgrade":"Повысить тариф","today":"Сегодня","plA":"Начните бесплатно.","plB":"Когда нужно — усильте.","tabIn":"Вход","tabTry":"Попробовать","aTitle":"Вход в HTML Akademiya","phoneL":"Номер телефона","passL":"Пароль","forgot":"Забыли пароль?","passPh":"Введите пароль","otherW":"Или другим способом","noAcc3":"Нет аккаунта?","regFree":"Бесплатная регистрация","backLogin":"Назад ко входу","regT":"Бесплатная регистрация","regLead":"Быстрее всего — через Telegram. Или по номеру телефона и паролю.","tgReg":"Через Telegram","ggReg":"Через Google","orPhone":"или по номеру телефона и паролю","passMin":"Минимум 6 символов","pass2":"Повторите пароль","agree":"Согласен с условиями использования","eAgree":"Подтвердите согласие с условиями","eMatch":"Пароли не совпадают","eNoPhone":"Аккаунта с этим номером нет — зарегистрируйтесь","backSite":"На сайт","tryT":"Попробуйте без регистрации","tryLead":"Уроки, видео и AI-учитель — сразу. Прогресс сохранится в этом браузере.","tryBtn":"Продолжить как гость","forgotMsg":"Чтобы восстановить пароль, напишите нашему Telegram-боту","socSoon2":"Вход через Google скоро появится","terms2":"Продолжая, вы соглашаетесь с условиями использования.","h4a":"Учитесь писать код ","h4b":"на телефоне","h4c":"","h4lead":"HTML Akademiya — короткие практические уроки по HTML и CSS. В каждом уроке вы сами пишете код, сразу видите результат, а система его проверяет.","h4go":"Начать обучение","h4how":"Как это работает","h4w":["В Telegram-боте","В браузере","Без компьютера"],"h4cap":"Настоящий экран урока — курс CSS, урок 28: «{t}».","fc":[["60","уроков: HTML 30 + CSS 30"],["20","уровней, от простого к сложному"],["3","языка: узбекский, русский, английский"],["0 сум","чтобы начать — тариф Free"]],"s1":"Как это работает","s1t":"Четыре шага. В каждом уроке.","s1p":"Каждый урок устроен одинаково: от теории до практики — на одном экране.","steps":[["Изучите урок","Короткая теория и готовый пример. Одна тема, без воды."],["Напишите код","Задание вы пишете сами в редакторе — без копирования."],["Посмотрите результат","Ваш код сразу превращается в страницу."],["Проверьте знания","Система проверяет код, затем короткий тест. Всё верно — получаете XP."]],"s2":"Курсы","s2t":"Два курса. 60 уроков.","s2p":"Сначала HTML — структура страницы, затем CSS — оформление. Уроки открываются по порядку.","avail":"Доступен","cHtml":"30 уроков · 10 уровней · на тарифе Free открыты первые 10","cCss":"30 уроков · 10 уровней · на тарифах Premium и Alpha","cHtmlD":"Структура страницы: текст, ссылки, картинки, списки, таблицы, формы.","cCssD":"Оформление: цвета, шрифты, отступы, Flexbox, Grid, анимация.","openC":"Открыть курс","s3":"Практика","s3t":"Не видеокурс. Настоящий редактор.","s3p":"Именно так вы работаете на уроках. Измените код слева — результат справа обновится.","s3l":["Код и результат рядом","Каждое задание проверяется автоматически","Непонятное можно спросить у AI-учителя"],"s3go":"Открыть первый урок","edLbl":"Редактор","resLbl":"Результат","prT":"Страницы, которые вы соберёте на курсе","prP":"Это результаты настоящих заданий из уроков.","lessonN":"Урок {n}","s4":"Прогресс","s4t":"Понемногу каждый день — и это видно.","s4p":"XP, ежедневная серия и прогресс курса обновляются после каждого урока. Ниже — ваш текущий результат.","mXp":"XP","mXpD":"Начисляется за каждый пройденный урок","mSt":"Серия","mStD":"Дней подряд с уроком","mDone":"Прогресс курса","lbNote":"Рейтинг (топ-20) работает в Telegram-боте — там вы сравниваете XP с другими учениками.","lbBot":"Открыть бота","mapCap":"Карта уроков: пройденные, открытые и закрытые.","s5":"Тарифы","s6":"Вопросы","s6t":"Частые вопросы","who":{"free":"Чтобы начать и попробовать","premium":"Чтобы пройти оба курса полностью","alpha":"Чтобы учиться без дневных лимитов"},"rows":["Уроки","Уроков в день","Видеоуроки","AI-учитель"],"pv":{"free":["1–10 (HTML)","3","3","5 вопросов в день"],"premium":["Все 60","5","Все","50 вопросов в день"],"alpha":["Все 60","Без лимита","Все","Без лимита"]},"faq":[["Как работает платформа?","Каждый урок: короткая теория, пример, задание и тест. Вы пишете код в редакторе, сразу видите результат, система проверяет его и начисляет XP."],["Какие есть курсы?","Сейчас два: HTML (30 уроков) и CSS (30 уроков). Уроки на узбекском, русском и английском."],["Удобно ли писать код на телефоне?","Да. Редактор и результат адаптированы под экран телефона — компьютер не нужен. Работает и в Telegram-боте, и в браузере."],["Чем отличаются тарифы?","Free: первые 10 уроков HTML, 3 урока в день, 3 видео, 5 вопросов AI-учителю в день. Premium: все 60 уроков, 5 уроков в день, все видео, 50 вопросов в день. Alpha: без дневных лимитов. Тариф оформляется через Telegram."],["Сохраняется ли мой прогресс?","На сайте прогресс хранится в этом браузере. Прогресс в Telegram-боте хранится в вашем аккаунте бота — пока они не синхронизируются между собой."]],"endT":"Начните с первого урока.","endP":"Попробовать можно и без регистрации.","fAbout":"Платформа для практического изучения HTML и CSS на телефоне. Telegram Mini App и веб-версия.","fPlat":"Платформа","fTg":"Telegram","fBot":"Учебный бот","fBuy":"Оформить тариф","fDemo":"Веб-версия: прогресс хранится в этом браузере.","artQ":"В каждом уроке — код, который вы пишете сами.","artS":"Настоящий экран урока на телефоне."},
+en:{"tgChoose":"Get it via Telegram","freeStart":"Start for free","tgNote":"\"Get it via Telegram\" opens a chat with @lowgx — the message is already written, you just send it.","tgMsg":"Hi! I'd like to get the {p} plan of HTML Akademiya. How can I pay?","demoNote":"Demo version · Plans are purchased via Telegram.","navHome":"Home","navLessons":"Lessons","navVideos":"Video lessons","navAi":"AI tutor","navPricing":"Pricing","signin":"Sign in","start":"Get started","lessonsTitle":"Lessons","yourProgress":"Your progress","lvl":"Level","locked":"Locked","done":"Done","theory":"Theory","example":"Example","task":"Task","check":"Check","reset":"Reset","solution":"Show solution","askAi":"Ask the AI tutor","preview":"Result","tabHint":"Tab — autocomplete","allOk":"Great! Now go to the quiz.","notYet":"Not quite yet — fix the red items.","quiz":"Quiz","finish":"Finish lesson","answerAll":"Answer all the questions","lessonDone":"Lesson complete! +{x} XP","back":"← Lessons","next":"Next lesson →","lockPlan":"This lesson unlocks with the {p} plan","lockDay":"Daily limit reached ({n} lessons). Continue tomorrow or upgrade your plan.","lockOrder":"Finish the previous lesson first","videosTitle":"Video lessons","videosLead":"A hand-picked YouTube lesson for every topic — in English.","play":"Watch","aiTitle":"AI tutor","aiLead":"Ask anything about HTML or CSS. Send your code and it will find the mistake and explain it.","aiPh":"Type your question…","send":"Send","aiHello":"Hi! I'm the HTML Akademiya AI tutor. Which topic felt unclear?","aiOff":"The AI tutor isn't connected yet: the API key isn't set on the server.","aiLimit":"Today's AI question limit is used up ({n}). Upgrade your plan.","aiErr":"Couldn't get an answer, please try again shortly.","left":"Left today: {n}","c1":"What's the difference between <div> and <span>?","c2":"Explain Flexbox simply","c3":"How do I center an image?","perMonth":"/mo","current":"Current plan","free":"Free","popular":"Popular","payMethods":"Payment methods","login":"Sign in","signup":"Create Account","name":"Name","password":"Password","errPass":"Password must be at least 6 characters","errName":"Enter your name","welcome":"Welcome, {n}!","phone":"Phone linked to the card","ePhone":"Enter the full phone number","profile":"Profile","plan":"Plan","xp":"XP","streak":"Streak (days)","completed":"Lessons completed","logout":"Log out","upgrade":"Upgrade plan","today":"Today","plA":"Start for free.","plB":"Upgrade when you need it.","tabIn":"Sign in","tabTry":"Try it","aTitle":"Sign in to HTML Akademiya","phoneL":"Phone number","passL":"Password","forgot":"Forgot password?","passPh":"Enter your password","otherW":"Or another way","noAcc3":"Don't have an account?","regFree":"Sign up for free","backLogin":"Back to sign in","regT":"Sign up for free","regLead":"Fastest is via Telegram. Or with a phone number and password.","tgReg":"Via Telegram","ggReg":"With Google","orPhone":"or with a phone number and password","passMin":"At least 6 characters","pass2":"Repeat password","agree":"I agree to the terms of use","eAgree":"Please accept the terms","eMatch":"Passwords don't match","eNoPhone":"No account with this number — please sign up","backSite":"Back to site","tryT":"Try it without signing up","tryLead":"Lessons, videos and the AI tutor — right away. Your progress is saved in this browser.","tryBtn":"Continue as a guest","forgotMsg":"To reset your password, message our Telegram bot","socSoon2":"Sign-in with Google is coming soon","terms2":"By continuing you agree to the terms of use.","h4a":"Learn to code ","h4b":"on your phone","h4c":"","h4lead":"HTML Akademiya is short, hands-on HTML and CSS lessons. In every lesson you write the code yourself, see the result instantly, and the system checks it.","h4go":"Start learning","h4how":"How it works","h4w":["In the Telegram bot","In the browser","No computer needed"],"h4cap":"A real lesson screen — CSS course, lesson 28: “{t}”.","fc":[["60","lessons: HTML 30 + CSS 30"],["20","levels, from simple to advanced"],["3","languages: Uzbek, Russian, English"],["Free","to start — no payment needed"]],"s1":"How it works","s1t":"Four steps. Every lesson.","s1p":"Every lesson follows the same flow, from theory to practice, on one screen.","steps":[["Learn the lesson","Short theory and a ready example. One topic, no filler."],["Write the code","You write the task yourself in the editor — no copy-paste."],["See the result","Your code turns into a page instantly."],["Check your knowledge","The system checks your code, then a short quiz. Get it right — earn XP."]],"s2":"Courses","s2t":"Two courses. 60 lessons.","s2p":"First HTML — page structure, then CSS — styling. Lessons unlock in order.","avail":"Available","cHtml":"30 lessons · 10 levels · first 10 open on the Free plan","cCss":"30 lessons · 10 levels · on Premium and Alpha","cHtmlD":"Page structure: text, links, images, lists, tables, forms.","cCssD":"Styling: colors, fonts, spacing, Flexbox, Grid, animation.","openC":"Open course","s3":"Practice","s3t":"Not a video course. A real editor.","s3p":"This is exactly how lessons work. Change the code on the left — the result on the right updates.","s3l":["Code and result side by side","Every task is checked automatically","Ask the AI tutor about anything unclear"],"s3go":"Open the first lesson","edLbl":"Editor","resLbl":"Result","prT":"Pages you'll build during the course","prP":"These are the results of real tasks from the lessons.","lessonN":"Lesson {n}","s4":"Progress","s4t":"A little every day — and you can see it.","s4p":"XP, your daily streak and course progress update after every lesson. Below is your current result.","mXp":"XP","mXpD":"Earned for every completed lesson","mSt":"Daily streak","mStD":"Days in a row with a lesson","mDone":"Course progress","lbNote":"The leaderboard (top 20) lives in the Telegram bot — that's where you compare XP with other learners.","lbBot":"Open the bot","mapCap":"Lesson map: completed, open and locked lessons.","s5":"Pricing","s6":"Questions","s6t":"Frequently asked questions","who":{"free":"To start and try it out","premium":"To finish both courses","alpha":"To learn without daily limits"},"rows":["Lessons","Lessons per day","Video lessons","AI tutor"],"pv":{"free":["1–10 (HTML)","3","3","5 questions a day"],"premium":["All 60","5","All","50 questions a day"],"alpha":["All 60","Unlimited","All","Unlimited"]},"faq":[["How does the platform work?","Each lesson has short theory, an example, a task and a quiz. You write code in the editor, see the result instantly, and the system checks it and awards XP."],["Which courses are available?","Two right now: HTML (30 lessons) and CSS (30 lessons). Lessons are in Uzbek, Russian and English."],["Is coding on a phone comfortable?","Yes. The editor and result are built for a phone screen — no computer needed. It works in the Telegram bot and in the browser."],["How do the plans differ?","Free: the first 10 HTML lessons, 3 lessons a day, 3 videos, 5 AI tutor questions a day. Premium: all 60 lessons, 5 lessons a day, all videos, 50 questions a day. Alpha: no daily limits. Plans are purchased via Telegram."],["Is my progress saved?","On the website, progress is saved in this browser. Progress in the Telegram bot is saved to your bot account — the two don't sync yet."]],"endT":"Start with the first lesson.","endP":"You can try it without signing up.","fAbout":"A platform for learning HTML and CSS hands-on, on your phone. Telegram Mini App and web version.","fPlat":"Platform","fTg":"Telegram","fBot":"Learning bot","fBuy":"Get a plan","fDemo":"Web version: progress is saved in this browser.","artQ":"In every lesson — code you write yourself.","artS":"A real lesson screen, on a phone."}
+};
 const LI={uz:0,ru:1,en:2};
-Object.assign(I.uz,{tgLive:"Telegram'da allaqachon ishlaydi",phHi:"Xayrli kun",phTitle:"Bugungi dars",phProg:"Kurs bo'yicha",phGo:"Darsni boshlash",flA:"Kod o'zi tekshiriladi",flAs:"Xato qayerda — darrov ko'rasiz",flB:"3 tilda",flBs:"O'zbek · Русский · English",
-plK:"TARIFLAR",plA:"Bepul boshlang.",plB:"Kerak bo'lsa — kuchaytiring.",rL:"Darslar",rD:"Kunlik limit",rV:"Video darslar",rA:"AI ustoz",rC:"Sertifikat",
-pv:{free:["HTML'ning 10 ta darsi","Kuniga 3 ta dars","3 ta video","Kuniga 5 savol","—"],premium:["60 ta dars (HTML + CSS)","Kuniga 5 ta dars","Hammasi","Kuniga 50 savol","Bor"],alpha:["60 ta dars + yangi kurslar birinchi","Limitsiz","Hammasi","Limitsiz + kod tahlili","Bor"]},
-calcK:"O'QISH KALKULYATORI",calcA:"Har kuni ozgina.",calcB:"Natija — katta.",calcQ:"Kuniga nechta dars?",calcU:"dars / kun",calcEnd:"Kurs tugaydi",calcDays:"{n} kunda",calcXp:"Yig'iladigan XP",
-pk1:"Kuniga 5 tagacha dars",pk1s:"Bitta dars — 5–10 daqiqa",pk2:"Streak",pk2s:"Har kuni o'qisangiz, ketma-ketlik o'sadi",pk3:"XP",pk3s:"Har bir dars uchun 60 XP gacha",
-faqK:"SAVOLLAR",faqT:"Ko'p so'raladigan savollar",faq:[["Bu bepulmi?","Ha. Free tarifda HTML'ning birinchi 10 ta darsi, video va AI ustoz bepul. Hammasi kerak bo'lsa — Premium yoki Alpha."],["Kompyuter kerakmi?","Yo'q. Hammasi telefonda ishlaydi: Telegram'dagi botda ham, brauzerda ham."],["Qaysi tillarda?","O'zbek, rus va ingliz tillarida. Tilni yuqoridagi menyudan istalgan payt almashtirasiz."],["Kodimni kim tekshiradi?","Tizimning o'zi: har bir topshiriqni darrov tekshirib, qaysi qism xato ekanini ko'rsatadi. Tushunmagan joyni AI ustozdan so'raysiz."],["Tarifni qanday olaman?","\"Telegram orqali olish\" tugmasini bosasiz — @lowgx bilan chat ochiladi, xabar tayyor bo'ladi."]],
-tabIn:"Kirish",tabTry:"Sinab ko'rish",aTitle:"HTML Akademiya'ga kirish",phoneL:"Telefon raqam",passL:"Parol",forgot:"Parolni unutdingizmi?",passPh:"Parolni kiriting",otherW:"Yoki boshqa usul bilan",noAcc3:"Akkauntingiz yo'qmi?",regFree:"Bepul ro'yxatdan o'tish",
-backLogin:"Kirishga qaytish",regT:"Bepul ro'yxatdan o'tish",regLead:"Eng tezi — Telegram orqali. Yoki telefon raqam va parol bilan.",tgReg:"Telegram orqali",ggReg:"Google bilan",orPhone:"yoki telefon raqam va parol bilan",passMin:"Kamida 6 belgi",pass2:"Parolni takrorlang",agree:"Foydalanish shartlariga roziman",
-eAgree:"Shartlarga rozilik bering",ePhone:"Telefon raqamni to'liq kiriting",eMatch:"Parollar bir xil emas",eNoPhone:"Bu raqam bilan akkaunt yo'q — ro'yxatdan o'ting",backSite:"Saytga",quote:"“Kod — bu ham til.”",slogan:"O'RGAN. YOZ. YARAT.",
-tryT:"Ro'yxatdan o'tmasdan sinab ko'ring",tryLead:"Darslar, video va AI ustoz — darhol. Natijangiz shu brauzerda saqlanadi.",tryBtn:"Mehmon sifatida boshlash",forgotMsg:"Parolni tiklash uchun Telegram botimizga yozing",socSoon2:"Google orqali kirish tez orada",guest:"Mehmon",terms2:"Davom etish orqali foydalanish shartlariga rozilik bildirasiz."});
-Object.assign(I.ru,{tgLive:"Уже работает в Telegram",phHi:"Добрый день",phTitle:"Урок на сегодня",phProg:"Прогресс курса",phGo:"Начать урок",flA:"Код проверяется сам",flAs:"Сразу видно, где ошибка",flB:"На 3 языках",flBs:"O'zbek · Русский · English",
-plK:"ТАРИФЫ",plA:"Начните бесплатно.",plB:"Когда нужно — усильте.",rL:"Уроки",rD:"Лимит в день",rV:"Видеоуроки",rA:"AI-учитель",rC:"Сертификат",
-pv:{free:["10 уроков HTML","3 урока в день","3 видео","5 вопросов в день","—"],premium:["60 уроков (HTML + CSS)","5 уроков в день","Все","50 вопросов в день","Есть"],alpha:["60 уроков + новые курсы первыми","Без лимита","Все","Без лимита + разбор кода","Есть"]},
-calcK:"КАЛЬКУЛЯТОР ОБУЧЕНИЯ",calcA:"Понемногу каждый день.",calcB:"Результат — большой.",calcQ:"Сколько уроков в день?",calcU:"уроков / день",calcEnd:"Курс закончится",calcDays:"за {n} дн.",calcXp:"Наберёте XP",
-pk1:"До 5 уроков в день",pk1s:"Один урок — 5–10 минут",pk2:"Серия",pk2s:"Занимаетесь каждый день — серия растёт",pk3:"XP",pk3s:"До 60 XP за каждый урок",
-faqK:"ВОПРОСЫ",faqT:"Частые вопросы",faq:[["Это бесплатно?","Да. На тарифе Free первые 10 уроков HTML, видео и AI-учитель бесплатны. Нужно всё — Premium или Alpha."],["Нужен ли компьютер?","Нет. Всё работает на телефоне: и в Telegram-боте, и в браузере."],["На каких языках?","На узбекском, русском и английском. Язык можно сменить в меню сверху в любой момент."],["Кто проверяет мой код?","Сама система: проверяет каждое задание сразу и показывает, какая часть неверна. Непонятное можно спросить у AI-учителя."],["Как оформить тариф?","Нажмите «Оформить через Telegram» — откроется чат с @lowgx, сообщение уже будет готово."]],
-tabIn:"Вход",tabTry:"Попробовать",aTitle:"Вход в HTML Akademiya",phoneL:"Номер телефона",passL:"Пароль",forgot:"Забыли пароль?",passPh:"Введите пароль",otherW:"Или другим способом",noAcc3:"Нет аккаунта?",regFree:"Бесплатная регистрация",
-backLogin:"Назад ко входу",regT:"Бесплатная регистрация",regLead:"Быстрее всего — через Telegram. Или по номеру телефона и паролю.",tgReg:"Через Telegram",ggReg:"Через Google",orPhone:"или по номеру телефона и паролю",passMin:"Минимум 6 символов",pass2:"Повторите пароль",agree:"Согласен с условиями использования",
-eAgree:"Подтвердите согласие с условиями",ePhone:"Введите номер полностью",eMatch:"Пароли не совпадают",eNoPhone:"Аккаунта с этим номером нет — зарегистрируйтесь",backSite:"На сайт",quote:"«Код — это тоже язык.»",slogan:"УЧИСЬ. ПИШИ. СОЗДАВАЙ.",
-tryT:"Попробуйте без регистрации",tryLead:"Уроки, видео и AI-учитель — сразу. Прогресс сохранится в этом браузере.",tryBtn:"Продолжить как гость",forgotMsg:"Чтобы восстановить пароль, напишите нашему Telegram-боту",socSoon2:"Вход через Google скоро появится",guest:"Гость",terms2:"Продолжая, вы соглашаетесь с условиями использования."});
-Object.assign(I.en,{tgLive:"Already live in Telegram",phHi:"Good afternoon",phTitle:"Today's lesson",phProg:"Course progress",phGo:"Start lesson",flA:"Code is checked for you",flAs:"See the mistake right away",flB:"3 languages",flBs:"O'zbek · Русский · English",
-plK:"PRICING",plA:"Start for free.",plB:"Upgrade when you need it.",rL:"Lessons",rD:"Daily limit",rV:"Video lessons",rA:"AI tutor",rC:"Certificate",
-pv:{free:["10 HTML lessons","3 lessons a day","3 videos","5 questions a day","—"],premium:["60 lessons (HTML + CSS)","5 lessons a day","All","50 questions a day","Yes"],alpha:["60 lessons + new courses first","Unlimited","All","Unlimited + code review","Yes"]},
-calcK:"STUDY CALCULATOR",calcA:"A little every day.",calcB:"A big result.",calcQ:"How many lessons a day?",calcU:"lessons / day",calcEnd:"You'll finish in",calcDays:"{n} days",calcXp:"XP you'll earn",
-pk1:"Up to 5 lessons a day",pk1s:"One lesson takes 5–10 minutes",pk2:"Streak",pk2s:"Study every day and it keeps growing",pk3:"XP",pk3s:"Up to 60 XP for every lesson",
-faqK:"QUESTIONS",faqT:"Frequently asked questions",faq:[["Is it free?","Yes. The Free plan includes the first 10 HTML lessons, videos and the AI tutor. Want everything? Premium or Alpha."],["Do I need a computer?","No. Everything works on a phone — in the Telegram bot and in the browser."],["Which languages?","Uzbek, Russian and English. Switch the language from the top menu at any time."],["Who checks my code?","The system itself: it checks every task instantly and shows which part is wrong. Ask the AI tutor about anything unclear."],["How do I get a plan?","Tap \"Get it via Telegram\" — a chat with @lowgx opens with the message already written."]],
-tabIn:"Sign in",tabTry:"Try it",aTitle:"Sign in to HTML Akademiya",phoneL:"Phone number",passL:"Password",forgot:"Forgot password?",passPh:"Enter your password",otherW:"Or another way",noAcc3:"Don't have an account?",regFree:"Sign up for free",
-backLogin:"Back to sign in",regT:"Sign up for free",regLead:"Fastest is via Telegram. Or with a phone number and password.",tgReg:"Via Telegram",ggReg:"With Google",orPhone:"or with a phone number and password",passMin:"At least 6 characters",pass2:"Repeat password",agree:"I agree to the terms of use",
-eAgree:"Please accept the terms",ePhone:"Enter the full phone number",eMatch:"Passwords don't match",eNoPhone:"No account with this number — please sign up",backSite:"Back to site",quote:"“Code is a language too.”",slogan:"LEARN. WRITE. BUILD.",
-tryT:"Try it without signing up",tryLead:"Lessons, videos and the AI tutor — right away. Your progress is saved in this browser.",tryBtn:"Continue as a guest",forgotMsg:"To reset your password, message our Telegram bot",socSoon2:"Sign-in with Google is coming soon",guest:"Guest",terms2:"By continuing you agree to the terms of use."});
+
+
 
 const PLANS={free:{name:"Free",uzs:0,usd:0,maxLesson:10,perDay:3,videos:3,ai:5},premium:{name:"Premium",uzs:49000,usd:3.99,maxLesson:999,perDay:5,videos:999,ai:50},alpha:{name:"Alpha",uzs:99000,usd:7.99,maxLesson:999,perDay:999,videos:999,ai:1e9}};
 
@@ -557,12 +591,190 @@ const fmtUZS=n=>n.toLocaleString("ru-RU").replace(/ /g," ")+(S.lang==="ru"?" с
 function toast(m){const e=$("#toast");e.textContent=m;e.classList.remove("hidden");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.add("hidden"),3200)}
 
 /* ---------- theme & language ---------- */
-function applyTheme(){const dark=S.theme?S.theme==="dark":true;document.documentElement.classList.toggle("light",!dark);$("#themeToggle").checked=!dark}
-$("#themeToggle").addEventListener("change",e=>{S.theme=e.target.checked?"light":"dark";store.set("theme",S.theme);applyTheme()});
+function applyTheme(){const dark=S.theme?S.theme==="dark":true;document.documentElement.classList.toggle("light",!dark)}
 $("#lang").addEventListener("change",e=>{S.lang=e.target.value;store.set("lang",S.lang);paintStatic();route()});
-function paintStatic(){document.documentElement.lang=S.lang;$("#lang").value=S.lang;document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
+function paintStatic(){document.documentElement.lang=S.lang;$("#lang").value=S.lang;const l2=$("#lang2");if(l2)l2.value=S.lang;document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
  const u=S.user;$("#signinBtn").classList.toggle("hidden",!!u);$("#userChip").classList.toggle("hidden",!u);
- if(u){$("#uName").textContent=u.name;$("#uInit").textContent=(u.name[0]||"?").toUpperCase();$("#uPlan").textContent=PLANS[u.plan].name}}
+ if(u){$("#uName").textContent=u.name;$("#uInit").textContent=(u.name[0]||"?").toUpperCase();$("#uPlan").textContent=PLANS[u.plan].name}paintFoot();paintHeader()}
+
+Object.assign(I.uz,{navCourses:"Kurslar",fEyebrow:"HTML va CSS · telefonda",fPicker:"Nima qurmoqchisiz?",fHint:"Darsni rejaga qo'shish uchun bosing",
+fTrust:["Har bir topshiriq tekshiriladi","3 tilda","AI ustoz yordam beradi"],
+fProj:[["Hammasi",["Yozing.","Ko'ring.","O'rganing."]],["Navbar",["Navbar —","besh","darsda."]],["Forma",["Ishlaydigan","forma","yasang."]],["Karta",["Kartalar —","chiroyli","va toza."]],["Sahifa",["Birinchi","haqiqiy","sahifangiz."]]],
+fInKit:"Rejada",fPeekL:"Ko'rish",fPicks:"O'zingiz tanladingiz",fCustom:"O'zgartirilgan",fPlan:"Rejangiz",fRemove:"Rejadan olib tashlash",fEmpty:"Rejani tuzish uchun darslarni bosing.",fResetL:"Asl rejaga qaytarish",fStart:"Boshlash: {n}",fStart0:"Darslarni tanlang",
+ddItems:[["HTML","30 dars · sahifa tuzilishi"],["CSS","30 dars · dizayn va joylashuv"],["Video darslar","Har bir mavzu bo'yicha video"],["AI ustoz","Tushunmagan joyni so'rang"]],ddAll:"Barcha darslar",srchPh:"Dars qidirish…"});
+Object.assign(I.ru,{navCourses:"Курсы",fEyebrow:"HTML и CSS · на телефоне",fPicker:"Что хотите сделать?",fHint:"Нажмите на урок, чтобы добавить его в план",
+fTrust:["Каждое задание проверяется","На 3 языках","Помогает AI-учитель"],
+fProj:[["Все уроки",["Пишите.","Смотрите.","Учитесь."]],["Навбар",["Навбар","за пять","уроков."]],["Форма",["Формы,","которые","работают."]],["Карточка",["Карточки","со","стилем."]],["Страница",["Ваша первая","настоящая","страница."]]],
+fInKit:"В плане",fPeekL:"Просмотр",fPicks:"Ваш выбор",fCustom:"Изменён",fPlan:"Ваш план",fRemove:"Убрать из плана",fEmpty:"Нажмите на уроки, чтобы составить план.",fResetL:"Вернуть исходный план",fStart:"Начать: {n}",fStart0:"Выберите уроки",
+ddItems:[["HTML","30 уроков · структура страницы"],["CSS","30 уроков · оформление и вёрстка"],["Видеоуроки","Видео по каждой теме"],["AI-учитель","Спросите, что непонятно"]],ddAll:"Все уроки",srchPh:"Поиск урока…"});
+Object.assign(I.en,{navCourses:"Courses",fEyebrow:"HTML & CSS · on your phone",fPicker:"What are you building?",fHint:"Tap any lesson to add or remove it",
+fTrust:["Every task is checked","In 3 languages","AI tutor on hand"],
+fProj:[["All lessons",["Write.","See.","Learn."]],["Navbar",["A Navbar","In Five","Lessons."]],["Sign-up form",["Forms","That","Work."]],["Card",["Cards","With","Style."]],["Landing page",["Your First","Real","Web Page."]]],
+fInKit:"In plan",fPeekL:"Preview",fPicks:"Your picks",fCustom:"Customised",fPlan:"Your plan",fRemove:"Remove from plan",fEmpty:"Tap lessons on the board to build a plan.",fResetL:"Reset to the original plan",fStart:"Start {n}",fStart0:"Pick lessons",
+ddItems:[["HTML","30 lessons · page structure"],["CSS","30 lessons · styling and layout"],["Video lessons","A video for every topic"],["AI tutor","Ask about anything unclear"]],ddAll:"All lessons",srchPh:"Search lessons…"});
+
+/* ===================== Forge layer: icons, header, splash, hero ===================== */
+const SV=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const IC={grid:SV('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>'),
+ nav:SV('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/>'),form:SV('<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/>'),
+ card:SV('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15h4"/>'),page:SV('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>'),
+ code:SV('<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>'),brush:SV('<path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>'),
+ play:SV('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>'),bot:SV('<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V4M8 14h.01M16 14h.01"/>'),
+ down:SV('<path d="m6 9 6 6 6-6"/>'),arrow:SV('<path d="M5 12h14M12 5l7 7-7 7"/>'),search:SV('<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>'),
+ user:SV('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),menu:SV('<path d="M4 6h16M4 12h16M4 18h16"/>'),x:SV('<path d="M18 6 6 18M6 6l12 12"/>'),
+ moon:SV('<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>'),sun:SV('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>'),
+ check:SV('<path d="M20 6 9 17l-5-5"/>'),shield:SV('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>'),globe:SV('<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>'),
+ click:SV('<path d="M14 4.1 12 6M5.1 8l-2.9-.8M6 12l-1.9 2M7.2 2.2 8 5.1M9.04 9.04l12.3 4.6-5.4 1.6-1.6 5.4z"/>'),eye:SV('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>'),reset:SV('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>')};
+/* board data: tiles are real lesson results (img/t-ID.jpg), boxes in % of the board */
+const BOX={"2":[1.5,3.5,15,21.5],"9":[17.75,3.5,17,21.5],"16":[36,3.5,18,21.5],"18":[55.25,3.5,16,21.5],"48":[72.5,3.5,26,21.5],"19":[1.5,27.5,20,21.5],"21":[22.25,27.5,18,21.5],"22":[41,27.5,17,21.5],"24":[58.75,27.5,18,21.5],"34":[77.5,27.5,21,21.5],"36":[1.5,51.5,18,21.5],"42":[20.5,51.5,22,21.5],"43":[43.5,51.5,25,21.5],"49":[69.5,51.5,29,21.5],"55":[1.5,75.5,20,21.5],"56":[22.5,75.5,22,21.5],"58":[45.5,75.5,24,21.5],"60":[70.5,75.5,28,21.5]};
+const TOK={2:"<h1>",9:"<li>",16:"<nav>",18:"<body>",48:"navbar",19:"<form>",21:"required",22:"<select>",24:"radio",34:"color",36:"border-radius",42:".btn",43:"display:flex",49:"grid",55:":hover",56:"transition",58:"box-shadow",60:"@media"};
+const PROJ4=[{id:"all",ic:"grid",tools:[]},{id:"nav",ic:"nav",tools:[9,16,43,48,55]},{id:"form",ic:"form",tools:[19,21,22,24,42]},{id:"card",ic:"card",tools:[34,36,42,56,58]},{id:"page",ic:"page",tools:[2,18,43,49,58,60]}];
+const FH={kit:[],proj:"all",peek:null};
+const nLessons=n=>S.lang==="ru"?n+" "+(n%10===1&&n%100!==11?"урок":n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?"урока":"уроков"):S.lang==="en"?n+(n===1?" lesson":" lessons"):n+" dars";
+/* live renders of real lesson results (no image files) */
+const SOL=id=>(LESSONS.find(l=>l.id===id)||{}).solution||"";
+const liveDoc=(code,pad)=>'<meta charset=utf-8><style>html{height:100%;background:#fff}body{margin:0;min-height:100%;display:grid;place-items:center;font-family:system-ui,sans-serif;padding:'+pad+'px;box-sizing:border-box}.__w{display:inline-block;max-width:100%}</'+'style><div class="__w">'+code+'</div>';
+const liveFrame=(code,w,h,pad)=>`<iframe class="lf" sandbox="" tabindex="-1" aria-hidden="true" loading="lazy" style="width:${w}px;height:${h}px" srcdoc="${esc(liveDoc(code,pad||10))}"></iframe>`;
+function fitFrames(){document.querySelectorAll(".mapmini").forEach(m=>m.style.setProperty("--ms",m.clientWidth/1100));document.querySelectorAll(".lfit").forEach(b=>{const f=b.querySelector(".lf");if(f)f.style.transform=`scale(${b.clientWidth/parseFloat(f.style.width)})`})}
+let __fitRO;function watchFit(){if(!__fitRO)__fitRO=new ResizeObserver(()=>fitFrames());document.querySelectorAll(".lfit,.mapmini").forEach(b=>__fitRO.observe(b));fitFrames()}
+function lessonPanels(L){const sol=L.solution;return [
+ `<div class="vp"><div class="card theory"><h3>${t("theory")}</h3>${md(tr(L.theory))}</div><div class="card example"><h3>${t("example")}</h3><pre>${esc(L.example)}</pre></div></div>`,
+ `<div class="vp"><div class="card"><h3>${t("task")}</h3>${md(tr(L.task))}</div><div class="editor"><pre class="ed">${esc(sol)}</pre><div class="hint"><span>${t("tabHint")}</span><span>HTML · CSS</span></div></div></div>`,
+ `<div class="vp"><div class="muted" style="font-size:14px;font-weight:600">${t("preview")}</div><div class="preview">${frame(sol)}</div><div style="display:flex;gap:10px;flex-wrap:wrap"><span class="btn pri">${t("check")}</span><span class="btn">${t("reset")}</span></div></div>`,
+ `<div class="vp"><div class="card quiz"><h3>${t("quiz")}</h3>${L.quiz.slice(0,2).map((q,i)=>`<div class="q"><b>${i+1}. ${md(tr(q.q)).replace(/<\/?p>/g,"")}</b>${q.o.map((o,j)=>`<label><input type="radio" disabled ${j===q.a?"checked":""}> <span>${esc(tr(o))}</span></label>`).join("")}</div>`).join("")}</div></div>`]}
+function vHero(){const P=t("fProj");
+ return `<section class="fhero" id="fhero"><div class="bg"><div class="fb"></div><canvas id="fgl"></canvas></div><div class="in">
+ <div style="min-width:0"><p class="eyb fade d1">${t("fEyebrow")}</p>
+  <h1 class="fdisp" id="fTitle"><span class="sr" id="fTitleSr"></span></h1>
+  <p class="fsub fade d4">${t("h4lead")}</p>
+  <div class="fcta fade d5"><a class="btn pri lg" href="#lessons">${t("h4go")} <span class="ar">${IC.arrow.replace('<svg','<svg width="18" height="18"')}</span></a><a class="btn ghost lg" href="#how" data-scroll="how">${t("h4how")}</a></div>
+  <ul class="trust trust-d fade d6">${trustLis()}</ul></div>
+ <div class="fright"><div class="pick fade d2"><p>${t("fPicker")}</p><div class="tabs3" role="radiogroup" aria-label="${esc(t("fPicker"))}" id="fTabs"><span class="pill" aria-hidden="true"></span>
+  ${PROJ4.map((p,i)=>`<button type="button" role="radio" data-p="${p.id}" aria-checked="${p.id===FH.proj}" tabindex="${p.id===FH.proj?0:-1}">${IC[p.ic]}<span>${P[i][0]}</span><span class="dot"></span></button>`).join("")}</div></div>
+  <div class="mat fade d3"><div class="rx" aria-hidden="true">${[...Array(11)].map((_,i)=>`<span style="left:${i*10}%">${i}</span>`).join("")}</div><div class="ry" aria-hidden="true">${[...Array(10)].map((_,i)=>`<span style="top:${i*10}%">${i}</span>`).join("")}</div>
+   <div class="board" id="fBoard"><div class="ph">${Object.keys(BOX).map(id=>{const [x,y,w,h]=BOX[id],l=LESSONS.find(q=>q.id===+id);
+    return `<button type="button" class="tile${y<10?" below":""}${x<10?" edge-l":x+w>90?" edge-r":""}" data-t="${id}" aria-pressed="false" aria-label="${esc(tr(l.title))}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%;--tx:${x+w/2};--ty:${y+h/2}">
+     <span class="pp lfit">${liveFrame(SOL(+id),300,Math.round(300*h*10.66/(w*16)),8)}<code>${esc(TOK[id])}</code></span>
+     <span class="ttag"><i>+</i><b>${esc(tr(l.title))}</b><small>${l.course.toUpperCase()} · ${l.id>30?l.id-30:l.id}</small></span></button>`}).join("")}</div>
+    <div class="lamp" aria-hidden="true"></div><div class="sweep" aria-hidden="true"></div>
+    <p class="bpill" id="fPeek" aria-hidden="true"></p><p class="bhint" aria-hidden="true">${IC.click}${t("fHint")}</p></div></div>
+  <div class="dock fade d4" id="fDock"></div>
+  <ul class="trust trust-m" style="margin-top:12px">${trustLis()}</ul></div>
+ </div></section>`}
+const trustLis=()=>t("fTrust").map((x,i)=>`<li>${[IC.check,IC.globe,IC.bot][i]}${x}</li>`).join("");
+function fTitle(){const i=PROJ4.findIndex(p=>p.id===(FH.proj)),lines=t("fProj")[i][1],h=$("#fTitle");if(!h)return;
+ const anim=h.dataset.ready==="1";h.dataset.ready="1";
+ h.innerHTML=`<span class="sr">${esc(lines.join(" "))}</span>`+lines.map((ln,k)=>`<span class="mk" aria-hidden="true"><span class="ln"><span class="w">${[...ln].map((c,j)=>c===" "?" ":`<span class="lt${anim?" in":""}" style="${anim?`animation-delay:${(k*.09+j*.03).toFixed(2)}s`:""}">${esc(c)}</span>`).join("")}</span></span></span>`).join("")}
+function fPaint(hover){const b=$("#fBoard");if(!b)return;const pk=FH.peek&&PROJ4.find(p=>p.id===FH.peek),kit=pk?pk.tools:FH.kit;
+ b.classList.toggle("dim",kit.length>0||(pk?pk.id:FH.proj)!=="all");
+ b.querySelectorAll(".tile").forEach(el=>{const id=+el.dataset.t,ix=kit.indexOf(id),on=ix>=0;el.classList.toggle("kit",on);el.setAttribute("aria-pressed",FH.kit.includes(id));el.style.setProperty("--dl",on?(ix*.06)+"s":"0s");el.querySelector(".ttag i").textContent=on?"✓":"+";el.querySelector(".ttag small").textContent=on?t("fInKit"):(LESSONS.find(q=>q.id===id).course.toUpperCase()+" · "+(id>30?id-30:id))});
+ const pe=$("#fPeek");if(pe){pe.classList.toggle("on",!!pk);if(pk)pe.innerHTML=`${IC.eye}${t("fPeekL")} · ${t("fProj")[PROJ4.indexOf(pk)][0]} · ${nLessons(pk.tools.length)}`}
+ document.querySelectorAll("#fTabs button").forEach(bt=>{const p=PROJ4.find(q=>q.id===bt.dataset.p);bt.classList.toggle("uses",!!FH.act&&p.id!=="all"&&p.tools.includes(FH.act))});
+ if(!hover)fDock()}
+function fDock(){const d=$("#fDock");if(!d)return;const P=PROJ4.find(p=>p.id===FH.proj),i=PROJ4.indexOf(P),n=FH.kit.length;
+ const custom=n!==P.tools.length||FH.kit.some(x=>!P.tools.includes(x)),sub=P.id==="all"?t("fPicks"):custom?t("fCustom"):t("fProj")[i][0];
+ const first=[...FH.kit].sort((a,b)=>a-b)[0];
+ d.innerHTML=`<div class="k"><p>${t("fPlan")}</p><span class="sr" aria-live="polite">${nLessons(n)}</span><div aria-hidden="true"><span class="cnt"><b>${n}</b></span>&nbsp;${nLessons(n).replace(/^\d+\s*/,"")}&nbsp;·&nbsp;<span class="ksub">${esc(sub)}</span></div></div>
+ <ul>${n?FH.kit.map(id=>`<li><button type="button" data-rm="${id}" title="${esc(tr(LESSONS.find(q=>q.id===id).title))}" aria-label="${esc(t("fRemove"))}: ${esc(tr(LESSONS.find(q=>q.id===id).title))}"><code>${esc(TOK[id])}</code><i>×</i></button></li>`).join(""):`<li class="empty">${t("fEmpty")}</li>`}</ul>
+ <div class="act">${custom&&P.id!=="all"?`<button type="button" class="ibtn" id="fReset" aria-label="${esc(t("fResetL"))}">${IC.reset}</button>`:""}<a class="btn pri" ${n?`href="#lesson-${first}"`:'aria-disabled="true"'}>${n?t("fStart",{n:nLessons(n)}):t("fStart0")} <span class="ar">${IC.arrow.replace('<svg','<svg width="16" height="16"')}</span></a></div>`;
+ d.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{FH.kit=FH.kit.filter(x=>x!==+b.dataset.rm);fPaint()});
+ const r=$("#fReset");if(r)r.onclick=()=>{FH.kit=[...P.tools];fPaint()}}
+function fPill(){const tb=$("#fTabs");if(!tb)return;const on=tb.querySelector('[aria-checked="true"]'),pl=tb.querySelector(".pill");if(!on||!pl)return;pl.style.width=on.offsetWidth+"px";pl.style.transform=`translateX(${on.offsetLeft}px)`}
+function fPick(id){if(FH.proj===id)return;FH.proj=id;FH.kit=[...PROJ4.find(p=>p.id===id).tools];FH.peek=null;
+ document.querySelectorAll("#fTabs button").forEach(b=>{const on=b.dataset.p===id;b.setAttribute("aria-checked",on);b.tabIndex=on?0:-1});fPill();fTitle();fPaint();
+ const sw=document.querySelector("#fBoard .sweep");if(sw&&!RM()){sw.classList.remove("run");void sw.offsetWidth;sw.classList.add("run")}}
+const RM=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FINE=()=>matchMedia("(hover: hover) and (pointer: fine)").matches;
+function bindHero(){const h=$("#fhero");if(!h)return;requestAnimationFrame(watchFit);fTitle();fPaint();requestAnimationFrame(fPill);
+ const go=()=>h.classList.add("go");if(window.__opened)go();else addEventListener("ha:open",go,{once:true});
+ const tb=$("#fTabs");tb.querySelectorAll("button").forEach(b=>{b.onclick=()=>fPick(b.dataset.p);b.onpointerenter=e=>{if(e.pointerType==="mouse"){FH.peek=b.dataset.p===FH.proj?null:b.dataset.p;fPaint(1)}}});
+ tb.onpointerleave=()=>{if(FH.peek){FH.peek=null;fPaint(1)}};
+ tb.onkeydown=e=>{const st={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];if(!st)return;e.preventDefault();const i=PROJ4.findIndex(p=>p.id===FH.proj),n=PROJ4[(i+st+PROJ4.length)%PROJ4.length];fPick(n.id);tb.querySelector(`[data-p="${n.id}"]`).focus()};
+ const bd=$("#fBoard");let raf=0,L={x:22,y:12};const lamp=(x,y)=>{L={x,y};if(raf)return;raf=requestAnimationFrame(()=>{raf=0;bd.style.setProperty("--lx",L.x);bd.style.setProperty("--ly",L.y)})};
+ bd.onpointermove=e=>{if(!FINE()||RM())return;const r=bd.getBoundingClientRect();lamp((e.clientX-r.left)/r.width*100,(e.clientY-r.top)/r.height*100)};bd.onpointerleave=()=>lamp(22,12);
+ bd.querySelectorAll(".tile").forEach(el=>{const id=+el.dataset.t;
+  el.onclick=()=>{FH.kit=FH.kit.includes(id)?FH.kit.filter(x=>x!==id):[...FH.kit,id];FH.peek=null;fPaint()};
+  const on=()=>{FH.act=id;el.classList.add("act");fPaint(1)},off=()=>{FH.act=null;el.classList.remove("act");fPaint(1)};
+  el.onpointerenter=e=>{if(e.pointerType==="mouse")on()};el.onpointerleave=off;el.onfocus=on;el.onblur=off});
+ addEventListener("resize",fPill);document.fonts&&document.fonts.ready.then(fPill);
+ fLight()}
+/* WebGL window light (ported from the Forge component; pauses off-screen / hidden tab, one still frame on reduced motion) */
+function fLight(){const cv=$("#fgl");if(!cv||document.documentElement.classList.contains("light"))return;const gl=cv.getContext("webgl2",{antialias:false,alpha:false,powerPreference:"low-power"});if(!gl)return;
+ const V=`#version 300 es
+void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.0-1.0,0.0,1.0);}`;
+ const F=`#version 300 es
+precision highp float;uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform vec3 uBase;uniform vec3 uLight;uniform float uIntensity;uniform float uDust;uniform float uGrain;uniform float uCursor;uniform float uReveal;out vec4 fragColor;
+float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),u.x),mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),u.x),u.y);}
+float fbm(vec2 p){float v=0.0;float a=0.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.03+vec2(1.7,9.2);a*=0.5;}return v;}
+void main(){vec2 frag=gl_FragCoord.xy;vec2 uv=frag/uRes;float unit=min(uRes.x,uRes.y);vec2 p=frag/unit;vec2 size=uRes/unit;vec2 mouse=uMouse*size;float t=uTime;
+float sway=sin(t*0.07)*0.035+(uMouse.x-0.5)*0.08*uCursor;vec2 dir=normalize(vec2(0.62+sway,-1.0));vec2 origin=vec2(size.x*0.08,size.y+0.32);vec2 d=p-origin;float along=dot(d,dir);float across=dot(d,vec2(-dir.y,dir.x));float width=0.2+along*0.24;
+float open=smoothstep(0.0,1.0,uReveal);float reach=width*mix(0.04,1.0,open);float shape=smoothstep(reach,reach*0.3,abs(across))*smoothstep(0.0,0.35,along)*exp(-along*0.5)*open;
+float a=across/width;shape*=1.0-0.5*smoothstep(0.07,0.0,abs(a));shape*=1.0-0.35*smoothstep(0.05,0.0,abs(along-0.85));
+float beam=0.0;float dust=0.0;if(shape>0.001){float haze=fbm(p*vec2(2.2,3.0)+vec2(t*0.03,-t*0.045));float shafts=noise(vec2(across*13.0,t*0.12));beam=shape*(0.5+0.9*haze)*(0.72+0.5*shafts);
+for(int l=0;l<2;l++){float fl=float(l);float scale=22.0+fl*16.0;vec2 q=p*scale;q.y-=t*(0.35+fl*0.2);q.x+=sin(t*0.25+fl*2.0+q.y*0.08)*0.6;vec2 id=floor(q);vec2 f=fract(q)-0.5;float h=hash(id+fl*13.1);vec2 off=vec2(hash(id+3.1),hash(id+7.7))-0.5;float r=length(f-off*0.7);float tw=0.55+0.45*sin(t*(0.8+h*2.0)+h*30.0);dust+=step(0.86,h)*smoothstep(mix(0.05,0.12,h),0.0,r)*tw*(1.0-fl*0.35);}
+dust*=smoothstep(0.02,0.35,shape);}
+vec2 m=p-mouse;float glow=exp(-dot(m,m)*7.0)*uCursor;vec3 col=uBase+uLight*(beam*uIntensity+dust*uDust*0.5+glow*0.05);
+col*=mix(0.72,1.0,smoothstep(1.25,0.35,length((uv-0.5)*vec2(1.2,1.0))));col+=(hash(frag+fract(t*7.3)*91.0)-0.5)*uGrain;fragColor=vec4(col,1.0);}`;
+ const sh=(ty,src)=>{const s=gl.createShader(ty);gl.shaderSource(s,src);gl.compileShader(s);return gl.getShaderParameter(s,gl.COMPILE_STATUS)?s:null};
+ const vs=sh(gl.VERTEX_SHADER,V),fs=sh(gl.FRAGMENT_SHADER,F);if(!vs||!fs)return;const pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
+ gl.useProgram(pr);gl.bindVertexArray(gl.createVertexArray());const U=n=>gl.getUniformLocation(pr,n);
+ gl.uniform3fv(U("uBase"),[.078,.078,.078]);gl.uniform3fv(U("uLight"),[1,.74,.52]);gl.uniform1f(U("uIntensity"),.17);gl.uniform1f(U("uDust"),.55);gl.uniform1f(U("uGrain"),.025);
+ const tg={x:.3,y:.7},ms={...tg};let fr=0,vis=true,last=performance.now(),time=0,openAt=null,R=cv.getBoundingClientRect();
+ const size=()=>{const s=Math.min(devicePixelRatio,1.5)*.75,w=Math.max(1,Math.round(cv.clientWidth*s)),h=Math.max(1,Math.round(cv.clientHeight*s));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}gl.uniform2f(U("uRes"),w,h);R=cv.getBoundingClientRect()};
+ const draw=now=>{const still=RM();time+=Math.min(now-last,50)*.001;last=now;ms.x+=(tg.x-ms.x)*.04;ms.y+=(tg.y-ms.y)*.04;if(window.__opened&&openAt===null)openAt=time;
+  gl.uniform1f(U("uTime"),still?12:time);gl.uniform1f(U("uReveal"),still?1:openAt===null?0:Math.min(1,(time-openAt)/1.8));gl.uniform1f(U("uCursor"),FINE()&&!still?.35:0);gl.uniform2f(U("uMouse"),ms.x,ms.y);gl.drawArrays(gl.TRIANGLES,0,3)};
+ const loop=n=>{if(!cv.isConnected){cancelAnimationFrame(fr);fr=0;return}draw(n);fr=requestAnimationFrame(loop)};
+ const sync=()=>{const run=!RM()&&vis&&!document.hidden&&cv.isConnected;if(run&&!fr){last=performance.now();fr=requestAnimationFrame(loop)}else if(!run&&fr){cancelAnimationFrame(fr);fr=0}if(!run&&cv.isConnected)draw(performance.now())};
+ const ro=new ResizeObserver(()=>{size();if(!fr)draw(performance.now())});ro.observe(cv);
+ const io=new IntersectionObserver(([e])=>{vis=e.isIntersecting;sync()});io.observe(cv);
+ const pm=e=>{if(!FINE()||RM())return;tg.x=(e.clientX-R.left)/R.width;tg.y=1-(e.clientY-R.top)/R.height};
+ addEventListener("pointermove",pm,{passive:true});addEventListener("scroll",()=>{R=cv.getBoundingClientRect()},{passive:true});document.addEventListener("visibilitychange",sync);addEventListener("ha:open",sync,{once:true});
+ size();draw(performance.now());cv.dataset.ready="1";sync()}
+/* header: frost on scroll, courses dropdown, search, mobile menu */
+function bindHeader(){const hd=$("#hdr"),sc=()=>hd.dataset.scrolled=scrollY>12||!$("#mMenu").classList.contains("hidden");sc();addEventListener("scroll",sc,{passive:true});
+ const dd=$("#ddCourses"),bt=dd.querySelector("button");let tm=0;const set=o=>{dd.classList.toggle("open",o);bt.setAttribute("aria-expanded",o)};
+ dd.onpointerenter=e=>{if(e.pointerType!=="mouse")return;clearTimeout(tm);tm=setTimeout(()=>set(true),90)};dd.onpointerleave=e=>{if(e.pointerType!=="mouse")return;clearTimeout(tm);tm=setTimeout(()=>set(false),180)};
+ bt.onclick=e=>{clearTimeout(tm);if(e.detail>0&&matchMedia("(hover: hover)").matches)set(true);else set(!dd.classList.contains("open"))};
+ dd.addEventListener("focusout",e=>{if(!dd.contains(e.relatedTarget))set(false)});
+ document.addEventListener("pointerdown",e=>{if(!dd.contains(e.target))set(false)});
+ addEventListener("keydown",e=>{if(e.key==="Escape"&&dd.classList.contains("open")){set(false);bt.focus()}});
+ document.addEventListener("click",e=>{const a=e.target.closest("[data-cgo]");if(!a)return;S.course=a.dataset.cgo;set(false);closeM();if(location.hash==="#lessons")route()});
+ const f=$("#srch"),inp=f.querySelector("input"),res=$("#sres");let hits=[],hl=0;
+ const find=q=>{q=q.trim().toLowerCase();if(!q)return[];return LESSONS.filter(l=>l.title.some(x=>x.toLowerCase().includes(q))||l.theory&&l.theory.some&&l.theory.some(x=>x.toLowerCase().includes(q))).slice(0,6)};
+ const show=()=>{hits=find(inp.value);hl=0;res.classList.toggle("hidden",!hits.length);res.innerHTML=hits.map((l,i)=>`<li><a href="#lesson-${l.id}" class="${i?"":"hl"}"><span>${esc(tr(l.title))}</span><small>${l.course.toUpperCase()} · ${l.id>30?l.id-30:l.id}</small></a></li>`).join("")};
+ const close=()=>{f.classList.remove("open");inp.value="";res.classList.add("hidden");inp.tabIndex=-1};
+ f.onsubmit=e=>{e.preventDefault();if(!f.classList.contains("open")){f.classList.add("open");inp.tabIndex=0;inp.focus();return}if(hits[hl]){location.hash="lesson-"+hits[hl].id;close()}};
+ inp.oninput=show;inp.onkeydown=e=>{if(e.key==="Escape"){close();f.querySelector("button").focus()}if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!hits.length)return;hl=(hl+(e.key==="ArrowDown"?1:-1)+hits.length)%hits.length;res.querySelectorAll("a").forEach((a,i)=>a.classList.toggle("hl",i===hl))}};
+ f.addEventListener("focusout",e=>{setTimeout(()=>{if(!f.contains(document.activeElement)&&!inp.value)close()},120)});res.onclick=()=>setTimeout(close,0);
+ const mb=$("#mBtn"),mm=$("#mMenu");mb.innerHTML=IC.menu;function closeM(){mm.classList.add("hidden");mb.setAttribute("aria-expanded","false");mb.innerHTML=IC.menu;sc()}
+ mb.onclick=()=>{const o=mm.classList.contains("hidden");mm.classList.toggle("hidden",!o);mb.setAttribute("aria-expanded",o);mb.innerHTML=o?IC.x:IC.menu;sc()};
+ mm.addEventListener("click",e=>{if(e.target.closest("a"))closeM()});addEventListener("keydown",e=>{if(e.key==="Escape")closeM()});
+ $("#themeBtn2").innerHTML=IC.moon;$("#lang2").onchange=e=>{const l=$("#lang");l.value=e.target.value;l.dispatchEvent(new Event("change"))};$("#themeBtn2").onclick=()=>$("#themeBtn").click();
+ $("#themeBtn").onclick=()=>{S.theme=document.documentElement.classList.contains("light")?"dark":"light";store.set("theme",S.theme);applyTheme();if(location.hash===""||location.hash==="#home")route()}}
+function paintHeader(){const cl=t("ddItems");const items=`${cl.map((c,i)=>`<li><a href="${["#lessons","#lessons","#videos","#ai"][i]}" ${i<2?`data-cgo="${["html","css"][i]}"`:""}><span class="ic">${[IC.code,IC.brush,IC.play,IC.bot][i]}</span><span><b>${c[0]}</b><small>${c[1]}</small></span><span class="go">${IC.arrow.replace('<svg','<svg width="16" height="16"')}</span></a></li>`).join("")}`;
+ $("#ddList").innerHTML=items;$("#ddAll").firstChild.textContent=t("ddAll");$("#mCourses").innerHTML=items;
+ const inp=$("#srch input");inp.placeholder=t("srchPh");inp.setAttribute("aria-label",t("srchPh"));$("#srch button").setAttribute("aria-label",t("srchPh"))}
+/* splash: the wordmark is struck letter by letter, then flies into the nav logo (~2s total, any key/click skips) */
+function splash(){const b=$("#boot");window.__opened=false;const open=()=>{if(window.__opened)return;window.__opened=true;dispatchEvent(new Event("ha:open"))};
+ const done=()=>{document.documentElement.classList.remove("splash-on");b.remove()};
+ if(RM()){open();done();return}
+ const name="HTML Akademiya",FIRST=.15,EVERY=.085,chars=[...name];
+ const w=b.querySelector(".word");w.innerHTML='<span class="anvil"></span>'+chars.map((c,i)=>`<span class="ch" style="--d:${(FIRST+i*EVERY).toFixed(3)}s;--i:${(FIRST+i*EVERY+.15).toFixed(3)}s"><i>${c===" "?"&nbsp;":c}</i>${c===" "?"":'<span class="flash"></span>'}</span>`).join("")+`<span class="ch" style="--d:${(FIRST+chars.length*EVERY+.06).toFixed(3)}s"><span class="dot">.</span></span>`;
+ b.querySelector(".eyebrow").textContent=t("fEyebrow");document.documentElement.classList.add("splash-on");
+ const T=[],later=(s,f)=>T.push(setTimeout(f,s*1000));
+ const DOT=FIRST+chars.length*EVERY+.06,IMPACT=DOT+.43,HAND=IMPACT+.22;
+ const sparks=(el,n,seed)=>{const r=s=>{const x=Math.sin(s*127.1+311.7)*43758.5453;return x-Math.floor(x)};for(let i=0;i<n;i++){const sp=document.createElement("span");sp.className="spark";const sz=2+2.5*r(seed*5+i);sp.style.width=sp.style.height=sz+"px";el.appendChild(sp);
+  const a=-Math.PI*(.1+.8*r(seed*31+i)),v=50+90*r(seed*17+i*3),x=Math.cos(a)*v,y=Math.sin(a)*v,fall=30+50*r(seed*7+i*11);
+  sp.animate([{opacity:0,transform:"translate(0,0)"},{opacity:1,transform:"translate(0,0)",offset:.02},{opacity:1,transform:`translate(${x*.6}px,${y*.6}px)`,offset:.4},{opacity:0,transform:`translate(${x}px,${y+fall}px)`}],{duration:(550+350*r(seed*13+i*5)),fill:"both"})}};
+ const jolt=s=>w.parentElement.animate([{transform:"translateX(0)"},{transform:`translateX(${-s}px)`},{transform:`translateX(${s*.6}px)`},{transform:"translateX(0)"}],{duration:160});
+ let handed=false;
+ const hand=()=>{if(handed)return;handed=true;T.forEach(clearTimeout);b.classList.add("handoff");open();const logo=$("#hdr .fg-logo");if(!logo){setTimeout(done,400);return}
+  const f=w.getBoundingClientRect(),to=logo.getBoundingClientRect();const an=w.animate([{transform:"none"},{transform:`translate(${to.left-f.left}px,${to.top-f.top}px) scale(${to.height/f.height})`}],{duration:650,easing:"cubic-bezier(.7,0,.2,1)",fill:"forwards"});an.onfinish=done};
+ const skip=()=>{if(handed)return;handed=true;T.forEach(clearTimeout);b.classList.add("skip");open();setTimeout(done,350)};
+ b.addEventListener("pointerdown",skip);addEventListener("keydown",skip,{once:true});
+ const begin=()=>{b.classList.add("forge");chars.forEach((c,i)=>{if(c===" ")return;later(FIRST+i*EVERY+.15,()=>{jolt(2);sparks(w.children[i+1],7,i+1)})});later(IMPACT,()=>{jolt(3.5);sparks(w.lastElementChild,14,99)});later(HAND,hand)};
+ let st=false;const start=()=>{if(st)return;st=true;begin()};document.fonts&&document.fonts.ready.then(start);setTimeout(start,450)}
 
 /* ---------- modal ---------- */
 function openModal(html){$("#mBody").innerHTML=html;$("#modal").classList.remove("hidden")}
@@ -578,12 +790,7 @@ const SVG_A='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-145 129 220 256">
 const BOT="https://t.me/html_akademiya_uz_bot";
 const phoneDigits=v=>v.replace(/\D/g,"").replace(/^998/,"").slice(0,9);
 const fmtPhone=d=>[d.slice(0,2),d.slice(2,5),d.slice(5,7),d.slice(7,9)].filter(Boolean).join(" ");
-function authArt(){return `<div class="art"><div class="grid-dots"></div>
- <span class="obj" style="left:8%;top:8%">📚</span><span class="obj" style="left:34%;top:9%;animation-delay:-2s">💡</span><span class="obj" style="right:9%;top:8%;animation-delay:-4s">🚀</span>
- <span class="obj" style="left:8%;bottom:8%;animation-delay:-1s">💻</span><span class="obj" style="right:10%;bottom:20%;animation-delay:-3s">🌍</span>
- <span class="bub" style="left:12%;top:26%;background:#7ee8c0">Salom</span><span class="bub" style="right:12%;top:24%;background:#ffd479;animation-delay:-2s">Hello</span>
- <span class="bub" style="left:10%;bottom:30%;background:#fff;animation-delay:-4s">&lt;html&gt;</span><span class="bub" style="right:14%;bottom:10%;background:#cdbdff;animation-delay:-1s">Привет</span>
- <div class="lc"><i>&lt;/&gt;</i><div><b>HTML Akademiya</b><small>${t("slogan")}</small></div></div><div class="quote">${t("quote")}</div></div>`}
+function authArt(){return `<div class="art"><a class="fg-logo" href="#home">HTML Akademiya<span class="ember">.</span></a><div class="device phonemini" role="img" aria-label="${esc(t("artS"))}">${(()=>{const L=LESSONS.find(l=>l.id===58);return `<div class="card"><h3>${t("task")}</h3>${md(tr(L.task))}</div><div class="editor"><pre class="ed">${esc(L.solution)}</pre></div><div class="preview">${frame(L.solution)}</div>`})()}</div><blockquote>${t("artQ")}<small>${t("artS")}</small></blockquote></div>`}
 function vAuth(mode){
  document.body.classList.add("authmode");
  const tl=`<div class="tl"><a class="back3" href="#home">← ${t("backSite")}</a></div>`;
@@ -606,7 +813,7 @@ function vAuth(mode){
   <a class="alt" href="${BOT}" target="_blank" rel="noopener"><span class="dots"><span style="background:#2aa3e0;color:#fff">✈</span><span style="background:#fff;color:#4285f4">G</span></span>${t("otherW")}<span class="go2">→</span></a>
   <a class="alt green" href="#signup"><span class="dots"><span style="background:#38F2A1">👤</span></span><span><small>${t("noAcc3")}</small><b>${t("regFree")}</b></span><span class="go2">→</span></a></div>`;
  return `<div class="auth">${authArt()}<div class="aside">${tl}${card}<p class="terms">${t("terms2")}</p></div></div>`}
-function bindAuth(mode){
+function bindAuth(mode){requestAnimationFrame(watchFit);
  const box=$("#view");
  box.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>location.hash=b.dataset.go);
  box.querySelectorAll("[data-soc]").forEach(b=>b.onclick=()=>toast(t("socSoon2")));
@@ -671,45 +878,56 @@ function access(L){
  return{ok:true}}
 
 /* ---------- views ---------- */
-const ICONS={code:'<path d="m8 6-6 6 6 6M16 6l6 6-6 6"/>',check:'<path d="M20 6 9 17l-5-5"/>',bot:'<rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/>',play:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/>',fire:'<path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s1 2 2 2c0-3 2-8 2-8z"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>'};
-const HERO_CODE='<style>\n  .card {\n    padding: 18px;\n    border-radius: 16px;\n    background: #0f1c16;\n    color: #38F2A1;\n  }\n</style>\n<div class="card">\n  <h1>Salom!</h1>\n  <p>Men HTML o\'rganyapman 🚀</p>\n</div>';
-const spark=(up)=>`<svg viewBox="0 0 200 46" preserveAspectRatio="none"><defs><linearGradient id="g${up}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#38F2A1" stop-opacity=".35"/><stop offset="1" stop-color="#38F2A1" stop-opacity="0"/></linearGradient></defs><path d="M0 40 C30 36 40 30 60 32 S95 18 120 22 S160 8 200 6 L200 46 L0 46Z" fill="url(#g${up})"/><path d="M0 40 C30 36 40 30 60 32 S95 18 120 22 S160 8 200 6" fill="none" stroke="#38F2A1" stroke-width="2.5"/></svg>`;
-function vHome(){
- const f=[["code","f1"],["check","f2"],["bot","f3"],["play","f4"],["fire","f5"],["globe","f6"]],hrefs=["#lessons","#lessons","#ai","#videos","#lessons","#home"];
- const next=LESSONS.find(l=>!S.prog[l.id]?.done)||LESSONS[0],done=LESSONS.filter(l=>S.prog[l.id]?.done).length;
- return `<section class="hero3"><div><span class="badge"><i>✈</i>${t("tgLive")}</span>
-  <h1>${t("heroA")}<br><span class="dim">${t("heroB")}</span></h1><p class="lead">${t("heroLead")}</p>
-  <div class="cta3"><a class="btn pri big" href="#lessons">${t("start")} →</a><a class="btn ghost big" href="#pricing">${t("seePlans")}</a></div></div>
-  <div class="phone-wrap"><div class="phone"><div class="sb"><span>9:41</span><span>● ▮</span></div><small>${t("phHi")}${S.user?", "+esc(S.user.name):""}</small><h4>${t("phTitle")}</h4>
-   <div class="pc"><small>${next.course.toUpperCase()} · ${t("lvl")} ${next.level}</small><div style="font-weight:800;margin-top:4px">${esc(tr(next.title))}</div><pre>${esc(next.example.slice(0,70))}</pre></div>
-   <div class="pc"><small>${t("lessonsTitle")}</small><div class="chips2"><span class="on">HTML</span><span>CSS</span><span>JS · soon</span></div><small style="display:block;margin-top:10px">${t("phProg")}: ${done}/60</small><div class="bar2"><i style="width:${Math.max(4,done/60*100)}%"></i></div></div>
-   <a class="go" href="#lesson-${next.id}">▶ ${t("phGo")}</a><div class="nav2"><span>⌂</span><span>▶</span><span>✦</span><span>☺</span></div></div>
-   <div class="fl a"><span class="ico2">✓</span><div><b>${t("flA")}</b><span>${t("flAs")}</span></div></div>
-   <div class="fl b"><span class="ico2">文</span><div><b>${t("flB")}</b><span>${t("flBs")}</span></div></div></div></section>
- <div class="scrollhint" aria-hidden="true"></div>
- <section class="band"><div class="statbar"><div><b>60</b><span>${t("sLessons")}</span></div><div><b>20</b><span>${t("sLevels")}</span></div><div><b>5</b><span>${t("sPerDay")}</span></div><div><b>3</b><span>${t("sLangs")}</span></div></div></section>
- <section class="band"><span class="eyebrow">${t("featTitle")}</span><h2 class="h2big">${t("secA")}<br><span class="dim">${t("secB")}</span></h2><p class="muted" style="max-width:60ch">${t("secLead")}</p>
-  <div class="grid" style="margin-top:24px">${f.map(([i,k],n)=>`<div class="fcard"><div class="top2"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></span><span class="lab">0${n+1} · ${t("labs")[n]}</span></div><h3>${t(k)}</h3><p class="muted" style="margin:0">${t(k+"d")}</p><a href="${hrefs[n]}">${t("more")} ↗</a></div>`).join("")}</div></section>
- <section class="band"><span class="eyebrow">${t("wsA")}</span><h2 class="h2big">${t("wsA")}<br><span class="dim">${t("wsB")}</span></h2><p class="muted" style="max-width:60ch">${t("wsLead")}</p>
-  <div class="shots" style="margin-top:24px"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/lesson-${S.lang}.jpg" alt="${esc(t("wsA")+" "+t("wsB"))}" loading="lazy"></div><div class="col"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/quiz-${S.lang}.jpg" alt="${esc(t("quiz"))}" loading="lazy"></div><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/map-${S.lang}.jpg" alt="${esc(t("lessonsTitle"))}" loading="lazy"></div></div></div></section>
- <section class="band"><h2 class="h2big">${t("liveA")}<br><span class="dim">${t("liveB")}</span></h2><p class="muted">${t("liveLead")}</p>
-  <div class="ide" style="margin-top:20px"><div class="bar"><span></span><span></span><span></span></div><div class="split"><pre id="heroCode"></pre><div class="live" id="heroPrev"></div></div></div></section>
- <section class="band calc"><div><span class="eyebrow">${t("calcK")}</span><h2 class="h2big">${t("calcA")}<br><span class="dim">${t("calcB")}</span></h2>
-   <div class="perk"><i>📅</i><div><b>${t("pk1")}</b><span>${t("pk1s")}</span></div></div><div class="perk"><i>🔥</i><div><b>${t("pk2")}</b><span>${t("pk2s")}</span></div></div><div class="perk"><i>⭐</i><div><b>${t("pk3")}</b><span>${t("pk3s")}</span></div></div></div>
-  <div class="calcbox"><small class="eyebrow">${t("calcQ")}</small><div class="big2"><span id="cN">3</span> <small style="font-size:16px;color:var(--mute)">${t("calcU")}</small></div>
-   <input type="range" id="cR" min="1" max="5" value="3" aria-label="${t("calcQ")}"><div class="ln"><span>${t("calcEnd")}</span><span class="v" id="cD"></span></div><div class="ln"><span>${t("calcXp")}</span><span class="v">3 600</span></div>
-   <div class="bar2" style="height:10px;border-radius:9px;background:var(--panel2);overflow:hidden"><i id="cB" style="display:block;height:100%;background:#38F2A1;width:60%"></i></div></div></section>
- <section class="band faq"><div><span class="eyebrow">${t("faqK")}</span><h2 class="h2big">${t("faqT")}</h2></div><div>${t("faq").map((q,i)=>`<details ${i?"":"open"}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join("")}</div></section>`}
-function bindHome(){heroType();const r=$("#cR");if(!r)return;const upd=()=>{const n=+r.value;$("#cN").textContent=n;$("#cD").textContent=t("calcDays",{n:Math.ceil(60/n)});$("#cB").style.width=n/5*100+"%"};r.oninput=upd;upd()}
-function heroType(){const pre=$("#heroCode"),box=$("#heroPrev");if(!pre||!box)return;
- const root=box.shadowRoot||box.attachShadow({mode:"open"});const caret='<span class="caret"></span>';
- let i=0,last=0;cancelAnimationFrame(heroType.r);
- const step=ts=>{if(!document.body.contains(pre))return;if(ts-last>38){last=ts;i++;
-   pre.innerHTML=esc(HERO_CODE.slice(0,i))+caret;
-   const c=HERO_CODE.slice(0,i);if(/[>}\n]$/.test(c)||i===HERO_CODE.length)root.innerHTML='<style>:host{all:initial;font-family:system-ui,sans-serif}</style>'+c;
-   if(i>=HERO_CODE.length){setTimeout(()=>{if(document.body.contains(pre))heroType()},3500);return}}
-  heroType.r=requestAnimationFrame(step)};
- heroType.r=requestAnimationFrame(step)}
+function planCard(k,cur){const P=PLANS[k],R=t("rows"),V=t("pv")[k];const price=k==="free"?(S.lang==="en"?"$0":"0"):(S.lang==="en"?"$"+P.usd:fmtUZS(P.uzs));
+ return `<div class="plan2 ${k==="premium"?"pop":""}"><h3>${P.name}${k==="premium"?`<span class="ribbon2">${t("popular")}</span>`:""}</h3><p class="who">${t("who")[k]}</p>
+ <div class="pr">${price}${k!=="free"?` <small>${t("perMonth")}</small>`:""}</div><div class="alt2">${k==="free"?"":S.lang==="en"?"≈ "+fmtUZS(P.uzs):"≈ $"+P.usd}</div>
+ <dl>${R.map((r,i)=>`<div><dt>${r}</dt><dd>${esc(V[i])}</dd></div>`).join("")}</dl>
+ ${cur===k&&k!=="free"?`<button class="btn" disabled>${t("current")}</button>`:k==="free"?`<a class="btn ghost" href="#lessons">${t("freeStart")}</a>`:`<a class="btn pri" target="_blank" rel="noopener" href="https://t.me/lowgx?text=${encodeURIComponent(t("tgMsg",{p:P.name}))}">${t("tgChoose")} ↗</a>`}</div>`}
+const plansHTML=()=>{const c=S.user?.plan||"free";return `<div class="plans2">${planCard("free",c)}${planCard("premium",c)}${planCard("alpha",c)}</div>`};
+const lbl=(n,k)=>`<div class="lbl"><b>0${n}</b>${t(k)}</div>`;
+const PROJ=[60,58,49,55,52,16];
+function vHome(){const L=S.lang,done=LESSONS.filter(l=>S.prog[l.id]?.done).length;
+ const titles=c=>LESSONS.filter(l=>l.course===c&&l.n%5===1).map(l=>`<li>${esc(tr(l.title))}</li>`).join("");
+ return `${vHero()}
+ <div class="facts">${t("fc").map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>
+
+ <section class="sec rv" id="how" style="border-top:0">${lbl(1,"s1")}<div class="sec-head"><h2 class="sec-t">${t("s1t")}</h2><p class="sec-p">${t("s1p")}</p></div>
+  <div class="how"><ol>${t("steps").map(([b,s],i)=>`<li class="${i?"":"on"}"><button type="button" data-step="${i}" aria-expanded="${!i}"><b>${b}</b><span>${s}</span></button></li>`).join("")}</ol>
+  <div class="view live" id="howView">${lessonPanels(LESSONS.find(l=>l.id===58)).map((p,i)=>i?p.replace('class="vp"','class="vp hidden"'):p).join("")}</div></div></section>
+
+ <section class="sec rv">${lbl(2,"s2")}<div class="sec-head"><h2 class="sec-t">${t("s2t")}</h2><p class="sec-p">${t("s2p")}</p></div>
+  <div class="courses">${[["html","HTML","cHtml","cHtmlD"],["css","CSS","cCss","cCssD"]].map(([c,n,m,d])=>`<div class="course"><div><h3>${n} <span class="st on">${t("avail")}</span></h3><div class="meta">${t(m)}</div></div>
+   <div><p style="margin:0 0 14px">${t(d)}</p><ul>${titles(c)}</ul></div><a class="btn" href="#lessons" data-course-go="${c}">${t("openC")} →</a></div>`).join("")}</div></section>
+
+ <section class="sec rv">${lbl(3,"s3")}<div class="sec-head"><h2 class="sec-t">${t("s3t")}</h2><p class="sec-p">${t("s3p")}</p></div>
+  <div class="practice"><div class="ide"><div class="bar"><span></span><span></span><span></span></div><div class="split"><div style="display:grid;grid-template-rows:auto 1fr"><small class="mono" style="padding:10px 18px 0;color:#7f948a">${t("edLbl")}</small><textarea id="pCode" spellcheck="false" autocapitalize="off" aria-label="${t("edLbl")}" style="width:100%;min-height:280px;resize:vertical;background:transparent;border:0;color:#cfeee0;padding:10px 18px 18px;font:14px/1.65 'JetBrains Mono',monospace;outline:none">${esc((LESSONS.find(l=>l.id===58)||LESSONS[0]).solution)}</textarea></div><iframe id="pPrev" sandbox="" title="${t("resLbl")}" style="width:100%;height:100%;min-height:280px;border:0;background:#fff"></iframe></div></div>
+  <div class="side"><ul class="chk-list">${t("s3l").map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn pri" href="#lesson-1">${t("s3go")} →</a></div></div>
+  <h3 style="margin:var(--s5) 0 6px;font-size:22px">${t("prT")}</h3><p class="sec-p" style="font-size:15px">${t("prP")}</p>
+  <div class="projects">${PROJ.map(id=>{const l=LESSONS.find(x=>x.id===id);return `<a href="#lesson-${id}"><figure><div class="pic lfit" role="img" aria-label="${esc(tr(l.title))}">${liveFrame(l.solution,400,250,16)}</div><figcaption><span>${esc(tr(l.title))}</span><small>${l.course.toUpperCase()} · ${t("lessonN",{n:id>30?id-30:id})}</small></figcaption></figure></a>`}).join("")}</div></section>
+
+ <section class="sec rv">${lbl(4,"s4")}<div class="prog4"><div><h2 class="sec-t">${t("s4t")}</h2><p class="sec-p" style="margin-bottom:28px">${t("s4p")}</p>
+  <div class="meters"><div class="meter"><span>${t("mXp")}</span><b>${S.xp}</b><p>${t("mXpD")}</p></div><div class="meter"><span>${t("mSt")}</span><b>${S.streak}</b><p>${t("mStD")}</p></div>
+  <div class="meter"><span>${t("mDone")}</span><b>${done}/60</b><div class="bar"><i style="width:${done/60*100}%"></i></div></div></div>
+  <p class="note">${t("lbNote")} <a href="https://t.me/html_akademiya_uz_bot" target="_blank" rel="noopener">${t("lbBot")} ↗</a></p></div>
+  <figure style="margin:0"><div class="shot mapmini" role="img" aria-label="${esc(t("mapCap"))}"><div class="mm-in">${vLessons()}</div></div><figcaption class="note">${t("mapCap")}</figcaption></figure></div></section>
+
+ <section class="sec rv" id="plans">${lbl(5,"s5")}<div class="sec-head"><h2 class="sec-t">${t("plA")} <span style="color:var(--mute)">${t("plB")}</span></h2><p class="sec-p">${t("tgNote")}</p></div>${plansHTML()}</section>
+
+ <section class="sec rv">${lbl(6,"s6")}<div class="faq4"><h2 class="sec-t">${t("s6t")}</h2><div>${t("faq").map(q=>`<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join("")}</div></div></section>
+ <section class="sec rv" style="border-top:0;padding-top:0"><div class="endcta"><div><h2>${t("endT")}</h2><p class="muted" style="margin:6px 0 0">${t("endP")}</p></div><a class="btn pri lg" href="#lessons">${t("h4go")} →</a></div></section>`}
+function bindHome(){bindHero();
+ document.querySelectorAll("[data-step]").forEach(b=>b.onclick=()=>{const i=+b.dataset.step;document.querySelectorAll(".how li").forEach((li,k)=>{li.classList.toggle("on",k===i);li.querySelector("button").setAttribute("aria-expanded",k===i)});
+  document.querySelectorAll("#howView .vp").forEach((v,k)=>v.classList.toggle("hidden",k!==i))});
+ const sc=document.querySelector("[data-scroll]");if(sc)sc.onclick=e=>{e.preventDefault();document.getElementById(sc.dataset.scroll).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})};
+ document.querySelectorAll("[data-course-go]").forEach(a=>a.onclick=()=>{S.course=a.dataset.courseGo;0});
+ const ta=$("#pCode"),fr=$("#pPrev");if(ta&&fr){const up=()=>{fr.srcdoc='<meta charset=utf-8><style>body{font-family:system-ui,sans-serif;padding:14px;margin:0}</style>'+ta.value};let tm;ta.oninput=()=>{clearTimeout(tm);tm=setTimeout(up,150)};up()}
+ const rv=document.querySelectorAll(".rv");if(!("IntersectionObserver" in window)){rv.forEach(e=>e.classList.add("in"));return}
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});rv.forEach(e=>io.observe(e))}
+function paintFoot(){const f=$("#foot");if(!f)return;const BOTU="https://t.me/html_akademiya_uz_bot";
+ f.innerHTML=`<div><a class="fg-logo" href="#home">HTML Akademiya<span class="ember">.</span></a><p class="muted">${t("fAbout")}</p></div>
+ <div><h4>${t("fPlat")}</h4><ul><li><a href="#lessons">${t("navLessons")}</a></li><li><a href="#videos">${t("navVideos")}</a></li><li><a href="#ai">${t("navAi")}</a></li><li><a href="#pricing">${t("navPricing")}</a></li></ul></div>
+ <div><h4>${t("fTg")}</h4><ul><li><a href="${BOTU}" target="_blank" rel="noopener">${t("fBot")} · @html_akademiya_uz_bot</a></li><li><a href="https://t.me/lowgx" target="_blank" rel="noopener">${t("fBuy")} · @lowgx</a></li></ul></div>
+ <div class="copy muted"><span>© 2026 HTML Akademiya</span><span>${t("fDemo")}</span></div>`}
 
 function vLessons(){
  const list=LESSONS.filter(l=>l.course===S.course),doneN=LESSONS.filter(l=>S.prog[l.id]?.done).length;
@@ -796,16 +1014,8 @@ function bindAi(){drawChat();const inp=$("#aiIn");if(S.aiPrefill){inp.value=S.ai
   drawChat();const l=$("#aiLeft");if(l&&lim<1e6)l.textContent=t("left",{n:Math.max(0,lim-dayCount("ai"))})})}
 
 /* ---------- pricing ---------- */
-function vPricing(){const cur=S.user?.plan||"free",labels=[t("rL"),t("rD"),t("rV"),t("rA"),t("rC")],ico={free:"👤",premium:"⭐",alpha:"🚀"};
- const card=k=>{const P=PLANS[k];const price=k==="free"?t("free"):(S.lang==="en"?"$"+P.usd:fmtUZS(P.uzs));
-  return `<div class="plan2 ${k==="premium"?"pop":""}">${k==="premium"?`<span class="ribbon2">${t("popular")}</span>`:""}<span class="pi">${ico[k]}</span><h3>${P.name}</h3>
-  <div class="pr">${price}${k!=="free"?` <small>/ ${t("perMonth").replace("/","")}</small>`:""}</div>${k!=="free"?`<span class="muted" style="font-size:14px">${S.lang==="en"?"≈ "+fmtUZS(P.uzs):"≈ $"+P.usd}</span>`:""}
-  ${t("pv")[k].map((v,i)=>`<div class="row"><small>${labels[i]}</small><b class="${v==="—"?"no":""}">${esc(v)}</b></div>`).join("")}<div class="sp"></div>
-  ${cur===k&&k!=="free"?`<button class="btn" disabled>${t("current")}</button>`:k==="free"?`<a class="btn ghost" href="#lessons">${t("freeStart")}</a>`:`<a class="btn pri" target="_blank" rel="noopener" href="https://t.me/lowgx?text=${encodeURIComponent(t("tgMsg",{p:P.name}))}">${t("tgChoose")} ↗</a>`}</div>`};
- return `<section class="band"><span class="eyebrow">${t("plK")}</span><h1 class="h2big">${t("plA")}<br><span class="dim">${t("plB")}</span></h1>
- <div class="plans2">${card("free")}${card("premium")}${card("alpha")}</div>
- <p class="muted" style="margin-top:22px">${t("tgNote")}</p><h3 style="margin-top:20px">${t("payMethods")}</h3><div class="paylogos"><span>VISA</span><span>Mastercard</span><span>Uzcard</span><span>HUMO</span></div></section>`}
-
+function vPricing(){return `<section class="band">${lbl(5,"s5")}<div class="sec-head"><h1 class="sec-t">${t("plA")} <span style="color:var(--mute)">${t("plB")}</span></h1><p class="sec-p">${t("tgNote")}</p></div>${plansHTML()}
+ <h3 style="margin-top:32px">${t("payMethods")}</h3><div class="paylogos"><span>VISA</span><span>Mastercard</span><span>Uzcard</span><span>HUMO</span></div></section>`}
 function vProfile(){if(!S.user){setTimeout(signin);return vHome()}const doneN=LESSONS.filter(l=>S.prog[l.id]?.done).length;
  return `<section class="band"><h1>${t("profile")}</h1><p class="muted">${esc(S.user.name)} · ${esc(S.user.email)}</p>
  <div class="profile-grid"><div class="card"><span class="muted">${t("plan")}</span><b>${PLANS[S.user.plan].name}</b></div><div class="card"><span class="muted">${t("xp")}</span><b>${S.xp}</b></div><div class="card"><span class="muted">${t("streak")}</span><b>🔥 ${S.streak}</b></div><div class="card"><span class="muted">${t("completed")}</span><b>${doneN}/60</b></div></div>
@@ -821,7 +1031,7 @@ function route(){if(!$("#modal").classList.contains("hidden"))closeModal();docum
  else if(h==="login"||h==="signup"||h==="try"){html=vAuth(h);after=()=>bindAuth(h)}
  else{html=vHome();after=bindHome}
  if(html==="")return;v.innerHTML=html;after&&after();
- document.querySelectorAll("nav.main a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(m?"lessons":h)));scrollTo(0,0)}
+ document.querySelectorAll("nav.main>a,#mMenu>a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(m?"lessons":h)));scrollTo(0,0)}
 addEventListener("hashchange",route);
 $("#view").addEventListener("click",e=>{const b=e.target.closest("[data-course],[data-lesson],[data-video]");if(!b)return;
  if(b.dataset.course){S.course=b.dataset.course;route()}
@@ -829,9 +1039,9 @@ $("#view").addEventListener("click",e=>{const b=e.target.closest("[data-course],
  else if(b.dataset.video)playVideo(+b.dataset.video);
 });
 
-applyTheme();paintStatic();
+applyTheme();paintStatic();bindHeader();splash();
 fetch("lessons.json").then(r=>r.json()).then(d=>{LESSONS=d;route()}).catch(()=>{$("#view").innerHTML='<section class="band"><h2>Error loading lessons</h2></section>'})
- .finally(()=>{const wait=Math.max(0,2000-(performance.now()-T0));setTimeout(()=>{const b=$("#boot");b.style.opacity=0;setTimeout(()=>b.remove(),450)},wait)});
+ ;
 }
 </script>
 </body>
