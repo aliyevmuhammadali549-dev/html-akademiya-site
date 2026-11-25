@@ -177,7 +177,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mute);font-si
 
 /* From Uiverse.io by alexruix - https://uiverse.io/alexruix/tame-fly-42
    MIT License, Copyright (c) alexruix (Alex Ruiz) */
-#boot{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#081410;color:#E8F2EC;transition:opacity .45s}
+#boot{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#081410;color:#E8F2EC;transition:opacity .45s;animation:ua-bootHide .45s 2.6s forwards}
+@keyframes ua-bootHide{to{opacity:0;visibility:hidden;pointer-events:none}}
 #boot .inner{display:grid;justify-items:center;gap:26px}
 #boot p{font:800 18px Manrope,Inter,sans-serif;margin:0;letter-spacing:.02em}
 .ua-loader{position:relative;width:120px;height:90px;margin:0 auto}
@@ -506,7 +507,7 @@ function vHome(){
  <section class="band"><div class="sec-h"><h2>${t("secA")} <span class="pill">${t("secB")}</span></h2><p>${t("secLead")}</p></div>
   <div class="grid">${f.map(([i,k],n)=>`<div class="fcard"><div class="top2"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></span><span class="lab">0${n+1} · ${t("labs")[n]}</span></div><h3>${t(k)}</h3><p class="muted" style="margin:0">${t(k+"d")}</p><a href="${hrefs[n]}">${t("more")} ↗</a></div>`).join("")}</div></section>
  <section class="band"><div class="sec-h"><h2>${t("wsA")} <span class="pill">${t("wsB")}</span></h2><p>${t("wsLead")}</p></div>
-  <div class="shots"><div class="shot"><img srchttps://html-akademiya.onrender.com/demo/="img/lesson-${S.lang}.jpg" alt="${esc(t("wsA")+" "+t("wsB"))}" loading="lazy"></div><div class="col"><div class="shot"><img srchttps://html-akademiya.onrender.com/demo/="img/quiz-${S.lang}.jpg" alt="${esc(t("quiz"))}" loading="lazy"></div><div class="shot"><img srchttps://html-akademiya.onrender.com/demo/="img/map-${S.lang}.jpg" alt="${esc(t("lessonsTitle"))}" loading="lazy"></div></div></div></section>
+  <div class="shots"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/lesson-${S.lang}.jpg" alt="${esc(t("wsA")+" "+t("wsB"))}" loading="lazy"></div><div class="col"><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/quiz-${S.lang}.jpg" alt="${esc(t("quiz"))}" loading="lazy"></div><div class="shot"><img src="https://html-akademiya.onrender.com/demo/img/map-${S.lang}.jpg" alt="${esc(t("lessonsTitle"))}" loading="lazy"></div></div></div></section>
  <section class="band"><div class="sec-h"><h2>${t("liveA")} <span class="pill">${t("liveB")}</span></h2><p>${t("liveLead")}</p></div>
   <div class="ide"><div class="bar"><span></span><span></span><span></span></div><div class="split"><pre id="heroCode"></pre><div class="live" id="heroPrev"></div></div></div></section>`}
 function heroType(){const pre=$("#heroCode"),box=$("#heroPrev");if(!pre||!box)return;
@@ -566,18 +567,18 @@ function bindLesson(id){
    S.prog[id]={...S.prog[id],done:true,score};store.set("prog",S.prog);toast(t("lessonDone",{x:xp}))}
   const b=$("#doFinish");const nx=LESSONS.find(l=>l.id===id+1);if(nx){b.textContent=t("next");b.onclick=()=>location.hash="lesson-"+nx.id}}}
 
-/* ---------- video lessoYouTube, s sepa nar vireotfor dach ,atyuag ughs ---------
-const YT={"1":{"uz":"639h3CkvDy8","ru":"SKRydSA2bYA","en":"vY2xUc4TVmY"},"4":{"uz":"coj3O3y74K4","ru":"scB2C0uNV1s","en":"ZOI7Tq5Zq2s"},"7":{"uz":"VCarhBhIrvs","ru":"pGJwXIjYaOA","en":"-kXZvKxs9oA"},"10":{"uz":"57Ewq8zWEO0","ru":"jWXGLAD2BUU","en":"iDA0kF5lrVk"},"13":{"uz":"2s2hY1oFVrA","ru":"x2Miug6g9wU","en":"WbnCll6vvw4"},"16":{"uz":"YJ7jsWneH3o","ru":"LI7vnRT629o","en":"YPzFPoqwTmI"},"19":{"uz":"VRnb0W8F27Q","ru":"_in4LAdxAUA","en":"2O8pkybH6po"},"22":{"uz":"OTEcxz_-fFQ","ru":"LxDrL9bPA2A","en":"BQqz0fPd8Ic"},"25":{"uz":"nHWo3-9AbXo","ru":"6PL2TqBdz0I","en":"uof_zYxtnp0"},"28":{"uz":"Xjg9V7QOx_0","ru":"OwUOiavM66I","en":"xHFzQ8QRjGU"},"31":{"uz":"Y2i8bDwfAHQ","ru":"mA6EaGs6rak","en":"xv-bBxaa7WU"},"34":{"uz":"vGD7CnvZZcU","ru":"n23KctDzj8I","en":"LwbKb2J8iy8"},"37":{"uz":"WKUqpFVQnj8","ru":"G-U-XU2KjD8","en":"rBWA_t-KnKk"},"40":{"uz":"BUBO2CUYckE","ru":"oQDNPNZ72Ig","en":"zI6DW1Sinqc"},"43":{"uz":"HOLxPaooPSU","ru":"Bqgj6gSeUk0","en":"GteJWhCikCk"},"46":{"uz":"QT9ZBtL9f2M","ru":"eVZEwEQg4pg","en":"wsTv9y931o8"},"49":{"uz":"tc_W8ZGiVv4","ru":"MEOR2b69Pl4","en":"eHaZlFcGl6k"},"52":{"uz":"DP1lUnBdYSQ","ru":"MCCjghRlbhA","en":"G4AWXOr4W-k"},"55":{"uz":"ObojKykJ6vs","ru":"JSG4SQspPJE","en":"Nrsy_2ogRfQ"},"58":{"uz":"Nfc0DdQ2VEQ","ru":"bWoqW6PjqBE","en":"VFSBetQhBA4"}};- */
-const VIDEOS=()=>LESSONS.filterYT[(lid]===1);
+/* ---------- video lessons: YouTube, a separate video for each language ---------- */
+const YT={"1":{"uz":"639h3CkvDy8","ru":"SKRydSA2bYA","en":"vY2xUc4TVmY"},"4":{"uz":"coj3O3y74K4","ru":"scB2C0uNV1s","en":"ZOI7Tq5Zq2s"},"7":{"uz":"VCarhBhIrvs","ru":"pGJwXIjYaOA","en":"-kXZvKxs9oA"},"10":{"uz":"57Ewq8zWEO0","ru":"jWXGLAD2BUU","en":"iDA0kF5lrVk"},"13":{"uz":"2s2hY1oFVrA","ru":"x2Miug6g9wU","en":"WbnCll6vvw4"},"16":{"uz":"YJ7jsWneH3o","ru":"LI7vnRT629o","en":"YPzFPoqwTmI"},"19":{"uz":"VRnb0W8F27Q","ru":"_in4LAdxAUA","en":"2O8pkybH6po"},"22":{"uz":"OTEcxz_-fFQ","ru":"LxDrL9bPA2A","en":"BQqz0fPd8Ic"},"25":{"uz":"nHWo3-9AbXo","ru":"6PL2TqBdz0I","en":"uof_zYxtnp0"},"28":{"uz":"Xjg9V7QOx_0","ru":"OwUOiavM66I","en":"xHFzQ8QRjGU"},"31":{"uz":"Y2i8bDwfAHQ","ru":"mA6EaGs6rak","en":"xv-bBxaa7WU"},"34":{"uz":"vGD7CnvZZcU","ru":"n23KctDzj8I","en":"LwbKb2J8iy8"},"37":{"uz":"WKUqpFVQnj8","ru":"G-U-XU2KjD8","en":"rBWA_t-KnKk"},"40":{"uz":"BUBO2CUYckE","ru":"oQDNPNZ72Ig","en":"zI6DW1Sinqc"},"43":{"uz":"HOLxPaooPSU","ru":"Bqgj6gSeUk0","en":"GteJWhCikCk"},"46":{"uz":"QT9ZBtL9f2M","ru":"eVZEwEQg4pg","en":"wsTv9y931o8"},"49":{"uz":"tc_W8ZGiVv4","ru":"MEOR2b69Pl4","en":"eHaZlFcGl6k"},"52":{"uz":"DP1lUnBdYSQ","ru":"MCCjghRlbhA","en":"G4AWXOr4W-k"},"55":{"uz":"ObojKykJ6vs","ru":"JSG4SQspPJE","en":"Nrsy_2ogRfQ"},"58":{"uz":"Nfc0DdQ2VEQ","ru":"bWoqW6PjqBE","en":"VFSBetQhBA4"}};
+const VIDEOS=()=>LESSONS.filter(l=>YT[l.id]);
 function vVideos(){const lim=plan().videos;
- return `<section class="band"><h1>${t("videosTitle")}</h1><p class="muted" style="max-width:60ch">${t("videosLead")}</p><div class="grid">${VIDEOS().map((l,i)=>`<button class="card vcard" data-video="${l.id}"><div class="vthumimg brc="htt"s://i.ytimg.com/vi/${YT[l.id][S.l><g]}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"span styplsopioncabsolute;inset:0:.idt5:100%;height:100%;object-f5;:covwclspan><span class="play"></span>${i>=lim?'<span class="lock">🔒</span>':""}</div><div class="vbody"><span class="tag">${l.course.toUpperCase()} · ${t("lvl")} ${l.l · ${S.lang.toUpperCase()}evel}</span><h3 style="margin-top:8px">${esc(tr(l.title))}</h3></div></button>`).join("")}</div></sectiose);
-function stopVides=>{cfndocumest.qutrySelect rAu#ytFrdme");of(f)f.src="abou":b/ttkles)})}
+ return `<section class="band"><h1>${t("videosTitle")}</h1><p class="muted" style="max-width:60ch">${t("videosLead")}</p><div class="grid">${VIDEOS().map((l,i)=>`<button class="card vcard" data-video="${l.id}"><div class="vthumb"><img src="https://i.ytimg.com/vi/${YT[l.id][S.lang]}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="play"></span>${i>=lim?'<span class="lock">🔒</span>':""}</div><div class="vbody"><span class="tag">${l.course.toUpperCase()} · ${t("lvl")} ${l.level} · ${S.lang.toUpperCase()}</span><h3 style="margin-top:8px">${esc(tr(l.title))}</h3></div></button>`).join("")}</div></section>`}
+function stopVideo(){const f=document.querySelector("#ytFrame");if(f)f.src="about:blank"}
 function playVideo(id){
- const i=VIDEOS().findIndex(l=>l.id===id),L=VIDEO],v=YT[id][S.langS()[i];if(i>=plan().videos){toast(t("lockPlan",{p:"Premium"}));location.hash="pricing";return}
- openModal(`<div class="card" style="width:6in(920px,92vw)"><h3>${esc(tr(L.title))}
-  </h3>stydeclaosition:resstive;aspect-ratio:16/9;bord"p-radius:14px;overflow:hidden;background:#000layifram"><preytFrame" src="https://www.youtube-nocookie.com/embed/${ }?rel=0&hl=${S.lang}" title="YduTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;bor="r:0vCodrv">${vSub"></div>
-  <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wra class="atn" href="https://www.yop"ube.com/wa>ch?v=${v}" target="_blank" rel="n<opeber">YouTube ↗</a><autton class="bt="btn" href="#lesson-${L.id}" id="vGo">${t("start")} →</a></div></div>`);
- $("#vGo").onclick=closerun()}
+ const i=VIDEOS().findIndex(l=>l.id===id),L=VIDEOS()[i],v=YT[id][S.lang];if(i>=plan().videos){toast(t("lockPlan",{p:"Premium"}));location.hash="pricing";return}
+ openModal(`<div class="card" style="width:min(960px,92vw)"><h3>${esc(tr(L.title))}</h3>
+  <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000"><iframe id="ytFrame" src="https://www.youtube-nocookie.com/embed/${v}?rel=0&hl=${S.lang}" title="YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>
+  <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><a class="btn" href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener">YouTube ↗</a><a class="btn pri" href="#lesson-${L.id}" id="vGo">${t("start")} →</a></div></div>`);
+ $("#vGo").onclick=closeModal}
 
 /* ---------- AI tutor ---------- */
 const cap=n=>(window.claude&&window.claude.use)?window.claude.use(n).catch(()=>null):Promise.resolve(null);
@@ -592,14 +593,14 @@ function bindAi(){drawChat();const inp=$("#aiIn");if(S.aiPrefill){inp.value=S.ai
  document.querySelectorAll("[data-chip]").forEach(b=>b.onclick=()=>{inp.value=t(b.dataset.chip);$("#chatForm").requestSubmit()});
  $("#chatForm").addEventListener("submit",async e=>{e.preventDefault();const q=inp.value.trim();if(!q)return;
   const lim=plan().ai;if(dayCount("ai")>=lim){toast(t("aiLimit",{n:lim}));location.hash="pricing";return}
-  const sample=await cap("sampat()}
+  const sample=await cap("sample");
   inp.value="";S.aiMsgs.push({role:"user",content:q});const ans={role:"assistant",content:"…"};S.aiMsgs.push(ans);drawChat();bump("ai");
   const langName={uz:"Uzbek (Latin script)",ru:"Russian",en:"English"}[S.lang];
   const sys=`You are the AI tutor of "HTML Akademiya", a course that teaches HTML and CSS to beginners (mostly teenagers in Uzbekistan) on their phones. Always reply in ${langName}. Be friendly and short (under 150 words), explain in plain words, give a tiny code example when it helps, and never write the full solution of a course task unless the student asks for it twice — guide them with hints first. If the question is not about web development, gently bring the student back to HTML/CSS.`;
   const hist=S.aiMsgs.slice(1,-1).slice(-10);hist[0]={role:"user",content:sys+"\n\nStudent: "+hist[0].content};
- if(sample){ try{const r=await sample(hist,{cache:false,modelTier:"quick",onText:({text})=>{ans.content=text;drawChat()}});ans.content=r}
+  try{if(sample){const r=await sample(hist,{cache:false,modelTier:"quick",onText:({text})=>{ans.content=text;drawChat()}});ans.content=r.text}
    else{const r=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({lang:S.lang,messages:S.aiMsgs.slice(1,-1).slice(-10)})});
-    const j=await r.json().catch(()=>({}));ans.content=r.ok&&j.text?j.text:(r.status===404?t("aiOff"):t("aiErr"))}.text}
+    const j=await r.json().catch(()=>({}));ans.content=r.ok&&j.text?j.text:(r.status===404?t("aiOff"):t("aiErr"))}}
   catch(err){ans.content=err&&err.code==="not_granted"?t("aiOff"):t("aiErr")}
   drawChat();const l=$("#aiLeft");if(l&&lim<1e6)l.textContent=t("left",{n:Math.max(0,lim-dayCount("ai"))})})}
 
@@ -620,7 +621,7 @@ function vProfile(){if(!S.user){setTimeout(signin);return vHome()}const doneN=LE
  <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">${S.user.plan!=="alpha"?`<a class="btn pri" href="#pricing">${t("upgrade")}</a>`:""}<button class="btn" id="doLogout">${t("logout")}</button></div></section>`}
 
 /* ---------- router ---------- */
-function roif(!$("#modal").classLiut.centains("h{sdtn"))closeModalpVideo();const h=location.hash.slice(1)||"home";const v=$("#view");let html,after;
+function route(){if(!$("#modal").classList.contains("hidden"))closeModal();const h=location.hash.slice(1)||"home";const v=$("#view");let html,after;
  const m=h.match(/^lesson-(\d+)$/);
  if(m){html=vLesson(+m[1]);after=()=>bindLesson(+m[1])}
  else if(h==="lessons")html=vLessons();else if(h==="videos")html=vVideos();
@@ -638,8 +639,8 @@ $("#view").addEventListener("click",e=>{const b=e.target.closest("[data-course],
 
 applyTheme();paintStatic();
 fetch("lessons.json").then(r=>r.json()).then(d=>{LESSONS=d;route()}).catch(()=>{$("#view").innerHTML='<section class="band"><h2>Error loading lessons</h2></section>'})
- .finall{const wait=Math.max(0,2000-(performance.now()-T0));y(()=>setTimeout(()=>{const b=$("#boot");b.style.opacity=0;setTimeout(()=>b.remo5e(),wait)}},900));
+ .finally(()=>{const wait=Math.max(0,2000-(performance.now()-T0));setTimeout(()=>{const b=$("#boot");b.style.opacity=0;setTimeout(()=>b.remove(),450)},wait)});
 }
 </script>
 </body>
-</
+</html>
