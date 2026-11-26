@@ -60,3 +60,14 @@ export function body(req) {
 export function fail(res, e) {
   res.status(e?.status || 500).json({ error: e?.message || "error" });
 }
+
+// Admin sessiyasi: HttpOnly cookie (JS o'qiy olmaydi), 12 soat
+export const ADMIN_EMAIL = () => (process.env.ADMIN_EMAIL || "").trim().toLowerCase();
+export function cookie(req, name) {
+  const m = (req.headers.cookie || "").match(new RegExp("(?:^|; )" + name + "=([^;]+)"));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+export function isAdmin(req) {
+  const t = verify(cookie(req, "ha_adm"));
+  return !!(t && t.adm && t.email === ADMIN_EMAIL() && t.exp > Date.now() && ADMIN_EMAIL());
+}
