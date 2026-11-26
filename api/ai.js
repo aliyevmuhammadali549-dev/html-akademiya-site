@@ -1,6 +1,7 @@
 // HTML Akademiya — AI ustoz (Vercel serverless function).
 // Bepul kalit: console.groq.com/keys  →  Vercel: Settings → Environment Variables → GROQ_API_KEY
 // (ixtiyoriy: GEMINI_API_KEY ham ishlaydi)
+import { planOf, PLANS, redis, hasDB, today } from "./_lib.js";
 const LANG = { uz: "Uzbek (Latin script)", ru: "Russian", en: "English" };
 const hits = new Map();
 
@@ -71,7 +72,15 @@ export default async function handler(req, res) {
   if (h.length >= 10) return res.status(429).json({ error: "slow down" });
   hits.set(ip, [...h, now]);
 
-  const { lang = "uz", messages = [] } = req.body || {};
+  const { lang = "uz", messages = [], token } = req.body || {};
+  if (hasDB) {                                              // tarif bo'yicha kunlik savollar soni (serverda)
+    try {
+      const p = await planOf(token), who = p.who || "ip:" + ip, k = `ai:${who}:${today()}`;
+      const used = await redis("INCR", k);
+      if (used === 1) await redis("EXPIRE", k, 172800);
+      if (used > PLANS[p.plan].ai) return res.status(429).json({ error: "daily limit", limit: PLANS[p.plan].ai });
+    } catch {}
+  }
   const msgs = [];
   for (const m of messages) {
     if (!m || (m.role !== "user" && m.role !== "assistant") || typeof m.content !== "string") continue;
