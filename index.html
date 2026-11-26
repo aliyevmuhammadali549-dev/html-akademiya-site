@@ -924,6 +924,13 @@ window.doRedeem=async e=>{e.preventDefault();const m=$("#rdMsg");if(!S.user){m.t
   if(r.ok&&j.token){S.tok=j.token;store.set("tok",j.token);S.user.plan=j.plan;S.exp=j.exp||0;store.set("user",S.user);paintStatic();toast(rd("ok",{p:PLANS[j.plan].name}));route()}
   else m.textContent=r.status===404||r.status===400?rd("bad"):rd("err")}catch{m.textContent=rd("err")}return false};
 
+function admCheck(){const b=$("#admBox");if(!b||!S.user)return;
+ fetch("/api/admin-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:S.user.email,check:true})}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.admin||!$("#admBox"))return;
+  b.innerHTML=`<div class="card" style="margin-top:20px;max-width:560px"><h3 style="margin-top:0">Admin</h3><form id="admF" style="display:flex;gap:8px;flex-wrap:wrap"><input id="admK" type="password" placeholder="Parol" autocomplete="current-password" required style="flex:1;min-width:200px"><button class="btn pri">Admin panelga kirish</button></form><p id="admM" class="muted" style="margin:8px 0 0"></p></div>`;
+  $("#admF").onsubmit=async e=>{e.preventDefault();const m=$("#admM");m.textContent="…";
+   const r=await fetch("/api/admin-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:S.user.email,key:$("#admK").value})}).catch(()=>null);
+   if(r&&r.ok){location.href="/admin";return}const j=r?await r.json().catch(()=>({})):{};m.textContent=j.error==="locked"?"Ko'p xato urinish — 15 daqiqadan keyin urining":"Parol noto'g'ri"}}).catch(()=>{})}
+
 /* ---------- scroll video hero ---------- */
 const SCV={uz:[["Yozing.","Telefoningizda haqiqiy kod yozasiz"],["Ko'ring.","Natija shu zahoti jonlanadi"],["O'rganing.","Qadamma-qadam — o'z saytingizgacha"]],
  ru:[["Пишите.","Настоящий код прямо на телефоне"],["Смотрите.","Результат оживает мгновенно"],["Учитесь.","Шаг за шагом — до своего сайта"]],
@@ -1086,10 +1093,10 @@ function bindAi(){drawChat();const inp=$("#aiIn");if(S.aiPrefill){inp.value=S.ai
 /* ---------- pricing ---------- */
 function vPricing(){return `<section class="band">${lbl(5,"s5")}<div class="sec-head"><h1 class="sec-t">${t("plA")} <span style="color:var(--mute)">${t("plB")}</span></h1><p class="sec-p">${t("tgNote")}</p></div>${plansHTML()}
  ${redeemBox()}<h3 style="margin-top:32px">${t("payMethods")}</h3><div class="paylogos"><span>VISA</span><span>Mastercard</span><span>Uzcard</span><span>HUMO</span></div></section>`}
-function vProfile(){if(!S.user){setTimeout(signin);return vHome()}const doneN=LESSONS.filter(l=>S.prog[l.id]?.done).length;
+function vProfile(){if(!S.user){setTimeout(signin);return vHome()}setTimeout(admCheck);const doneN=LESSONS.filter(l=>S.prog[l.id]?.done).length;
  return `<section class="band"><h1>${t("profile")}</h1><p class="muted">${esc(S.user.name)} · ${esc(S.user.email)}</p>
  <div class="profile-grid"><div class="card"><span class="muted">${t("plan")}</span><b>${PLANS[S.user.plan].name}</b></div><div class="card"><span class="muted">${t("xp")}</span><b>${S.xp}</b></div><div class="card"><span class="muted">${t("streak")}</span><b>🔥 ${S.streak}</b></div><div class="card"><span class="muted">${t("completed")}</span><b>${doneN}/60</b></div></div>
- <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">${S.user.plan!=="alpha"?`<a class="btn pri" href="#pricing">${t("upgrade")}</a>`:""}<button class="btn" id="doLogout">${t("logout")}</button></div>${S.exp?`<p class="muted" style="margin-top:12px">${rd("until")}: ${new Date(S.exp).toLocaleDateString()}</p>`:""}${redeemBox()}</section>`}
+ <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">${S.user.plan!=="alpha"?`<a class="btn pri" href="#pricing">${t("upgrade")}</a>`:""}<button class="btn" id="doLogout">${t("logout")}</button></div>${S.exp?`<p class="muted" style="margin-top:12px">${rd("until")}: ${new Date(S.exp).toLocaleDateString()}</p>`:""}${redeemBox()}<div id="admBox"></div></section>`}
 
 /* ---------- router ---------- */
 function route(){if(!$("#modal").classList.contains("hidden"))closeModal();document.body.classList.remove("authmode");const h=location.hash.slice(1)||"home";const v=$("#view");let html,after;
