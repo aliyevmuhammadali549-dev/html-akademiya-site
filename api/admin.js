@@ -1,6 +1,7 @@
-// Admin: kod yaratish, ro'yxat, foydalanuvchini bekor qilish. Parol: Vercel env ADMIN_KEY.
+// Admin: kod yaratish, ro'yxat, foydalanuvchini bekor qilish.
+// Kirish: Vercel env ADMIN_USER (login, standart "admin") + ADMIN_EMAIL + ADMIN_KEY (parol). 5 ta xato urinishdan keyin IP 15 daqiqaga bloklanadi.
 import crypto from "node:crypto";
-import { redis, body, fail, PLANS, normEmail } from "./_lib.js";
+import { redis, body, fail, PLANS, normEmail, ipOf } from "./_lib.js";
 
 const ABC = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";            // adashtiradigan 0/O/1/I yo'q
 const part = () => Array.from(crypto.randomBytes(4), b => ABC[b % ABC.length]).join("");
@@ -8,11 +9,16 @@ const part = () => Array.from(crypto.randomBytes(4), b => ABC[b % ABC.length]).j
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
   try {
-    const { key, action, plan, days, n, email } = body(req);
-    const K = process.env.ADMIN_KEY || "";
-    if (!K || typeof key !== "string" || key.length !== K.length || !crypto.timingSafeEqual(Buffer.from(key), Buffer.from(K))) {
+    const { key, user, me, action, plan, days, n, email } = body(req);
+    const K = process.env.ADMIN_KEY || "", U = process.env.ADMIN_USER || "admin", E = (process.env.ADMIN_EMAIL || "").trim().toLowerCase();
+    // 5 ta noto'g'ri urinishdan keyin shu IP 15 daqiqaga bloklanadi
+    const lk = "alock:" + ipOf(req), fails = +(await redis("GET", lk)) || 0;
+    if (fails >= 5) return res.status(429).json({ error: "locked" });
+    const same = (a, b) => typeof a === "string" && a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
+    if (!K || !E || !same(key, K) || !same(String(user || ""), U) || !same(normEmail(me), E)) {
+      const f = await redis("INCR", lk); if (f === 1) await redis("EXPIRE", lk, 900);
       await new Promise(r => setTimeout(r, 800));
-      return res.status(401).json({ error: "wrong key" });
+      return res.status(401).json({ error: !K || !E ? "not configured" : "wrong key" });
     }
     if (action === "create") {
       if (!PLANS[plan] || plan === "free") return res.status(400).json({ error: "bad plan" });
