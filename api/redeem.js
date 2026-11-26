@@ -1,12 +1,13 @@
 // Aktivatsiya kodini ishlatish: { code, email } -> { plan, exp, token }
-import { redis, sign, normEmail, body, fail, ipOf, PLANS } from "./_lib.js";
+import { redis, sign, normEmail, body, fail, ipOf, PLANS, loginOf } from "./_lib.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
   try {
-    const { code, email } = body(req);
+    const { code, email, ltok } = body(req);
+    const L = loginOf(ltok);                       // tasdiqlangan kirish bo'lsa, aynan o'sha akkauntga yoziladi
     const c = String(code || "").trim().toUpperCase().replace(/\s+/g, "");
-    const e = normEmail(email);
+    const e = L ? L.email : normEmail(email);
     if (!/^[A-Z]+-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c) || !e.includes("@")) return res.status(400).json({ error: "bad code" });
 
     // urinishlar cheklovi: bir IP'dan daqiqasiga 8 ta

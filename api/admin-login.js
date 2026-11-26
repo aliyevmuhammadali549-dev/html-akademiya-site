@@ -1,13 +1,15 @@
-// Admin kirishi: faqat ADMIN_EMAIL + ADMIN_KEY (parol). 5 ta xatodan keyin IP 15 daqiqaga bloklanadi.
+// Admin kirishi: faqat Google orqali tasdiqlangan ADMIN_EMAIL + ADMIN_KEY (parol). 5 ta xatodan keyin IP 15 daqiqaga bloklanadi.
 // { email, key } -> HttpOnly cookie. { email, check: true } -> shu email admin'mi (tugmani ko'rsatish uchun).
 import crypto from "node:crypto";
-import { redis, body, fail, sign, normEmail, ipOf, ADMIN_EMAIL } from "./_lib.js";
+import { redis, body, fail, sign, normEmail, ipOf, ADMIN_EMAIL, loginOf } from "./_lib.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(404).json({ error: "not found" });
   try {
-    const { email, key, check } = body(req);
+    const { email, key, check, ltok } = body(req);
     const E = ADMIN_EMAIL(), K = process.env.ADMIN_KEY || "", e = normEmail(email);
+    const L = loginOf(ltok);                       // email Google orqali tasdiqlangan bo'lishi shart
+    if (!L || L.email !== e || L.via !== "google") return res.status(404).json({ error: "not found" });
     if (!E || !K || e !== E) return res.status(404).json({ error: "not found" });
     if (check) return res.status(200).json({ admin: true });
     const lk = "alock:" + ipOf(req), fails = +(await redis("GET", lk)) || 0;
