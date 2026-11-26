@@ -935,7 +935,7 @@ function scvInit(){const sec=$("#scv"),cv=$("#scvC");if(!sec||!cv)return;const c
  SCVD=SCVD||fetch("hero.bin").then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>{const hl=new DataView(b).getUint32(0,true),h=JSON.parse(new TextDecoder().decode(new Uint8Array(b,4,hl)));let o=4+hl;
   h.blobs=h.len.map(n=>{const x=new Blob([new Uint8Array(b,o,n)],{type:"image/webp"});o+=n;return x});h.cache=new Map();return h});
  const prog=()=>{const r=sec.getBoundingClientRect();return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)))};
- const text=p=>{[0.1,0.42,0.78].forEach((c,i)=>{const o=(i===2&&p>c)||(i===0&&p<c)?1:Math.max(0,1-Math.abs(p-c)/0.16);ls[i].style.opacity=o;ls[i].style.transform=`translateY(${(c-p)*60}px)`});cta.classList.toggle("on",p>0.86);hint.style.opacity=p<0.03?1:0};
+ const text=p=>{[0.08,0.4,0.72].forEach((c,i)=>{const o=(i===2&&p>c)||(i===0&&p<c)?1:Math.max(0,1-Math.abs(p-c)/0.2);ls[i].style.opacity=o;ls[i].style.transform=`translateY(${(c-p)*60}px)`});cta.classList.toggle("on",p>0.86);hint.style.opacity=p<0.03?1:0};
  text(prog());
  SCVD.then(h=>{let want=0,shown=-1,busy=false,raf=0;
   const get=async i=>{let bm=h.cache.get(i);if(!bm){bm=await createImageBitmap(h.blobs[i]);h.cache.set(i,bm);if(h.cache.size>28){const k=h.cache.keys().next().value;h.cache.get(k).close?.();h.cache.delete(k)}}return bm};
@@ -948,7 +948,7 @@ function scvInit(){const sec=$("#scv"),cv=$("#scvC");if(!sec||!cv)return;const c
    for(const k of [want+1,want+2,want-1])if(k>=0&&k<h.n&&!h.cache.has(k))get(k).catch(()=>{})};
   const size=()=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);shown=-1;run()};
   const on=()=>{if(!document.contains(sec)){removeEventListener("scroll",tick);removeEventListener("resize",size);return}
-   const p=prog();text(p);want=Math.round(p*(h.n-1));run()};
+   const p=prog();text(p);want=Math.round(Math.min(1,p/0.75)*(h.n-1));run()};
   const tick=()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;on()})};
   addEventListener("scroll",tick,{passive:true});addEventListener("resize",size);size();on()}).catch(()=>{sec.remove()})}
 
