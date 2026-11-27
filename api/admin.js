@@ -1,7 +1,7 @@
 // Admin: kod yaratish, ro'yxat, foydalanuvchini bekor qilish.
 // Faqat admin cookie bilan ishlaydi (kirish: /api/admin-login). Boshqalarga 404.
 import crypto from "node:crypto";
-import { redis, body, fail, PLANS, normEmail, isAdmin } from "./_lib.js";
+import { redis, body, fail, PLANS, normEmail, isAdmin, idKey } from "./_lib.js";
 
 const ABC = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";            // adashtiradigan 0/O/1/I yo'q
 const part = () => Array.from(crypto.randomBytes(4), b => ABC[b % ABC.length]).join("");
@@ -25,13 +25,19 @@ export default async function handler(req, res) {
       const vDays = rest.slice(0, 14), pv = rest[14], reg = rest[15], pgRaw = rest[16] || [], uRaw = rest[17] || [], planKeys = rest[18] || [];
       const pages = []; for (let i = 0; i < pgRaw.length; i += 2) pages.push({ p: pgRaw[i], n: +pgRaw[i + 1] });
       pages.sort((a, b) => b.n - a.n);
-      const users = []; for (let i = 0; i < uRaw.length; i += 2) { try { users.push({ email: uRaw[i], ...JSON.parse(uRaw[i + 1]) }); } catch {} }
+      const byId = new Map();                                   // bir xil odamning turli yozuvlarini birlashtiramiz
+      for (let i = 0; i < uRaw.length; i += 2) { try {
+        const k = idKey(uRaw[i]) || uRaw[i], o = JSON.parse(uRaw[i + 1]), p = byId.get(k);
+        const nm = o.name && !/^\+?\d+$/.test(o.name) ? o.name : "";
+        byId.set(k, p ? { email: k, name: p.name || nm, first: Math.min(p.first || 9e15, o.first || 9e15), last: Math.max(p.last || 0, o.last || 0) } : { email: k, name: nm, first: o.first, last: o.last });
+      } catch {} }
+      const users = [...byId.values()];
       users.sort((a, b) => (b.last || 0) - (a.last || 0));
       const plans = planKeys.length ? await redis("MGET", ...planKeys) : [];
       const paid = { premium: 0, alpha: 0 };
       plans.forEach(x => { try { const u = JSON.parse(x); if (!u.exp || u.exp > Date.now()) paid[u.plan] = (paid[u.plan] || 0) + 1; } catch {} });
       return res.status(200).json({
-        visitors: +vAll || 0, views: +pvAll || 0, users: +uAll || 0, paid,
+        visitors: +vAll || 0, views: +pvAll || 0, users: users.length, paid,
         days: days.map((d, i) => ({ d, v: +vDays[i] || 0, pv: +(pv?.[i]) || 0, reg: +(reg?.[i]) || 0 })),
         pages: pages.slice(0, 8), recent: users.slice(0, 50) });
     }

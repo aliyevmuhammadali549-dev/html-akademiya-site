@@ -1,6 +1,6 @@
 // Kirish: Google (ID token) va Telegram (raqam + botdan kod). Javob: { user, ltok } — ltok serverda imzolangan.
 import crypto from "node:crypto";
-import { redis, body, fail, sign, ipOf } from "./_lib.js";
+import { redis, body, fail, sign, ipOf, idKey, idVariants } from "./_lib.js";
 
 const BOT = process.env.TELEGRAM_BOT_USERNAME || "html_akademiya_uz_bot";
 const GID = process.env.GOOGLE_CLIENT_ID || "1003735968998-2dl2opesjvhdpt30pnfb0oeaq56mkmeu.apps.googleusercontent.com";
@@ -25,6 +25,9 @@ async function tgSend(chat, text) {
   return r.ok;
 }
 
+// shu odam avval ro'yxatdan o'tganmi (raqam/email bir marta) — bo'lsa, ro'yxat o'rniga kirish bo'ladi
+async function known(e) { const k = idKey(e); for (const x of [k, ...idVariants(k)]) if (x && await redis("HEXISTS", "users", x)) return true; return false; }
+
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(404).json({ error: "not found" });
   try {
@@ -35,7 +38,7 @@ export default async function handler(req, res) {
       const g = await r.json().catch(() => ({}));
       if (!r.ok || g.aud !== GID || String(g.email_verified) !== "true" || !g.email) return res.status(401).json({ error: "google" });
       const u = { email: g.email.toLowerCase(), name: g.name || g.email.split("@")[0], picture: g.picture || "", via: "google" };
-      return res.status(200).json({ user: u, ltok: session(u) });
+      return res.status(200).json({ user: u, ltok: session(u), existing: await known(u.email) });
     }
 
     if (act === "tg-send") {
@@ -63,7 +66,7 @@ export default async function handler(req, res) {
       await redis("DEL", "otp:" + p);
       const link = JSON.parse((await redis("GET", "tg:" + p)) || "{}");
       const u = { email: p + "@telegram", name: b.name || link.name || "+" + p, phone: "+" + p, via: "telegram" };
-      return res.status(200).json({ user: u, ltok: session(u) });
+      return res.status(200).json({ user: u, ltok: session(u), existing: await known(u.email) });
     }
 
     res.status(400).json({ error: "bad action" });

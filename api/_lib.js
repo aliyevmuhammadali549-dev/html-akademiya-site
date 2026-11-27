@@ -77,3 +77,12 @@ export function loginOf(ltok) {
   const t = verify(ltok);
   return t && t.lg && t.email && t.exp > Date.now() ? t : null;
 }
+
+// Bitta odam = bitta yozuv: "+998 90...", "998...", "998...@telegram" -> "998...@telegram"
+export function idKey(u) {
+  const s = String(u || "").trim().toLowerCase().replace(/[\s()-]/g, "");
+  const m = /^\+?(\d{9,15})(@telegram)?$/.exec(s);
+  if (m) { const d = m[1].length === 9 ? "998" + m[1] : m[1]; return d + "@telegram"; }
+  return s.includes("@") ? s : "";
+}
+export const idVariants = k => { const m = /^(\d+)@telegram$/.exec(k); return m ? ["+" + m[1], m[1]] : []; };
