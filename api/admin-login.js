@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (!K) return res.status(503).json({ error: "not configured" });
     const lk = "alock:" + ipOf(req), fails = +(await redis("GET", lk)) || 0;
     if (fails >= 5) return res.status(429).json({ error: "locked" });
-    if (!same(String(user || "").trim(), U) || !same(String(key || ""), K)) {
+    if (!same(String(user || "").trim().toLowerCase(), U.toLowerCase()) || !same(String(key || ""), K)) {   // login katta-kichik harfga sezgir emas
       const f = await redis("INCR", lk); if (f === 1) await redis("EXPIRE", lk, 900);
       await new Promise(r => setTimeout(r, 800));
       return res.status(401).json({ error: "wrong key", left: Math.max(0, 4 - fails) });
