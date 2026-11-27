@@ -1035,7 +1035,7 @@ function finishLogin(j){const u=j.user,old=S.user;
  if(S.tok&&(!old||old.email!==u.email)){S.tok=null;store.set("tok",null)}
  S.user={name:u.name,email:u.email,plan:old&&old.email===u.email?old.plan:"free",via:u.via,phone:u.phone||"",picture:u.picture||""};
  S.ltok=j.ltok;store.set("ltok",j.ltok);store.set("user",S.user);paintStatic();syncPlan();S.btok=null;store.set("btok",null);bsync();
- toast(t("welcome",{n:u.name}));location.hash=S.afterLogin||"home";S.afterLogin=null}
+ toast(j.existing&&location.hash==="#signup"?(S.lang==="ru"?"Этот аккаунт уже зарегистрирован — вы вошли":S.lang==="en"?"This account already exists — you are logged in":"Bu akkaunt allaqachon ro'yxatdan o'tgan — tizimga kirdingiz"):t("welcome",{n:u.name}));location.hash=S.afterLogin||"home";S.afterLogin=null}
 let GIS=null;
 function gisLoad(){return GIS=GIS||new Promise((ok,no)=>{if(window.google?.accounts?.id)return ok();const s=document.createElement("script");s.src="https://accounts.google.com/gsi/client";s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
 async function onGoogle(r){try{const x=await fetch("/api/auth",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"google",credential:r.credential})});const j=await x.json().catch(()=>({}));if(x.ok&&j.ltok)finishLogin(j);else toast(au("eG"))}catch{toast(au("eNet"))}}
