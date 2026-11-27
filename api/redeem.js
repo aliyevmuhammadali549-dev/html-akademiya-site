@@ -7,8 +7,8 @@ export default async function handler(req, res) {
     const { code, email, ltok } = body(req);
     const L = loginOf(ltok);                       // tasdiqlangan kirish bo'lsa, aynan o'sha akkauntga yoziladi
     const c = String(code || "").trim().toUpperCase().replace(/\s+/g, "");
-    const e = L ? L.email : normEmail(email);
-    if (!/^[A-Z]+-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c) || !e.includes("@")) return res.status(400).json({ error: "bad code" });
+    const e = (L ? L.email : normEmail(email)).replace(/[\s()-]/g, "");
+    if (!/^[A-Z]+-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c) || !(e.includes("@") || /^\+?\d{7,15}$/.test(e))) return res.status(400).json({ error: "bad code" });
 
     // urinishlar cheklovi: bir IP'dan daqiqasiga 8 ta
     const k = "try:" + ipOf(req);
