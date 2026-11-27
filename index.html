@@ -1117,6 +1117,12 @@ $("#view").addEventListener("click",e=>{const b=e.target.closest("[data-course],
 });
 
 applyTheme();syncPlan();paintStatic();bindHeader();splash();
+/* ---------- tashriflar statistikasi (admin panel uchun) ---------- */
+(function(){let vid;try{vid=localStorage.getItem("ha_vid");if(!vid){vid=(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Date.now().toString(36));localStorage.setItem("ha_vid",vid)}}catch{vid="t"+Math.random().toString(36).slice(2)+Date.now().toString(36)}
+ const hit=()=>{const u=S.user||{},b=JSON.stringify({vid,p:(location.hash.slice(1)||"home").split(/[?/]/)[0],u:u.email||"",n:u.name||""});
+  try{if(navigator.sendBeacon)navigator.sendBeacon("/api/hit",new Blob([b],{type:"application/json"}));else fetch("/api/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:b,keepalive:true})}catch{}};
+ addEventListener("hashchange",hit);hit()})();
+
 fetch("lessons.json").then(r=>r.json()).then(d=>{LESSONS=d;route()}).catch(()=>{$("#view").innerHTML='<section class="band"><h2>Error loading lessons</h2></section>'})
  ;
 }
