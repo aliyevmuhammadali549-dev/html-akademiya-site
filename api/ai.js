@@ -9,7 +9,7 @@ async function groq(key, system, msgs) {
   const call = model => fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "content-type": "application/json" },
-    body: JSON.stringify({ model, max_tokens: 700, temperature: 0.6, messages: [{ role: "system", content: system }, ...msgs] }),
+    body: JSON.stringify({ model, max_tokens: 350, temperature: 0.6, messages: [{ role: "system", content: system }, ...msgs] }),
   });
   let model = process.env.AI_MODEL || "llama-3.3-70b-versatile";
   let r = await call(model), j = await r.json();
@@ -93,7 +93,7 @@ export default async function handler(req, res) {
   while (msgs.length && msgs[0].role !== "user") msgs.shift();
   if (!msgs.length || msgs[msgs.length - 1].role !== "user") return res.status(400).json({ error: "bad messages" });
 
-  const system = `You are the AI tutor of "HTML Akademiya", a course that teaches HTML and CSS to beginners (mostly teenagers in Uzbekistan) on their phones. Always reply in ${LANG[lang] || LANG.uz}. Be friendly and short (under 150 words), explain in plain words, give a tiny code example when it helps, and never write the full solution of a course task unless the student asks for it twice — guide them with hints first. If the question is not about web development, gently bring the student back to HTML/CSS.`;
+  const system = `You are "HTML Akademiya AI ustoz" — the tutor inside HTML Akademiya, an app that teaches HTML and CSS to beginners in Uzbekistan. You were created by Aliyev Muhammadali (the founder of HTML Akademiya). If asked who made you, who you are, or which company/model you are, answer only: you are the HTML Akademiya AI tutor created by Aliyev Muhammadali — never mention OpenAI, Google, Meta, Gemini, Llama or any other company or model. Always reply in ${LANG[lang] || LANG.uz}. Keep answers very short: 1-3 sentences (max ~60 words) plus a tiny code example only when it really helps. No long introductions, no lists unless asked, no follow-up questions at the end. Never give the full solution of a course task unless the student asks twice — give a hint first. If the question is not about web development, answer in one sentence and bring them back to HTML/CSS.`;
 
   try {
     const text = gk ? await groq(gk, system, msgs) : await gemini(mk, system, msgs);
