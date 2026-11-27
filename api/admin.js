@@ -15,6 +15,26 @@ export default async function handler(req, res) {
       res.setHeader("Set-Cookie", "ha_adm=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0");
       return res.status(200).json({ ok: true });
     }
+    if (action === "stats") {
+      const days = [];
+      for (let i = 13; i >= 0; i--) days.push(new Date(Date.now() + 5 * 3600e3 - i * 864e5).toISOString().slice(0, 10));
+      const [vAll, pvAll, uAll, ...rest] = await Promise.all([
+        redis("PFCOUNT", "v:all"), redis("GET", "pv:all"), redis("HLEN", "users"),
+        ...days.map(d => redis("PFCOUNT", "v:" + d)), redis("MGET", ...days.map(d => "pv:" + d)), redis("MGET", ...days.map(d => "reg:" + d)),
+        redis("HGETALL", "pg:" + days[13]), redis("HGETALL", "users"), redis("KEYS", "user:*")]);
+      const vDays = rest.slice(0, 14), pv = rest[14], reg = rest[15], pgRaw = rest[16] || [], uRaw = rest[17] || [], planKeys = rest[18] || [];
+      const pages = []; for (let i = 0; i < pgRaw.length; i += 2) pages.push({ p: pgRaw[i], n: +pgRaw[i + 1] });
+      pages.sort((a, b) => b.n - a.n);
+      const users = []; for (let i = 0; i < uRaw.length; i += 2) { try { users.push({ email: uRaw[i], ...JSON.parse(uRaw[i + 1]) }); } catch {} }
+      users.sort((a, b) => (b.last || 0) - (a.last || 0));
+      const plans = planKeys.length ? await redis("MGET", ...planKeys) : [];
+      const paid = { premium: 0, alpha: 0 };
+      plans.forEach(x => { try { const u = JSON.parse(x); if (!u.exp || u.exp > Date.now()) paid[u.plan] = (paid[u.plan] || 0) + 1; } catch {} });
+      return res.status(200).json({
+        visitors: +vAll || 0, views: +pvAll || 0, users: +uAll || 0, paid,
+        days: days.map((d, i) => ({ d, v: +vDays[i] || 0, pv: +(pv?.[i]) || 0, reg: +(reg?.[i]) || 0 })),
+        pages: pages.slice(0, 8), recent: users.slice(0, 50) });
+    }
     if (action === "create") {
       if (!PLANS[plan] || plan === "free") return res.status(400).json({ error: "bad plan" });
       const d = Math.max(0, Math.min(3650, parseInt(days) || 0)), cnt = Math.max(1, Math.min(50, parseInt(n) || 1));

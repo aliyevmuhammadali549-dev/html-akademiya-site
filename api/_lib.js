@@ -69,7 +69,7 @@ export function cookie(req, name) {
 }
 export function isAdmin(req) {
   const t = verify(cookie(req, "ha_adm"));
-  return !!(t && t.adm && t.email === ADMIN_EMAIL() && t.exp > Date.now() && ADMIN_EMAIL());
+  return !!(t && t.adm && t.exp > Date.now() && t.email === (ADMIN_EMAIL() || "admin"));
 }
 
 // Kirish sessiyasi (Google/Telegram tasdiqlagan) -> email yoki null
