@@ -42,12 +42,14 @@ export default async function handler(req, res) {
         pages: pages.slice(0, 8), recent: users.slice(0, 50) });
     }
     if (action === "create") {
-      if (!PLANS[plan] || plan === "free") return res.status(400).json({ error: "bad plan" });
+      const reward = plan === "xp" || plan === "streak";            // yulduzcha (XP) yoki seriya kodi
+      if (!reward && (!PLANS[plan] || plan === "free")) return res.status(400).json({ error: "bad plan" });
       const d = Math.max(0, Math.min(3650, parseInt(days) || 0)), cnt = Math.max(1, Math.min(50, parseInt(n) || 1));
+      const amt = Math.max(1, Math.min(plan === "xp" ? 100000 : 3650, parseInt(body(req).amt) || 0));
       const codes = [];
       for (let i = 0; i < cnt; i++) {
-        const c = `${plan === "premium" ? "PREM" : "ALPHA"}-${part()}-${part()}`;
-        await redis("SET", "code:" + c, JSON.stringify({ plan, days: d, made: Date.now() }));
+        const c = `${({ premium: "PREM", alpha: "ALPHA", xp: "STAR", streak: "FIRE" })[plan]}-${part()}-${part()}`;
+        await redis("SET", "code:" + c, JSON.stringify(reward ? { plan, amt, made: Date.now() } : { plan, days: d, made: Date.now() }));
         await redis("SADD", "codes", c);
         codes.push(c);
       }
