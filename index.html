@@ -693,7 +693,8 @@ header.top button,header.top a{min-height:44px;min-width:44px}
 .uv-tg:active,.uv-g:active{transform:scale(.98)}
 .uv-tg{background:#000;color:#fff;border:2px solid #000}.uv-g{background:#fff;color:#111;border:2px solid #747474}
 .uv-tg svg,.uv-g svg{width:18px;height:18px;flex:none}
-.uv-gg{position:relative}.uv-gg #gBtn{position:absolute;inset:0;z-index:2;opacity:.011;overflow:hidden;border-radius:20px}
+.uv-gg{position:relative}.uv-gg #gBtn{position:absolute;inset:0;z-index:2;opacity:.011;overflow:hidden;border-radius:20px;display:flex;align-items:center;justify-content:center}.uv-gg #gBtn.on+#gFallback{display:flex}
+.uv-inp .cc{flex:none;border:0;background:transparent;color:#111;font:600 14px Inter,sans-serif;padding:0 2px 0 12px;outline:0;cursor:pointer;max-width:112px}
 
 .lbx ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px}.lbx li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px}.lbx li.me{background:var(--panel2)}.lbx .rk{width:24px;font-weight:800;color:var(--mute)}.lbx li b{flex:1}.lbx em{font-style:normal;font-weight:700}.lbx small{color:var(--mute)}.lbx{margin-top:16px}
 </style>
@@ -1010,6 +1011,11 @@ function vAuth(mode){
  else return vAuthUv(mode);
  return `<div class="auth auth-photo">${authArt()}<div class="aside">${tl}${card}<p class="terms">${t("terms2")}</p></div></div>`}
 
+/* qo'llab-quvvatlanadigan davlat kodlari: raqam uzunligi va ko'rinishi */
+const CC=[{k:"uz",d:"998",f:"🇺🇿",n:9,g:[2,3,2,2],ph:"90 123 45 67"},{k:"tj",d:"992",f:"🇹🇯",n:9,g:[2,3,2,2],ph:"93 123 45 67"},{k:"kz",d:"7",f:"🇰🇿",n:10,g:[3,3,2,2],ph:"701 123 45 67"},
+ {k:"kg",d:"996",f:"🇰🇬",n:9,g:[3,3,3],ph:"700 123 456"},{k:"ru",d:"7",f:"🇷🇺",n:10,g:[3,3,2,2],ph:"912 345 67 89"},{k:"us",d:"1",f:"🇺🇸",n:10,g:[3,3,4],ph:"201 555 0123"}];
+const ccNow=()=>CC.find(c=>c.k===store.get("cc","uz"))||CC[0];
+const ccFmt=(d,c)=>{const o=[];let i=0;for(const n of c.g){if(i>=d.length)break;o.push(d.slice(i,i+n));i+=n}return o.join(" ")};
 const UVT={uz:["Xush kelibsiz","Akkauntingiz yo'qmi?","Ro'yxatdan o'tish","Akkauntingiz bormi?","Kirish","Telegram orqali kirish","Google orqali kirish","Kod kelmadimi?"],
  ru:["С возвращением","Нет аккаунта?","Регистрация","Уже есть аккаунт?","Войти","Войти через Telegram","Войти через Google","Не пришёл код?"],
  en:["Welcome back","Don't have an account?","Sign up","Have an account?","Log in","Log in with Telegram","Log in with Google","No code?"]};
@@ -1019,7 +1025,7 @@ function vAuthUv(mode){const u=UVT[S.lang]||UVT.uz,su=mode==="signup";
  return `<div class="uv-wrap"><a class="uv-back" href="#home">← ${t("backSite")}</a><div class="uv-card">
   <p class="uv-title">${su?t("regT"):u[0]}</p>
   <form class="uv-form" id="tgF" novalidate>
-   <div class="uv-inp"><span class="pre">+998</span><input name="phone" class="uv-input" inputmode="tel" placeholder="90 123 45 67" autocomplete="tel-national" aria-label="${au("ph")}"></div>
+   <div class="uv-inp"><select class="cc" name="cc" aria-label="Country">${CC.map(c=>`<option value="${c.k}"${c.k===ccNow().k?" selected":""}>${c.f} +${c.d}</option>`).join("")}</select><input name="phone" class="uv-input" inputmode="tel" placeholder="${ccNow().ph}" autocomplete="tel-national" aria-label="${au("ph")}"></div>
    <div id="tgStep2" class="uv-step" hidden><p class="tgmsg uv-msg"></p><a class="uv-mini" id="tgBot" target="_blank" rel="noopener" hidden>${au("openBot")} ↗</a>
     <input name="code" class="uv-input otp" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="one-time-code" aria-label="${au("code")}"></div>
    <p class="uv-link"><span class="tgacts" hidden><a id="tgAgain">${au("again")}</a> · <a id="tgChg">${au("chg")}</a></span><span class="uv-hint">${u[7]}</span></p>
@@ -1049,14 +1055,16 @@ function bindAuth(mode){requestAnimationFrame(watchFit);
   gf.onclick=()=>{if(window.google?.accounts?.id)google.accounts.id.prompt();else toast(au("gLoad"))}}
  const f=$("#tgF");if(!f)return;const er=f.querySelector(".aerr"),go=$("#tgGo"),st2=$("#tgStep2"),acts=f.querySelector(".tgacts");
  
- f.phone.addEventListener("input",()=>{f.phone.value=fmtPhone(phoneDigits(f.phone.value))});
+ const cc=()=>CC.find(c=>c.k===f.cc.value)||CC[0],dig=()=>f.phone.value.replace(/\D/g,"").slice(0,cc().n);
+ f.phone.addEventListener("input",()=>{let d=f.phone.value.replace(/\D/g,"");if(d.length>cc().n&&d.startsWith(cc().d))d=d.slice(cc().d.length);f.phone.value=ccFmt(d.slice(0,cc().n),cc())});
+ f.cc.addEventListener("change",()=>{store.set("cc",f.cc.value);f.phone.placeholder=cc().ph;f.phone.value=ccFmt(dig(),cc());f.phone.focus()});
  f.code.addEventListener("input",()=>{f.code.value=f.code.value.replace(/\D/g,"").slice(0,6);if(f.code.value.length===6)f.requestSubmit()});
- let step=1,busy=false;const ph=()=>"998"+phoneDigits(f.phone.value);
+ let step=1,busy=false;const ph=()=>cc().d+dig();
  const api=b=>fetch("/api/auth",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)}).then(async r=>[r.status,await r.json().catch(()=>({}))]);
- const send=async()=>{er.textContent="";if(phoneDigits(f.phone.value).length!==9){er.textContent=au("ePh");return}
+ const send=async()=>{er.textContent="";if(dig().length!==cc().n){er.textContent=au("ePh");return}
   const [s,j]=await api({action:"tg-send",phone:ph()});
   if(s===429)return er.textContent=au("eMany");if(s===503)return er.textContent=au("eOff");if(s!==200)return er.textContent=au("eNet");
-  step=2;st2.hidden=false;acts.hidden=false;f.phone.readOnly=true;go.textContent=au("ok")+" →";
+  step=2;st2.hidden=false;acts.hidden=false;f.phone.readOnly=true;f.cc.disabled=true;go.textContent=au("ok")+" →";
   const bl=$("#tgBot");f.querySelector(".tgmsg").textContent=j.need_link?au("link",{b:j.bot}):au("sent",{b:j.bot});
   if(j.need_link){bl.href=j.url;bl.hidden=false;window.open(j.url,"_blank","noopener")}else bl.hidden=true;
   setTimeout(()=>f.code.focus(),50)};
@@ -1068,7 +1076,7 @@ function bindAuth(mode){requestAnimationFrame(watchFit);
     f.code.value="";er.textContent=j.error==="expired"?au("eExp"):s===429?au("eMany"):au("eCode",{n:j.left??0})}}
   catch{er.textContent=au("eNet")}finally{busy=false;go.disabled=false}});
  $("#tgAgain").onclick=()=>{if(!busy)send()};
- $("#tgChg").onclick=()=>{step=1;st2.hidden=true;acts.hidden=true;f.phone.readOnly=false;f.code.value="";er.textContent="";go.textContent=au("get")+" →";f.phone.focus()}}
+ $("#tgChg").onclick=()=>{step=1;f.cc.disabled=false;st2.hidden=true;acts.hidden=true;f.phone.readOnly=false;f.code.value="";er.textContent="";go.textContent=au("get")+" →";f.phone.focus()}}
 
 function authModal(after){S.afterLogin=location.hash.slice(1)||"home";location.hash="login"}
 const signin=()=>authModal();
